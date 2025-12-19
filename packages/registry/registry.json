@@ -1,0 +1,152 @@
+{
+  "$schema": "./schema.json",
+  "name": "vibe-ui",
+  "version": "0.1.0",
+  "styles": ["minimal", "glass", "brutalist", "soft", "neon"],
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "description": "A button component with multiple variants and sizes",
+      "files": [{ "path": "ui/button.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "registryDependencies": []
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "description": "A card component for displaying content",
+      "files": [{ "path": "ui/card.tsx", "type": "component" }],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "description": "A text input component",
+      "files": [{ "path": "ui/input.tsx", "type": "component" }],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "description": "A label component for form elements",
+      "files": [{ "path": "ui/label.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-label", "class-variance-authority"],
+      "registryDependencies": []
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "description": "A multi-line text input component",
+      "files": [{ "path": "ui/textarea.tsx", "type": "component" }],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "description": "A checkbox component for toggle options",
+      "files": [{ "path": "ui/checkbox.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-checkbox"],
+      "registryDependencies": []
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "description": "A toggle switch component",
+      "files": [{ "path": "ui/switch.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-switch"],
+      "registryDependencies": []
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "description": "A dropdown select component",
+      "files": [{ "path": "ui/select.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-select"],
+      "registryDependencies": []
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "description": "A badge component for status indicators",
+      "files": [{ "path": "ui/badge.tsx", "type": "component" }],
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": []
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "description": "An alert component for notifications",
+      "files": [{ "path": "ui/alert.tsx", "type": "component" }],
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": []
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "description": "An avatar component for user profile images",
+      "files": [{ "path": "ui/avatar.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-avatar"],
+      "registryDependencies": []
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "description": "A separator component for dividing content",
+      "files": [{ "path": "ui/separator.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-separator"],
+      "registryDependencies": []
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "description": "A skeleton loading component",
+      "files": [{ "path": "ui/skeleton.tsx", "type": "component" }],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "description": "A modal dialog component",
+      "files": [{ "path": "ui/dialog.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-dialog"],
+      "registryDependencies": ["button"]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "description": "A dropdown menu component",
+      "files": [{ "path": "ui/dropdown-menu.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-dropdown-menu"],
+      "registryDependencies": []
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "description": "A tabs component for tabbed content",
+      "files": [{ "path": "ui/tabs.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-tabs"],
+      "registryDependencies": []
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "description": "A tooltip component for additional information",
+      "files": [{ "path": "ui/tooltip.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-tooltip"],
+      "registryDependencies": []
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "description": "A toast notification component using Sonner",
+      "files": [{ "path": "ui/sonner.tsx", "type": "component" }],
+      "dependencies": ["sonner"],
+      "registryDependencies": []
+    }
+  ]
+}

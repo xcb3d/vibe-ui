@@ -1,0 +1,94 @@
+/**
+ * Glass Style - Glassmorphism with blur effects
+ * Translucent, frosted glass, vibrant backgrounds
+ */
+
+@layer base {
+  :root {
+    /* Colors - Translucent base with vibrant accents */
+    --background: 220 13% 95%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100% / 0.6;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100% / 0.8;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 0 0% 100% / 0.7;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 280 100% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 100% / 0.2;
+    --input: 0 0% 100% / 0.3;
+    --ring: 221 83% 53%;
+
+    /* Radius - Rounded for soft look */
+    --radius: 1rem;
+
+    /* Glass-specific */
+    --glass-blur: 16px;
+    --glass-saturation: 180%;
+
+    /* Shadows - Elevated, soft */
+    --shadow-sm: 0 2px 8px rgb(0 0 0 / 0.08);
+    --shadow: 0 4px 16px rgb(0 0 0 / 0.12);
+    --shadow-md: 0 8px 24px rgb(0 0 0 / 0.16);
+    --shadow-lg: 0 16px 48px rgb(0 0 0 / 0.2);
+
+    /* Font */
+    --font-sans: "Inter", system-ui, sans-serif;
+    --font-mono: "Fira Code", monospace;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11% / 0.6;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11% / 0.8;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 0 0% 100% / 0.1;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 280 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 100% / 0.1;
+    --input: 0 0% 100% / 0.15;
+    --ring: 217 91% 60%;
+  }
+}
+
+/* Glass utilities */
+@layer utilities {
+  .glass {
+    background: hsl(var(--card));
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    border: 1px solid hsl(var(--border));
+  }
+}

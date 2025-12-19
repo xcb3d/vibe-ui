@@ -1,0 +1,32 @@
+{
+  "name": "@vibe-ui/cli",
+  "version": "0.1.0",
+  "description": "CLI for installing Vibe UI components",
+  "type": "module",
+  "bin": {
+    "vibe-ui": "./dist/index.mjs"
+  },
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "start": "node dist/index.mjs",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "prompts": "^2.4.2",
+    "picocolors": "^1.1.1",
+    "ora": "^8.1.1",
+    "fs-extra": "^11.2.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.10.2",
+    "@types/prompts": "^2.4.9",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  }
+}

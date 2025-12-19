@@ -1,0 +1,103 @@
+/**
+ * Neon Style - Cyberpunk dark mode with glowing accents
+ * Neon colors, dark backgrounds, glow effects
+ */
+
+@layer base {
+  :root {
+    /* Light mode (rare for neon, but supported) */
+    --background: 222 30% 95%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 170 100% 50%;
+    --primary-foreground: 222 47% 5%;
+
+    --secondary: 280 100% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 222 20% 90%;
+    --muted-foreground: 222 20% 40%;
+
+    --accent: 330 100% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 20% 85%;
+    --input: 222 20% 90%;
+    --ring: 170 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Neon glows */
+    --glow-primary: 0 0 10px hsl(170 100% 50%), 0 0 20px hsl(170 100% 50% / 0.5);
+    --glow-secondary: 0 0 10px hsl(280 100% 60%), 0 0 20px hsl(280 100% 60% / 0.5);
+    --glow-accent: 0 0 10px hsl(330 100% 60%), 0 0 20px hsl(330 100% 60% / 0.5);
+
+    /* Shadows */
+    --shadow-sm: 0 0 5px currentColor;
+    --shadow: 0 0 10px currentColor;
+    --shadow-md: 0 0 15px currentColor;
+    --shadow-lg: 0 0 20px currentColor, 0 0 40px currentColor;
+
+    /* Font - Tech/mono inspired */
+    --font-sans: "Orbitron", "Rajdhani", system-ui, sans-serif;
+    --font-mono: "Fira Code", "JetBrains Mono", monospace;
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 0 0% 95%;
+
+    --card: 222 40% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 222 40% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 170 100% 50%;
+    --primary-foreground: 222 47% 5%;
+
+    --secondary: 280 100% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 222 30% 15%;
+    --muted-foreground: 222 20% 60%;
+
+    --accent: 330 100% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 80% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 30% 20%;
+    --input: 222 30% 15%;
+    --ring: 170 100% 50%;
+  }
+}
+
+/* Neon utilities */
+@layer utilities {
+  .neon-glow {
+    box-shadow: var(--glow-primary);
+  }
+
+  .neon-glow-secondary {
+    box-shadow: var(--glow-secondary);
+  }
+
+  .neon-glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  .neon-text {
+    text-shadow: var(--glow-primary);
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@vibe-ui/tailwind-config",
+  "version": "0.1.0",
+  "private": true,
+  "main": "base.ts",
+  "types": "base.ts",
+  "files": [
+    "base.ts"
+  ],
+  "devDependencies": {
+    "tailwindcss": "^4.0.0"
+  }
+}
