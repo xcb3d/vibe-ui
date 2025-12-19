@@ -190,6 +190,237 @@ export const componentDocs: Record<string, ComponentDoc> = {
     description: "A toast notification component using Sonner.",
     dependencies: ["sonner"],
   },
+  accordion: {
+    name: "Accordion",
+    slug: "accordion",
+    description: "A set of vertically stacked expandable sections.",
+    dependencies: ["@radix-ui/react-accordion", "lucide-react"],
+    radixDocs: "https://www.radix-ui.com/primitives/docs/components/accordion",
+  },
+  table: {
+    name: "Table",
+    slug: "table",
+    description: "A responsive table component with header, body, and footer.",
+    dependencies: [],
+  },
+  progress: {
+    name: "Progress",
+    slug: "progress",
+    description: "A progress bar indicating completion status.",
+    dependencies: ["@radix-ui/react-progress"],
+    radixDocs: "https://www.radix-ui.com/primitives/docs/components/progress",
+  },
+  slider: {
+    name: "Slider",
+    slug: "slider",
+    description: "A slider input for selecting a value from a range.",
+    dependencies: ["@radix-ui/react-slider"],
+    radixDocs: "https://www.radix-ui.com/primitives/docs/components/slider",
+  },
+  "radio-group": {
+    name: "Radio Group",
+    slug: "radio-group",
+    description: "A group of radio buttons for selecting one option.",
+    dependencies: ["@radix-ui/react-radio-group", "lucide-react"],
+    radixDocs:
+      "https://www.radix-ui.com/primitives/docs/components/radio-group",
+  },
+  popover: {
+    name: "Popover",
+    slug: "popover",
+    description: "A floating panel for displaying content on demand.",
+    dependencies: ["@radix-ui/react-popover"],
+    radixDocs: "https://www.radix-ui.com/primitives/docs/components/popover",
+  },
+  sheet: {
+    name: "Sheet",
+    slug: "sheet",
+    description: "A slide-out panel from any edge of the screen.",
+    dependencies: [
+      "@radix-ui/react-dialog",
+      "class-variance-authority",
+      "lucide-react",
+    ],
+  },
+  command: {
+    name: "Command",
+    slug: "command",
+    description: "A command palette for searching and executing actions.",
+    dependencies: ["cmdk", "lucide-react"],
+  },
+  "scroll-area": {
+    name: "Scroll Area",
+    slug: "scroll-area",
+    description: "A scrollable area with custom scrollbars.",
+    dependencies: ["@radix-ui/react-scroll-area"],
+    radixDocs:
+      "https://www.radix-ui.com/primitives/docs/components/scroll-area",
+  },
+  collapsible: {
+    name: "Collapsible",
+    slug: "collapsible",
+    description: "A component that can be expanded or collapsed.",
+    dependencies: ["@radix-ui/react-collapsible"],
+    radixDocs:
+      "https://www.radix-ui.com/primitives/docs/components/collapsible",
+  },
+  "alert-dialog": {
+    name: "Alert Dialog",
+    slug: "alert-dialog",
+    description: "A modal dialog for confirmations and alerts.",
+    dependencies: ["@radix-ui/react-alert-dialog"],
+    radixDocs:
+      "https://www.radix-ui.com/primitives/docs/components/alert-dialog",
+  },
+  breadcrumb: {
+    name: "Breadcrumb",
+    slug: "breadcrumb",
+    description: "A navigation component showing the current page location.",
+    dependencies: ["@radix-ui/react-slot", "lucide-react"],
+  },
+  calendar: {
+    name: "Calendar",
+    slug: "calendar",
+    description: "A date picker calendar component.",
+    dependencies: ["react-day-picker", "date-fns", "lucide-react"],
+  },
+  "date-picker": {
+    name: "Date Picker",
+    slug: "date-picker",
+    description: "A date picker with popover calendar.",
+    dependencies: ["react-day-picker", "date-fns", "lucide-react"],
+  },
+  form: {
+    name: "Form",
+    slug: "form",
+    description: "Form components with react-hook-form integration.",
+    dependencies: [
+      "react-hook-form",
+      "@radix-ui/react-label",
+      "@radix-ui/react-slot",
+    ],
+  },
+  "navigation-menu": {
+    name: "Navigation Menu",
+    slug: "navigation-menu",
+    description: "A responsive navigation menu with dropdowns.",
+    dependencies: [
+      "@radix-ui/react-navigation-menu",
+      "class-variance-authority",
+      "lucide-react",
+    ],
+    radixDocs:
+      "https://www.radix-ui.com/primitives/docs/components/navigation-menu",
+  },
+  pagination: {
+    name: "Pagination",
+    slug: "pagination",
+    description: "A pagination component for navigating pages.",
+    dependencies: ["lucide-react"],
+  },
+  toggle: {
+    name: "Toggle",
+    slug: "toggle",
+    description: "A two-state button that can be on or off.",
+    dependencies: ["@radix-ui/react-toggle", "class-variance-authority"],
+    radixDocs: "https://www.radix-ui.com/primitives/docs/components/toggle",
+  },
+  "toggle-group": {
+    name: "Toggle Group",
+    slug: "toggle-group",
+    description: "A group of toggle buttons where only one can be active.",
+    dependencies: ["@radix-ui/react-toggle-group", "class-variance-authority"],
+    radixDocs:
+      "https://www.radix-ui.com/primitives/docs/components/toggle-group",
+  },
+  "aspect-ratio": {
+    name: "Aspect Ratio",
+    slug: "aspect-ratio",
+    description: "Display content within a desired aspect ratio.",
+    dependencies: ["@radix-ui/react-aspect-ratio"],
+    radixDocs:
+      "https://www.radix-ui.com/primitives/docs/components/aspect-ratio",
+  },
+  "hover-card": {
+    name: "Hover Card",
+    slug: "hover-card",
+    description: "Preview content available behind a link.",
+    dependencies: ["@radix-ui/react-hover-card"],
+    radixDocs: "https://www.radix-ui.com/primitives/docs/components/hover-card",
+  },
+  "context-menu": {
+    name: "Context Menu",
+    slug: "context-menu",
+    description: "A menu that appears on right-click.",
+    dependencies: ["@radix-ui/react-context-menu"],
+    radixDocs:
+      "https://www.radix-ui.com/primitives/docs/components/context-menu",
+  },
+  "input-otp": {
+    name: "Input OTP",
+    slug: "input-otp",
+    description: "One-time password input for verification codes.",
+    dependencies: ["input-otp"],
+  },
+  drawer: {
+    name: "Drawer",
+    slug: "drawer",
+    description: "A mobile-friendly bottom sheet component.",
+    dependencies: ["vaul"],
+  },
+  menubar: {
+    name: "Menubar",
+    slug: "menubar",
+    description: "A desktop-style application menu.",
+    dependencies: ["@radix-ui/react-menubar"],
+    radixDocs: "https://www.radix-ui.com/primitives/docs/components/menubar",
+  },
+  carousel: {
+    name: "Carousel",
+    slug: "carousel",
+    description: "A slideshow component for cycling through content.",
+    dependencies: ["embla-carousel-react"],
+  },
+  resizable: {
+    name: "Resizable",
+    slug: "resizable",
+    description: "Split-pane resizable panel layouts.",
+    dependencies: ["react-resizable-panels"],
+  },
+  spinner: {
+    name: "Spinner",
+    slug: "spinner",
+    description: "A loading spinner indicator with size variants.",
+    dependencies: ["class-variance-authority"],
+    props: [
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg" | "xl"',
+        default: '"md"',
+        description: "The size of the spinner",
+      },
+    ],
+  },
+  kbd: {
+    name: "Kbd",
+    slug: "kbd",
+    description: "A keyboard key indicator for displaying shortcuts.",
+    dependencies: ["class-variance-authority"],
+    props: [
+      {
+        name: "variant",
+        type: '"default" | "outline"',
+        default: '"default"',
+        description: "The visual style of the kbd",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg"',
+        default: '"md"',
+        description: "The size of the kbd",
+      },
+    ],
+  },
 };
 
 export function getComponentDoc(slug: string): ComponentDoc | undefined {

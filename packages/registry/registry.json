@@ -147,6 +147,253 @@
       "files": [{ "path": "ui/sonner.tsx", "type": "component" }],
       "dependencies": ["sonner"],
       "registryDependencies": []
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "description": "A set of vertically stacked expandable sections",
+      "files": [{ "path": "ui/accordion.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-accordion", "lucide-react"],
+      "registryDependencies": []
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "description": "A responsive table component with header, body, and footer",
+      "files": [{ "path": "ui/table.tsx", "type": "component" }],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "description": "A progress bar indicating completion status",
+      "files": [{ "path": "ui/progress.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-progress"],
+      "registryDependencies": []
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "description": "A slider input for selecting a value from a range",
+      "files": [{ "path": "ui/slider.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-slider"],
+      "registryDependencies": []
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "description": "A group of radio buttons for selecting one option",
+      "files": [{ "path": "ui/radio-group.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-radio-group", "lucide-react"],
+      "registryDependencies": []
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "description": "A floating panel for displaying content on demand",
+      "files": [{ "path": "ui/popover.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-popover"],
+      "registryDependencies": []
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "description": "A slide-out panel from any edge of the screen",
+      "files": [{ "path": "ui/sheet.tsx", "type": "component" }],
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": []
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "description": "A command palette for searching and executing actions",
+      "files": [{ "path": "ui/command.tsx", "type": "component" }],
+      "dependencies": ["cmdk", "lucide-react"],
+      "registryDependencies": ["dialog"]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "description": "A scrollable area with custom scrollbars",
+      "files": [{ "path": "ui/scroll-area.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-scroll-area"],
+      "registryDependencies": []
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "description": "A component that can be expanded or collapsed",
+      "files": [{ "path": "ui/collapsible.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-collapsible"],
+      "registryDependencies": []
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "description": "A modal dialog for confirmations and alerts",
+      "files": [{ "path": "ui/alert-dialog.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-alert-dialog"],
+      "registryDependencies": ["button"]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "description": "A navigation component showing the current page location",
+      "files": [{ "path": "ui/breadcrumb.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-slot", "lucide-react"],
+      "registryDependencies": []
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "description": "A date picker calendar component",
+      "files": [{ "path": "ui/calendar.tsx", "type": "component" }],
+      "dependencies": ["react-day-picker", "date-fns", "lucide-react"],
+      "registryDependencies": ["button"]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "description": "A date picker with popover calendar",
+      "files": [{ "path": "ui/date-picker.tsx", "type": "component" }],
+      "dependencies": ["react-day-picker", "date-fns", "lucide-react"],
+      "registryDependencies": ["button", "calendar", "popover"]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "description": "Form components with react-hook-form integration",
+      "files": [{ "path": "ui/form.tsx", "type": "component" }],
+      "dependencies": [
+        "react-hook-form",
+        "@radix-ui/react-label",
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": ["label"]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "description": "A responsive navigation menu with dropdowns",
+      "files": [{ "path": "ui/navigation-menu.tsx", "type": "component" }],
+      "dependencies": [
+        "@radix-ui/react-navigation-menu",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": []
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "description": "A pagination component for navigating pages",
+      "files": [{ "path": "ui/pagination.tsx", "type": "component" }],
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["button"]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "description": "A two-state button that can be on or off",
+      "files": [{ "path": "ui/toggle.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-toggle", "class-variance-authority"],
+      "registryDependencies": []
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "description": "A group of toggle buttons where only one can be active",
+      "files": [{ "path": "ui/toggle-group.tsx", "type": "component" }],
+      "dependencies": [
+        "@radix-ui/react-toggle-group",
+        "class-variance-authority"
+      ],
+      "registryDependencies": ["toggle"]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "description": "Display content within a desired aspect ratio",
+      "files": [{ "path": "ui/aspect-ratio.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-aspect-ratio"],
+      "registryDependencies": []
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "description": "Preview content available behind a link",
+      "files": [{ "path": "ui/hover-card.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-hover-card"],
+      "registryDependencies": []
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "description": "A menu that appears on right-click",
+      "files": [{ "path": "ui/context-menu.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-context-menu"],
+      "registryDependencies": []
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "description": "One-time password input for verification codes",
+      "files": [{ "path": "ui/input-otp.tsx", "type": "component" }],
+      "dependencies": ["input-otp", "lucide-react"],
+      "registryDependencies": []
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "description": "A mobile-friendly bottom sheet component",
+      "files": [{ "path": "ui/drawer.tsx", "type": "component" }],
+      "dependencies": ["vaul"],
+      "registryDependencies": []
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "description": "A desktop-style application menu",
+      "files": [{ "path": "ui/menubar.tsx", "type": "component" }],
+      "dependencies": ["@radix-ui/react-menubar"],
+      "registryDependencies": []
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "description": "A slideshow component for cycling through content",
+      "files": [{ "path": "ui/carousel.tsx", "type": "component" }],
+      "dependencies": ["embla-carousel-react", "lucide-react"],
+      "registryDependencies": ["button"]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "description": "Split-pane resizable panel layouts",
+      "files": [{ "path": "ui/resizable.tsx", "type": "component" }],
+      "dependencies": ["react-resizable-panels", "lucide-react"],
+      "registryDependencies": []
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "description": "A loading spinner indicator with size variants",
+      "files": [{ "path": "ui/spinner.tsx", "type": "component" }],
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": []
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "description": "A keyboard key indicator for displaying shortcuts",
+      "files": [{ "path": "ui/kbd.tsx", "type": "component" }],
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": []
     }
   ]
 }

@@ -20,11 +20,35 @@ export default function ComponentsPage() {
       "checkbox",
       "switch",
       "select",
+      "slider",
+      "radio-group",
+      "form",
+      "toggle",
+      "toggle-group",
     ],
-    Display: ["card", "badge", "avatar", "separator", "skeleton"],
-    Feedback: ["alert", "tooltip", "sonner"],
-    Overlay: ["dialog", "dropdown-menu"],
-    Navigation: ["tabs"],
+    Display: [
+      "card",
+      "badge",
+      "avatar",
+      "separator",
+      "skeleton",
+      "table",
+      "progress",
+      "scroll-area",
+      "calendar",
+      "breadcrumb",
+      "pagination",
+    ],
+    Feedback: ["alert", "alert-dialog", "tooltip", "sonner"],
+    Overlay: [
+      "dialog",
+      "dropdown-menu",
+      "popover",
+      "sheet",
+      "command",
+      "date-picker",
+    ],
+    Navigation: ["tabs", "accordion", "collapsible", "navigation-menu"],
   };
 
   return (
@@ -32,7 +56,7 @@ export default function ComponentsPage() {
       <div>
         <h1 className="text-4xl font-bold tracking-tight">Components</h1>
         <p className="mt-4 text-lg text-muted-foreground">
-          18 beautifully designed components. Copy, paste, and customize.
+          38 beautifully designed components. Copy, paste, and customize.
         </p>
       </div>
 

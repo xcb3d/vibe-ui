@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { StyleProvider } from "@/components/style-provider";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({
         className={`${inter.variable} antialiased min-h-screen bg-background text-foreground`}
       >
         <StyleProvider>{children}</StyleProvider>
+        <Toaster />
       </body>
     </html>
   );

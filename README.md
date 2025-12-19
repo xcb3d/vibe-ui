@@ -42,17 +42,17 @@ vibe-ui add button card input --style minimal
 | `soft`      | Rounded corners, gentle colors           |
 | `neon`      | Vibrant colors, glow effects             |
 
-## Components (18)
+## Components (28)
 
-**Form**: Button, Input, Label, Textarea, Checkbox, Switch, Select
+**Form**: Button, Input, Label, Textarea, Checkbox, Switch, Select, Slider, Radio Group
 
-**Display**: Card, Badge, Avatar, Separator, Skeleton
+**Display**: Card, Badge, Avatar, Separator, Skeleton, Table, Progress, Scroll Area
 
 **Feedback**: Alert, Tooltip, Sonner (Toast)
 
-**Overlay**: Dialog, Dropdown Menu
+**Overlay**: Dialog, Dropdown Menu, Popover, Sheet, Command
 
-**Navigation**: Tabs
+**Navigation**: Tabs, Accordion, Collapsible
 
 ## Project Structure
 
