@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { useTheme } from "next-themes";
 import { useStyle } from "@/components/style-provider";
 import { StyleSwitcherGrid } from "@/components/style-switcher";
@@ -10,6 +11,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export default function ThemingPage() {
   const { style } = useStyle();
   const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <div className="space-y-8">
@@ -48,8 +54,11 @@ export default function ThemingPage() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground">
-          Current theme: <code className="bg-muted px-1 rounded">{theme}</code>
-          {theme === "system" && (
+          Current theme:{" "}
+          <code className="bg-muted px-1 rounded">
+            {mounted ? theme : "..."}
+          </code>
+          {mounted && theme === "system" && (
             <span>
               {" "}
               (resolved:{" "}
