@@ -42,18 +42,6 @@ const styleIcons: Record<StyleName, React.ReactNode> = {
       <rect x="3" y="3" width="18" height="18" rx="2" />
     </svg>
   ),
-  glass: (
-    <svg
-      className="w-5 h-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-    >
-      <rect x="3" y="3" width="18" height="18" rx="2" opacity="0.5" />
-      <rect x="6" y="6" width="12" height="12" rx="1" />
-    </svg>
-  ),
   brutalist: (
     <svg
       className="w-5 h-5"
@@ -65,30 +53,6 @@ const styleIcons: Record<StyleName, React.ReactNode> = {
       <rect x="3" y="3" width="18" height="18" />
       <line x1="6" y1="22" x2="22" y2="22" />
       <line x1="22" y1="6" x2="22" y2="22" />
-    </svg>
-  ),
-  soft: (
-    <svg
-      className="w-5 h-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-    >
-      <circle cx="12" cy="12" r="9" />
-      <circle cx="12" cy="12" r="5" opacity="0.5" />
-    </svg>
-  ),
-  neon: (
-    <svg
-      className="w-5 h-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-    >
-      <polygon points="12,2 22,12 12,22 2,12" />
-      <polygon points="12,6 18,12 12,18 6,12" opacity="0.5" />
     </svg>
   ),
 };
@@ -159,7 +123,7 @@ export function StyleSwitcherGrid() {
   const { style, setStyle, styles } = useStyle();
 
   return (
-    <div className="grid grid-cols-5 gap-3">
+    <div className="grid grid-cols-2 gap-3">
       {styles.map((s) => (
         <button
           key={s.name}

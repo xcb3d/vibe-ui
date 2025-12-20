@@ -21,8 +21,7 @@ export default function DocsPage() {
         <p className="text-muted-foreground">
           The key difference from other libraries is our{" "}
           <strong>multi-style system</strong>. Each component can be rendered in
-          different visual styles - from minimal and clean to brutalist and neon
-          cyberpunk.
+          different visual styles - minimal and clean or bold brutalist.
         </p>
       </div>
 
@@ -30,8 +29,7 @@ export default function DocsPage() {
         <h2 className="text-2xl font-semibold">Features</h2>
         <ul className="list-disc list-inside space-y-2 text-muted-foreground">
           <li>
-            <strong>5 Visual Styles</strong> - Minimal, Glass, Brutalist, Soft,
-            Neon (20+ coming soon)
+            <strong>2 Visual Styles</strong> - Minimal and Brutalist
           </li>
           <li>
             <strong>18 Components</strong> - Button, Card, Input, Dialog, and

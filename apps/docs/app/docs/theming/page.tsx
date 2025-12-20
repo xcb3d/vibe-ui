@@ -29,7 +29,7 @@ export default function ThemingPage() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Style System</h2>
         <p className="text-muted-foreground">
-          Vibe UI comes with 5 built-in styles. Click to switch:
+          Vibe UI comes with 2 built-in styles. Click to switch:
         </p>
         <StyleSwitcherGrid />
         <p className="text-sm text-muted-foreground">
@@ -40,8 +40,8 @@ export default function ThemingPage() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Dark Mode</h2>
         <p className="text-muted-foreground">
-          Vibe UI supports light, dark, and system themes. All 5 styles have
-          both light and dark variants.
+          Vibe UI supports light, dark, and system themes. Both styles have
+          light and dark variants.
         </p>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
@@ -124,38 +124,11 @@ export default function ThemingPage() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Glass</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-muted-foreground">
-              Glassmorphism with blur effects. Dark background, frosted glass
-              cards, transparency.
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
               <CardTitle>Brutalist</CardTitle>
             </CardHeader>
             <CardContent className="text-sm text-muted-foreground">
               Raw, high contrast design. No border radius, bold black borders,
               offset shadows.
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Soft</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-muted-foreground">
-              Neumorphism with soft shadows. Dual light/dark shadows, large
-              border radius.
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Neon</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-muted-foreground">
-              Cyberpunk dark mode. Glowing borders, magenta/cyan accents, text
-              shadows.
             </CardContent>
           </Card>
         </div>

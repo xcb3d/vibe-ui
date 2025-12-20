@@ -18,7 +18,7 @@ export const init = new Command("init")
     try {
       styles = await getAvailableStyles();
     } catch {
-      styles = ["minimal", "glass", "brutalist", "soft", "neon"];
+      styles = ["minimal", "brutalist"];
     }
 
     const styleChoices = styles.map((s) => ({
@@ -148,10 +148,7 @@ export function cn(...inputs: ClassValue[]) {
 function getStyleDescription(style: string): string {
   const descriptions: Record<string, string> = {
     minimal: "Clean, Swiss-style design",
-    glass: "Glassmorphism with blur effects",
     brutalist: "Raw, high contrast design",
-    soft: "Neumorphism with soft shadows",
-    neon: "Cyberpunk dark mode",
   };
   return descriptions[style] || "";
 }

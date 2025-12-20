@@ -69,7 +69,7 @@ export default function CLIPage() {
             </code>
           </div>
           <div>
-            <code className="text-sm">npx vibe-ui init --style neon</code>
+            <code className="text-sm">npx vibe-ui init --style brutalist</code>
           </div>
         </div>
       </div>

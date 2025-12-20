@@ -3,7 +3,7 @@
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-export type StyleName = "minimal" | "glass" | "brutalist" | "soft" | "neon";
+export type StyleName = "minimal" | "brutalist";
 
 interface StyleContextType {
   style: StyleName;
@@ -13,10 +13,7 @@ interface StyleContextType {
 
 const styles: StyleContextType["styles"] = [
   { name: "minimal", label: "Minimal", description: "Clean and simple" },
-  { name: "glass", label: "Glass", description: "Frosted glass effect" },
   { name: "brutalist", label: "Brutalist", description: "Bold and raw" },
-  { name: "soft", label: "Soft", description: "Neumorphic softness" },
-  { name: "neon", label: "Neon", description: "Cyberpunk glow" },
 ];
 
 const StyleContext = React.createContext<StyleContextType | undefined>(
