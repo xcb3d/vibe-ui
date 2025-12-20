@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "description": "Vibe UI component registry and source files",
+  "exports": {
+    "./styles/*": "./styles/*"
+  },
   "scripts": {
     "build": "echo 'Registry build - generates registry.json'",
     "type-check": "tsc --noEmit"

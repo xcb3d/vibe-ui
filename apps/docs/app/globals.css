@@ -1,14 +1,10 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
-/* Style imports - each style in its own file for maintainability */
-@import "./styles/minimal.css";
-@import "./styles/glass.css";
-@import "./styles/brutalist.css";
-@import "./styles/soft.css";
-@import "./styles/neon.css";
+/* Import combined styles from registry for multi-style support */
+@import "../../../packages/registry/styles/combined.css";
 
-/* Custom theme colors - extends Tailwind's defaults */
+/* Custom theme colors - Tailwind's defaults */
 @theme {
   --color-background: hsl(0 0% 100%);
   --color-foreground: hsl(0 0% 3.9%);
