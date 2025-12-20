@@ -1,12 +1,15 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { useStyle } from "@/components/style-provider";
 import { StyleSwitcherGrid } from "@/components/style-switcher";
+import { ThemeSwitcher, ThemeToggle } from "@/components/theme-switcher";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function ThemingPage() {
   const { style } = useStyle();
+  const { theme, resolvedTheme } = useTheme();
 
   return (
     <div className="space-y-8">
@@ -25,6 +28,34 @@ export default function ThemingPage() {
         <StyleSwitcherGrid />
         <p className="text-sm text-muted-foreground">
           Current style: <code className="bg-muted px-1 rounded">{style}</code>
+        </p>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Dark Mode</h2>
+        <p className="text-muted-foreground">
+          Vibe UI supports light, dark, and system themes. All 5 styles have
+          both light and dark variants.
+        </p>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-muted-foreground">Try it:</span>
+            <ThemeSwitcher />
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-muted-foreground">Or toggle:</span>
+            <ThemeToggle />
+          </div>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          Current theme: <code className="bg-muted px-1 rounded">{theme}</code>
+          {theme === "system" && (
+            <span>
+              {" "}
+              (resolved:{" "}
+              <code className="bg-muted px-1 rounded">{resolvedTheme}</code>)
+            </span>
+          )}
         </p>
       </div>
 
@@ -142,6 +173,53 @@ function MyComponent() {
       ))}
     </select>
   )
+}`}</pre>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Switching Themes</h2>
+        <p className="text-muted-foreground">
+          Use the <code className="bg-muted px-1 rounded">useTheme</code> hook
+          from next-themes to switch themes programmatically:
+        </p>
+        <div className="rounded-lg border bg-muted/50 p-4 overflow-x-auto">
+          <pre className="text-sm">{`import { useTheme } from 'next-themes'
+
+function MyComponent() {
+  const { theme, setTheme, resolvedTheme } = useTheme()
+
+  return (
+    <div>
+      <button onClick={() => setTheme('light')}>Light</button>
+      <button onClick={() => setTheme('dark')}>Dark</button>
+      <button onClick={() => setTheme('system')}>System</button>
+      <p>Current: {theme} (resolved: {resolvedTheme})</p>
+    </div>
+  )
+}`}</pre>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Dark Mode CSS</h2>
+        <p className="text-muted-foreground">
+          Dark mode is applied using the{" "}
+          <code className="bg-muted px-1 rounded">.dark</code> class on the HTML
+          element. Each style has its own dark variant:
+        </p>
+        <div className="rounded-lg border bg-muted/50 p-4 overflow-x-auto">
+          <pre className="text-sm">{`/* Light mode (default) */
+[data-style="minimal"] {
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(0 0% 3.9%);
+}
+
+/* Dark mode */
+[data-style="minimal"].dark,
+.dark [data-style="minimal"] {
+  --color-background: hsl(0 0% 3.9%);
+  --color-foreground: hsl(0 0% 98%);
 }`}</pre>
         </div>
       </div>
