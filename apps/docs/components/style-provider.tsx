@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 export type StyleName = "minimal" | "glass" | "brutalist" | "soft" | "neon";
 
@@ -45,9 +46,16 @@ export function StyleProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <StyleContext.Provider value={{ style, setStyle, styles }}>
-      {children}
-    </StyleContext.Provider>
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <StyleContext.Provider value={{ style, setStyle, styles }}>
+        {children}
+      </StyleContext.Provider>
+    </NextThemesProvider>
   );
 }
 

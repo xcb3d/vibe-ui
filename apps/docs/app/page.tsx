@@ -27,39 +27,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { StyleSwitcherGrid } from "@/components/style-switcher";
-import { useStyle } from "@/components/style-provider";
+import { SiteHeader } from "@/components/site-header";
+import Link from "next/link";
 
 export default function Home() {
-  const { style } = useStyle();
-
   return (
     <div className="min-h-screen bg-background transition-colors duration-300">
-      {/* Header */}
-      <header className="border-b">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <div className="flex items-center gap-2">
-            <span className="text-xl font-bold">Vibe UI</span>
-            <Badge variant="secondary" className="text-xs">
-              {style}
-            </Badge>
-          </div>
-          <nav className="flex items-center gap-4">
-            <a
-              href="/docs"
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              Docs
-            </a>
-            <a
-              href="/components"
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              Components
-            </a>
-            <Button size="sm">Get Started</Button>
-          </nav>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Hero */}
       <section className="container mx-auto px-4 py-24 text-center">
