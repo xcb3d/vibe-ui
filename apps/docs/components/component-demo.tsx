@@ -1055,6 +1055,7 @@ function CollapsibleDemo() {
 
 function CalendarDemo() {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
+  const [month, setMonth] = React.useState<Date>(new Date());
 
   return (
     <div className="w-fit">
@@ -1062,6 +1063,8 @@ function CalendarDemo() {
         mode="single"
         selected={date}
         onSelect={setDate}
+        month={month}
+        onMonthChange={setMonth}
         className="rounded-md border"
       />
     </div>
