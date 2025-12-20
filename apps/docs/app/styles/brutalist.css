@@ -1,0 +1,64 @@
+/* ========================================
+   STYLE: BRUTALIST
+   Bold, raw, high contrast, no curves
+   ======================================== */
+[data-style="brutalist"] {
+  --color-background: hsl(60 5% 96%);
+  --color-foreground: hsl(0 0% 0%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(0 0% 0%);
+  --color-primary: hsl(0 0% 0%);
+  --color-primary-foreground: hsl(60 5% 96%);
+  --color-secondary: hsl(60 5% 90%);
+  --color-secondary-foreground: hsl(0 0% 0%);
+  --color-muted: hsl(60 5% 85%);
+  --color-muted-foreground: hsl(0 0% 30%);
+  --color-accent: hsl(45 100% 50%);
+  --color-accent-foreground: hsl(0 0% 0%);
+  --color-border: hsl(0 0% 0%);
+  --color-ring: hsl(0 0% 0%);
+  --color-destructive: hsl(0 100% 50%);
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --brutalist-shadow: 4px 4px 0 hsl(0 0% 0%);
+}
+
+[data-style="brutalist"] .card,
+[data-style="brutalist"] [data-slot="card"],
+[data-style="brutalist"] button {
+  border: 3px solid hsl(0 0% 0%);
+  box-shadow: var(--brutalist-shadow);
+}
+
+[data-style="brutalist"] button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 hsl(0 0% 0%);
+}
+
+/* Brutalist Dark Mode */
+[data-style="brutalist"].dark,
+.dark [data-style="brutalist"] {
+  --color-background: hsl(0 0% 8%);
+  --color-foreground: hsl(60 5% 96%);
+  --color-card: hsl(0 0% 12%);
+  --color-card-foreground: hsl(60 5% 96%);
+  --color-primary: hsl(60 5% 96%);
+  --color-primary-foreground: hsl(0 0% 8%);
+  --color-secondary: hsl(0 0% 18%);
+  --color-secondary-foreground: hsl(60 5% 96%);
+  --color-muted: hsl(0 0% 20%);
+  --color-muted-foreground: hsl(0 0% 70%);
+  --color-border: hsl(60 5% 96%);
+  --brutalist-shadow: 4px 4px 0 hsl(60 5% 96%);
+}
+
+[data-style="brutalist"].dark .card,
+[data-style="brutalist"].dark [data-slot="card"],
+[data-style="brutalist"].dark button,
+.dark [data-style="brutalist"] .card,
+.dark [data-style="brutalist"] [data-slot="card"],
+.dark [data-style="brutalist"] button {
+  border-color: hsl(60 5% 96%);
+  box-shadow: 4px 4px 0 hsl(60 5% 96%);
+}
