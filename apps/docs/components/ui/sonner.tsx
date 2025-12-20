@@ -14,7 +14,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             "group toast group-[.toaster]:bg-card group-[.toaster]:text-card-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg group-[.toaster]:rounded-[var(--radius-md)] group-[.toaster]:border-[length:var(--border-width,1px)]",
           description: "group-[.toast]:text-muted-foreground",
           actionButton:
-            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground group-[.toast]:border-[length:var(--border-width,1px)] group-[.toast]:border-border group-[.toast]:shadow-[var(--neubrutalism-shadow-sm,none)]",
+            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground group-[.toast]:border-[length:var(--border-width,1px)] group-[.toast]:border-border group-[.toast]:shadow-[var(--component-shadow-sm,none)]",
           cancelButton:
             "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground group-[.toast]:border-[length:var(--border-width,1px)] group-[.toast]:border-border",
         },
