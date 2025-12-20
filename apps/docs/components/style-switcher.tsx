@@ -55,6 +55,28 @@ const styleIcons: Record<StyleName, React.ReactNode> = {
       <line x1="22" y1="6" x2="22" y2="22" />
     </svg>
   ),
+  neubrutalism: (
+    <svg
+      className="w-5 h-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <rect
+        x="3"
+        y="3"
+        width="16"
+        height="16"
+        rx="1"
+        fill="currentColor"
+        opacity="0.2"
+      />
+      <rect x="5" y="5" width="16" height="16" rx="1" />
+      <circle cx="10" cy="13" r="2" fill="currentColor" />
+      <circle cx="16" cy="13" r="2" fill="currentColor" />
+    </svg>
+  ),
 };
 
 export function StyleSwitcher() {

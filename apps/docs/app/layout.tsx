@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning data-style="minimal">
+    <html lang="en" suppressHydrationWarning data-style="neubrutalism">
       <body
         className={`${inter.variable} antialiased min-h-screen bg-background text-foreground`}
       >

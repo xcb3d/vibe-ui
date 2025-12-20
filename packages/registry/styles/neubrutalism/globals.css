@@ -1,0 +1,120 @@
+/**
+ * Neubrutalism Style - Modern brutalism with vivid colors
+ * Hard shadows with colored offset, thick borders, slight rounding
+ * Inspired by contemporary design trends with bold accents
+ */
+
+@layer base {
+  :root {
+    /* Colors - Vivid, bold palette */
+    --background: 220 14% 96%;
+    --foreground: 0 0% 7%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+
+    /* Primary - Vivid blue (#0d33f2) */
+    --primary: 232 90% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 225 15% 17%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 14% 90%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Accent - Electric yellow (#FFE600) */
+    --accent: 54 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    /* Destructive - Hot pink (#FF0099) */
+    --destructive: 330 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success - Electric green (#00FF94) */
+    --success: 153 100% 50%;
+    --success-foreground: 0 0% 0%;
+
+    --border: 0 0% 0%;
+    --input: 0 0% 0%;
+    --ring: 232 90% 50%;
+
+    /* Radius - Slight rounding (not fully sharp) */
+    --radius: 0.125rem;
+
+    /* Neubrutalism-specific */
+    --border-width: 2px;
+
+    /* Shadows - Hard offset with primary color */
+    --shadow-sm: 2px 2px 0 0 hsl(232 90% 50%);
+    --shadow: 4px 4px 0 0 hsl(232 90% 50%);
+    --shadow-md: 6px 6px 0 0 hsl(232 90% 50%);
+    --shadow-lg: 8px 8px 0 0 hsl(232 90% 50%);
+
+    /* Font - Display font for headings */
+    --font-sans: "Space Grotesk", system-ui, sans-serif;
+    --font-body: "Noto Sans", system-ui, sans-serif;
+    --font-mono: "Space Mono", monospace;
+  }
+
+  .dark {
+    --background: 228 35% 10%;
+    --foreground: 0 0% 100%;
+
+    --card: 229 32% 13%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 229 32% 13%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Primary remains vivid blue */
+    --primary: 232 90% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 225 20% 27%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 225 20% 20%;
+    --muted-foreground: 0 0% 60%;
+
+    /* Accent - Electric yellow */
+    --accent: 54 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    /* Destructive - Hot pink */
+    --destructive: 330 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success - Electric green */
+    --success: 153 100% 50%;
+    --success-foreground: 0 0% 0%;
+
+    --border: 0 0% 100%;
+    --input: 0 0% 100%;
+    --ring: 232 90% 50%;
+
+    /* Shadows - White offset in dark mode */
+    --shadow-sm: 2px 2px 0 0 hsl(0 0% 100%);
+    --shadow: 4px 4px 0 0 hsl(0 0% 100%);
+    --shadow-md: 6px 6px 0 0 hsl(0 0% 100%);
+    --shadow-lg: 8px 8px 0 0 hsl(0 0% 100%);
+  }
+}
+
+/* Neubrutalism utilities */
+@layer utilities {
+  .neubrutalism-border {
+    border: var(--border-width) solid hsl(var(--border));
+  }
+
+  .neubrutalism-shadow {
+    box-shadow: var(--shadow);
+  }
+
+  .neubrutalism-shadow-pink {
+    box-shadow: 4px 4px 0 0 hsl(330 100% 50%);
+  }
+}

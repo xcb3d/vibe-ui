@@ -3,7 +3,7 @@
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-export type StyleName = "minimal" | "brutalist";
+export type StyleName = "minimal" | "brutalist" | "neubrutalism";
 
 interface StyleContextType {
   style: StyleName;
@@ -14,6 +14,11 @@ interface StyleContextType {
 const styles: StyleContextType["styles"] = [
   { name: "minimal", label: "Minimal", description: "Clean and simple" },
   { name: "brutalist", label: "Brutalist", description: "Bold and raw" },
+  {
+    name: "neubrutalism",
+    label: "Neubrutalism",
+    description: "Vivid colors and hard shadows",
+  },
 ];
 
 const StyleContext = React.createContext<StyleContextType | undefined>(
@@ -21,7 +26,7 @@ const StyleContext = React.createContext<StyleContextType | undefined>(
 );
 
 export function StyleProvider({ children }: { children: React.ReactNode }) {
-  const [style, setStyleState] = React.useState<StyleName>("minimal");
+  const [style, setStyleState] = React.useState<StyleName>("neubrutalism");
 
   const setStyle = React.useCallback((newStyle: StyleName) => {
     setStyleState(newStyle);
@@ -38,7 +43,7 @@ export function StyleProvider({ children }: { children: React.ReactNode }) {
       setStyleState(saved);
       document.documentElement.setAttribute("data-style", saved);
     } else {
-      document.documentElement.setAttribute("data-style", "minimal");
+      document.documentElement.setAttribute("data-style", "neubrutalism");
     }
   }, []);
 
