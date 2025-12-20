@@ -535,3 +535,36 @@
   font-weight: 700;
   color: var(--color-foreground);
 }
+
+/* Collapsible */
+[data-style="brutalist"] [data-state="open"][data-slot="collapsible"],
+[data-style="brutalist"] [data-state="closed"][data-slot="collapsible"],
+[data-style="neubrutalism"] [data-state="open"][data-slot="collapsible"],
+[data-style="neubrutalism"] [data-state="closed"][data-slot="collapsible"] {
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--component-shadow-sm);
+  background: var(--color-card);
+}
+
+[data-style="brutalist"] [data-slot="collapsible-trigger"],
+[data-style="neubrutalism"] [data-slot="collapsible-trigger"] {
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+[data-style="brutalist"] [data-slot="collapsible-trigger"]:hover,
+[data-style="neubrutalism"] [data-slot="collapsible-trigger"]:hover {
+  background: var(--color-muted);
+}
+
+[data-style="brutalist"] [data-slot="collapsible-content"],
+[data-style="neubrutalism"] [data-slot="collapsible-content"] {
+  padding: 0.75rem 1rem;
+  border-top: var(--border-width) solid var(--color-border);
+}
