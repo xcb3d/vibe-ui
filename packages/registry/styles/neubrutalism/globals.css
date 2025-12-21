@@ -76,11 +76,11 @@
 /* Dark mode */
 [data-style="neubrutalism"].dark,
 .dark [data-style="neubrutalism"] {
-  --color-background: hsl(20 14.3% 4.1%);
+  --color-background: hsl(240 10% 18%);
   --color-foreground: hsl(60 9.1% 97.8%);
-  --color-card: hsl(20 14.3% 4.1%);
+  --color-card: hsl(240 10% 18%);
   --color-card-foreground: hsl(60 9.1% 97.8%);
-  --color-popover: hsl(20 14.3% 4.1%);
+  --color-popover: hsl(240 10% 18%);
   --color-popover-foreground: hsl(60 9.1% 97.8%);
   --color-primary: hsl(47 95% 57%);
   --color-primary-foreground: hsl(26 83.3% 14.1%);
@@ -105,6 +105,8 @@
   /* ========== ACCORDION (dark) ========== */
   --accordion-shadow: 4px 4px 0 hsl(0 0% 100%);
   --accordion-icon-border: 2px solid var(--color-border);
+  --accordion-icon-bg: hsl(0 0% 100%);
+  --accordion-icon-color: hsl(0 0% 0%);
 }
 
 /* ========================================

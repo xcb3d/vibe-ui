@@ -121,9 +121,13 @@ const AccordionTriggerNeubrutalism = React.forwardRef<
       <span>{children}</span>
       <span
         data-slot="accordion-icon"
-        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-card border-[length:var(--border-width)] border-border transition-transform duration-300 group-open:rotate-180"
+        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-[length:var(--border-width)] border-border transition-transform duration-300 group-open:rotate-180"
+        style={{ backgroundColor: "var(--accordion-icon-bg)" }}
       >
-        <ChevronDown className="h-4 w-4" />
+        <ChevronDown
+          className="h-4 w-4"
+          style={{ color: "var(--accordion-icon-color)" }}
+        />
       </span>
     </summary>
   );
