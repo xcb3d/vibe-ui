@@ -69,7 +69,9 @@ export default function CLIPage() {
             </code>
           </div>
           <div>
-            <code className="text-sm">npx vibe-ui init --style brutalist</code>
+            <code className="text-sm">
+              npx vibe-ui init --style neubrutalism
+            </code>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
   "$schema": "./schema.json",
   "name": "vibe-ui",
   "version": "0.1.0",
-  "styles": ["minimal", "brutalist", "neubrutalism"],
+  "styles": ["minimal", "neubrutalism"],
   "items": [
     {
       "name": "button",

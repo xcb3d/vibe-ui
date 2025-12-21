@@ -48,10 +48,7 @@ vibe-ui/
 │   │   ├── ui/                 # Component source files
 │   │   ├── styles/             # Style CSS files
 │   │   │   ├── minimal/
-│   │   │   ├── glass/
-│   │   │   ├── brutalist/
-│   │   │   ├── soft/
-│   │   │   └── neon/
+│   │   │   └── neubrutalism/
 │   │   └── lib/
 │   │
 │   ├── ui/                     # NPM package (future)
@@ -76,15 +73,12 @@ pnpm build
 
 ## Style System
 
-### 5 Styles hiện có
+### 2 Styles hiện có
 
-| Style       | Mô tả                                    |
-| ----------- | ---------------------------------------- |
-| `minimal`   | Clean, Swiss-style, white background     |
-| `glass`     | Glassmorphism, blur effects, dark theme  |
-| `brutalist` | Bold borders, no radius, offset shadows  |
-| `soft`      | Neumorphism, soft dual shadows           |
-| `neon`      | Cyberpunk, glowing effects, magenta/cyan |
+| Style          | Mô tả                                |
+| -------------- | ------------------------------------ |
+| `minimal`      | Clean, Swiss-style, white background |
+| `neubrutalism` | Vivid colors and hard shadows        |
 
 ### Cách hoạt động
 

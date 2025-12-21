@@ -1,4 +1,18 @@
 // Component metadata for documentation
+export interface ComponentExample {
+  title: string;
+  color:
+    | "primary"
+    | "accent"
+    | "destructive"
+    | "success"
+    | "info"
+    | "warning"
+    | "muted";
+  code: string;
+  showPattern?: boolean;
+}
+
 export interface ComponentDoc {
   name: string;
   slug: string;
@@ -11,6 +25,7 @@ export interface ComponentDoc {
     default?: string;
     description: string;
   }[];
+  examples?: ComponentExample[];
 }
 
 export const componentDocs: Record<string, ComponentDoc> = {
@@ -196,6 +211,126 @@ export const componentDocs: Record<string, ComponentDoc> = {
     description: "A set of vertically stacked expandable sections.",
     dependencies: ["@radix-ui/react-accordion", "lucide-react"],
     radixDocs: "https://www.radix-ui.com/primitives/docs/components/accordion",
+    props: [
+      {
+        name: "type",
+        type: '"single" | "multiple"',
+        default: '"single"',
+        description:
+          "Determines whether one or multiple items can be opened at the same time.",
+      },
+      {
+        name: "collapsible",
+        type: "boolean",
+        default: "false",
+        description: "Allows closing all items when in single mode.",
+      },
+      {
+        name: "defaultValue",
+        type: "string | string[]",
+        description: "The value of the item that should be open by default.",
+      },
+      {
+        name: "disabled",
+        type: "boolean",
+        default: "false",
+        description: "Prevents interaction with the accordion item.",
+      },
+    ],
+    examples: [
+      {
+        title: "Single Item",
+        color: "primary",
+        code: `<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`,
+      },
+      {
+        title: "Multiple Items",
+        color: "accent",
+        showPattern: true,
+        code: `<Accordion type="multiple">
+  <AccordionItem value="item-1">
+    <AccordionTrigger>First Section</AccordionTrigger>
+    <AccordionContent>Content for first section.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Second Section</AccordionTrigger>
+    <AccordionContent>Content for second section.</AccordionContent>
+  </AccordionItem>
+</Accordion>`,
+      },
+      {
+        title: "With Icons",
+        color: "destructive",
+        code: `<AccordionItem value="item-1">
+  <AccordionTrigger>
+    <SettingsIcon className="mr-2 size-4" />
+    Settings
+  </AccordionTrigger>
+  <AccordionContent>...</AccordionContent>
+</AccordionItem>`,
+      },
+      {
+        title: "Complex Content",
+        color: "success",
+        code: `<AccordionItem value="item-1">
+  <AccordionTrigger>Login Form</AccordionTrigger>
+  <AccordionContent>
+    <form>
+      <input type="email" />
+      <button>Sign In</button>
+    </form>
+  </AccordionContent>
+</AccordionItem>`,
+      },
+      {
+        title: "Loading State",
+        color: "info",
+        code: `<AccordionItem value="loading">
+  <AccordionTrigger>Skeleton Loader</AccordionTrigger>
+  <AccordionContent>
+    <div className="animate-pulse space-y-3">
+      <div className="h-4 bg-muted border-2 border-black w-3/4" />
+      <div className="h-4 bg-muted border-2 border-black w-full" />
+    </div>
+  </AccordionContent>
+</AccordionItem>`,
+      },
+      {
+        title: "Scrollable Content",
+        color: "warning",
+        code: `<AccordionItem value="scrollable">
+  <AccordionTrigger>Terms of Service</AccordionTrigger>
+  <AccordionContent>
+    <div className="h-48 overflow-y-auto pr-3 space-y-4">
+      <div className="bg-secondary p-3 border-2 border-black">
+        <h4>1. Introduction</h4>
+        <p>...</p>
+      </div>
+      ...
+    </div>
+  </AccordionContent>
+</AccordionItem>`,
+      },
+      {
+        title: "Disabled State",
+        color: "muted",
+        code: `<Accordion type="single" collapsible>
+  <AccordionItem value="item-1" disabled>
+    <AccordionTrigger>Disabled Item</AccordionTrigger>
+    <AccordionContent>
+      This content cannot be accessed.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`,
+      },
+    ],
   },
   table: {
     name: "Table",

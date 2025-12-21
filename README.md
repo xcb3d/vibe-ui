@@ -4,7 +4,7 @@ A multi-style React component library inspired by shadcn/ui. Choose from 20+ vis
 
 ## Features
 
-- **Multi-Style System** - Switch between styles (minimal, glass, brutalist, soft, neon, and more)
+- **Multi-Style System** - Switch between styles (minimal, neubrutalism)
 - **Copy-Paste Components** - Own your code, no package lock-in
 - **Radix UI Primitives** - Accessible, unstyled components as foundation
 - **Tailwind CSS v4** - Modern styling with CSS variables
@@ -34,13 +34,10 @@ vibe-ui add button card input --style minimal
 
 ## Available Styles
 
-| Style       | Description                              |
-| ----------- | ---------------------------------------- |
-| `minimal`   | Clean, simple design with subtle shadows |
-| `glass`     | Glassmorphism with blur and transparency |
-| `brutalist` | Bold borders, raw aesthetic              |
-| `soft`      | Rounded corners, gentle colors           |
-| `neon`      | Vibrant colors, glow effects             |
+| Style          | Description                              |
+| -------------- | ---------------------------------------- |
+| `minimal`      | Clean, simple design with subtle shadows |
+| `neubrutalism` | Vivid colors and hard shadows            |
 
 ## Components (28)
 

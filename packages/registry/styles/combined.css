@@ -11,5 +11,4 @@
 
 /* Theme Styles (each self-contained) */
 @import "./minimal/globals.css";
-@import "./brutalist/globals.css";
 @import "./neubrutalism/globals.css";

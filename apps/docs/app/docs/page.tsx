@@ -21,7 +21,7 @@ export default function DocsPage() {
         <p className="text-muted-foreground">
           The key difference from other libraries is our{" "}
           <strong>multi-style system</strong>. Each component can be rendered in
-          different visual styles - minimal and clean or bold brutalist.
+          different visual styles - minimal and clean or vivid neubrutalism.
         </p>
       </div>
 
