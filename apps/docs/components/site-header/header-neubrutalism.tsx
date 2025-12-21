@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@vibe-ui/registry/ui/neubrutalism/button";
+import { Badge } from "@vibe-ui/registry/ui/neubrutalism/badge";
 import { StyleSwitcherDropdown } from "@/components/style-switcher";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 

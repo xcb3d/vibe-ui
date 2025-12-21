@@ -1,20 +1,22 @@
 "use client";
 
 import * as React from "react";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+// Registry components
+import { Button } from "@vibe-ui/registry/ui/neubrutalism/button";
+import { Input } from "@vibe-ui/registry/ui/neubrutalism/input";
+import { Label } from "@vibe-ui/registry/ui/neubrutalism/label";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@vibe-ui/registry/ui/neubrutalism/popover";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@vibe-ui/registry/ui/neubrutalism/collapsible";
+// Local components (complex external deps)
+import { Calendar } from "@vibe-ui/registry/ui/neubrutalism/calendar";
 import {
   Form,
   FormControl,
@@ -23,7 +25,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@vibe-ui/registry/ui/neubrutalism/form";
 import { ChevronsUpDown, Calendar as CalendarIcon } from "lucide-react";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";

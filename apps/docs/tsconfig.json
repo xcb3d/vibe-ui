@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@vibe-ui/ui": ["../../packages/ui/src"]
+      "@vibe-ui/ui": ["../../packages/ui/src"],
+      "@vibe-ui/registry/*": ["../../packages/registry/*"]
     },
     "incremental": true
   },

@@ -1,6 +1,11 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@vibe-ui/registry/ui/minimal/tabs";
 import { CodeBlock } from "@/components/code-block";
 import { cn } from "@/lib/utils";
 import { PreviewCodeTabsProps } from "./preview-code-tabs-types";

@@ -5,8 +5,13 @@ import { useTheme } from "next-themes";
 import { useStyle } from "@/components/style-provider";
 import { StyleSwitcherGrid } from "@/components/style-switcher";
 import { ThemeSwitcher, ThemeToggle } from "@/components/theme-switcher";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@vibe-ui/registry/ui/neubrutalism/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@vibe-ui/registry/ui/neubrutalism/card";
 
 export default function ThemingPage() {
   const { style } = useStyle();
@@ -192,14 +197,13 @@ function MyComponent() {
         </p>
         <div className="rounded-lg border bg-muted/50 p-4 overflow-x-auto">
           <pre className="text-sm">{`/* Light mode (default) */
-[data-style="minimal"] {
+:root {
   --color-background: hsl(0 0% 100%);
   --color-foreground: hsl(0 0% 3.9%);
 }
 
 /* Dark mode */
-[data-style="minimal"].dark,
-.dark [data-style="minimal"] {
+.dark {
   --color-background: hsl(0 0% 3.9%);
   --color-foreground: hsl(0 0% 98%);
 }`}</pre>
@@ -207,20 +211,18 @@ function MyComponent() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Data Attribute</h2>
+        <h2 className="text-2xl font-semibold">Dynamic Theme Loading</h2>
         <p className="text-muted-foreground">
-          Styles are applied using the{" "}
-          <code className="bg-muted px-1 rounded">data-style</code> attribute on
-          the HTML element:
+          Styles are loaded dynamically via CSS file injection. Each theme has
+          its own standalone CSS file:
         </p>
         <div className="rounded-lg border bg-muted/50 p-4 overflow-x-auto">
-          <pre className="text-sm">{`<html data-style="minimal">
-  <!-- Your app -->
-</html>`}</pre>
+          <pre className="text-sm">{`/styles/minimal.css
+/styles/neubrutalism.css`}</pre>
         </div>
         <p className="text-muted-foreground">
-          The StyleProvider automatically sets this attribute when you change
-          styles.
+          The StyleProvider automatically loads the correct CSS file when you
+          change styles.
         </p>
       </div>
     </div>

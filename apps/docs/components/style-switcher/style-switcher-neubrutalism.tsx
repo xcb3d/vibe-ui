@@ -7,8 +7,8 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+} from "@vibe-ui/registry/ui/neubrutalism/dropdown-menu";
+import { Button } from "@vibe-ui/registry/ui/neubrutalism/button";
 import { PaletteIcon, styleIcons } from "./style-switcher-icons";
 
 export function StyleSwitcherNeubrutalism() {
@@ -33,7 +33,7 @@ export function StyleSwitcherNeubrutalism() {
       >
         <DropdownMenuRadioGroup
           value={style}
-          onValueChange={(value) => setStyle(value as StyleName)}
+          onValueChange={(value: string) => setStyle(value as StyleName)}
         >
           {styles.map((s) => (
             <DropdownMenuRadioItem

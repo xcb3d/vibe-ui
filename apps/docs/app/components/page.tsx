@@ -5,7 +5,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@vibe-ui/registry/ui/neubrutalism/card";
 
 export default function ComponentsPage() {
   const components = Object.values(componentDocs);

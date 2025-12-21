@@ -1,0 +1,33 @@
+import * as React from "react";
+import { cn } from "../../lib/utils";
+import type { InputProps } from "../types/input";
+
+/**
+ * Neubrutalism Input
+ * Bold borders, hard shadow on focus
+ */
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          "flex h-10 w-full rounded-lg px-4 py-2 text-base",
+          "bg-white text-black border-2 border-black",
+          "placeholder:text-gray-500",
+          "focus:outline-none focus:shadow-[4px_4px_0_black]",
+          "disabled:cursor-not-allowed disabled:opacity-50",
+          "dark:bg-gray-900 dark:text-white dark:border-white",
+          "dark:placeholder:text-gray-400",
+          "dark:focus:shadow-[4px_4px_0_white]",
+          className,
+        )}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
+Input.displayName = "Input";
+
+export { Input };

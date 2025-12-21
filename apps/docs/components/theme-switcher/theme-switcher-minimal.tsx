@@ -8,8 +8,8 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+} from "@vibe-ui/registry/ui/minimal/dropdown-menu";
+import { Button } from "@vibe-ui/registry/ui/minimal/button";
 import { SunIcon, MoonIcon, themes } from "./theme-switcher-icons";
 
 export function ThemeSwitcherMinimal() {

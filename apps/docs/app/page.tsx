@@ -1,31 +1,44 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@vibe-ui/registry/ui/neubrutalism/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from "@vibe-ui/registry/ui/neubrutalism/card";
+import { Input } from "@vibe-ui/registry/ui/neubrutalism/input";
+import { Label } from "@vibe-ui/registry/ui/neubrutalism/label";
+import { Textarea } from "@vibe-ui/registry/ui/neubrutalism/textarea";
+import { Checkbox } from "@vibe-ui/registry/ui/neubrutalism/checkbox";
+import { Switch } from "@vibe-ui/registry/ui/neubrutalism/switch";
+import { Badge } from "@vibe-ui/registry/ui/neubrutalism/badge";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@vibe-ui/registry/ui/neubrutalism/alert";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@vibe-ui/registry/ui/neubrutalism/avatar";
+import { Separator } from "@vibe-ui/registry/ui/neubrutalism/separator";
+import { Skeleton } from "@vibe-ui/registry/ui/neubrutalism/skeleton";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@vibe-ui/registry/ui/neubrutalism/tabs";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@vibe-ui/registry/ui/neubrutalism/select";
 import { StyleSwitcherGrid } from "@/components/style-switcher";
 import { SiteHeader } from "@/components/site-header";
 import Link from "next/link";

@@ -24,13 +24,28 @@ const StyleContext = React.createContext<StyleContextType | undefined>(
   undefined,
 );
 
+// Dynamic CSS loader for theme switching
+function loadThemeCSS(theme: StyleName) {
+  const linkId = "vibe-ui-theme";
+  let link = document.getElementById(linkId) as HTMLLinkElement | null;
+
+  if (!link) {
+    link = document.createElement("link");
+    link.id = linkId;
+    link.rel = "stylesheet";
+    document.head.appendChild(link);
+  }
+
+  link.href = `/styles/${theme}.css`;
+}
+
 export function StyleProvider({ children }: { children: React.ReactNode }) {
   const [style, setStyleState] = React.useState<StyleName>("neubrutalism");
 
   const setStyle = React.useCallback((newStyle: StyleName) => {
     setStyleState(newStyle);
-    // Update document class
-    document.documentElement.setAttribute("data-style", newStyle);
+    // Load theme CSS dynamically
+    loadThemeCSS(newStyle);
     // Persist to localStorage
     localStorage.setItem("vibe-ui-style", newStyle);
   }, []);
@@ -40,9 +55,9 @@ export function StyleProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem("vibe-ui-style") as StyleName | null;
     if (saved && styles.some((s) => s.name === saved)) {
       setStyleState(saved);
-      document.documentElement.setAttribute("data-style", saved);
+      loadThemeCSS(saved);
     } else {
-      document.documentElement.setAttribute("data-style", "neubrutalism");
+      loadThemeCSS("neubrutalism");
     }
   }, []);
 

@@ -1,38 +1,52 @@
 "use client";
 
 import * as React from "react";
-import { Button } from "@/components/ui/button";
+// Registry components (neubrutalism theme)
+import { Button } from "@vibe-ui/registry/ui/neubrutalism/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from "@vibe-ui/registry/ui/neubrutalism/card";
+import { Input } from "@vibe-ui/registry/ui/neubrutalism/input";
+import { Label } from "@vibe-ui/registry/ui/neubrutalism/label";
+import { Textarea } from "@vibe-ui/registry/ui/neubrutalism/textarea";
+import { Checkbox } from "@vibe-ui/registry/ui/neubrutalism/checkbox";
+import { Switch } from "@vibe-ui/registry/ui/neubrutalism/switch";
+import { Badge } from "@vibe-ui/registry/ui/neubrutalism/badge";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@vibe-ui/registry/ui/neubrutalism/alert";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@vibe-ui/registry/ui/neubrutalism/avatar";
+import { Separator } from "@vibe-ui/registry/ui/neubrutalism/separator";
+import { Skeleton } from "@vibe-ui/registry/ui/neubrutalism/skeleton";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@vibe-ui/registry/ui/neubrutalism/tabs";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@vibe-ui/registry/ui/neubrutalism/select";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@vibe-ui/registry/ui/neubrutalism/accordion";
 import {
   Table,
   TableBody,
@@ -40,13 +54,19 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Progress } from "@/components/ui/progress";
-import { Slider } from "@/components/ui/slider";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Toggle } from "@/components/ui/toggle";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+} from "@vibe-ui/registry/ui/neubrutalism/table";
+import { Progress } from "@vibe-ui/registry/ui/neubrutalism/progress";
+import { Slider } from "@vibe-ui/registry/ui/neubrutalism/slider";
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@vibe-ui/registry/ui/neubrutalism/radio-group";
+import { ScrollArea } from "@vibe-ui/registry/ui/neubrutalism/scroll-area";
+import { Toggle } from "@vibe-ui/registry/ui/neubrutalism/toggle";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@vibe-ui/registry/ui/neubrutalism/toggle-group";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -54,7 +74,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+} from "@vibe-ui/registry/ui/neubrutalism/breadcrumb";
 import {
   Pagination,
   PaginationContent,
@@ -63,7 +83,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from "@vibe-ui/registry/ui/neubrutalism/pagination";
 import {
   Dialog,
   DialogContent,
@@ -72,7 +92,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@vibe-ui/registry/ui/neubrutalism/dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -83,7 +103,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+} from "@vibe-ui/registry/ui/neubrutalism/alert-dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -91,12 +111,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@vibe-ui/registry/ui/neubrutalism/dropdown-menu";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@vibe-ui/registry/ui/neubrutalism/popover";
 import {
   Sheet,
   SheetContent,
@@ -104,35 +124,19 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
+} from "@vibe-ui/registry/ui/neubrutalism/sheet";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
+} from "@vibe-ui/registry/ui/neubrutalism/tooltip";
+import { AspectRatio } from "@vibe-ui/registry/ui/neubrutalism/aspect-ratio";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card";
+} from "@vibe-ui/registry/ui/neubrutalism/hover-card";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -140,13 +144,13 @@ import {
   ContextMenuTrigger,
   ContextMenuSeparator,
   ContextMenuShortcut,
-} from "@/components/ui/context-menu";
+} from "@vibe-ui/registry/ui/neubrutalism/context-menu";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
   InputOTPSeparator,
-} from "@/components/ui/input-otp";
+} from "@vibe-ui/registry/ui/neubrutalism/input-otp";
 import {
   Drawer,
   DrawerClose,
@@ -156,7 +160,31 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@vibe-ui/registry/ui/neubrutalism/drawer";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@vibe-ui/registry/ui/neubrutalism/resizable";
+import { Spinner } from "@vibe-ui/registry/ui/neubrutalism/spinner";
+import { Kbd } from "@vibe-ui/registry/ui/neubrutalism/kbd";
+// Local components (complex external deps - not in registry)
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@vibe-ui/registry/ui/neubrutalism/command";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@vibe-ui/registry/ui/neubrutalism/navigation-menu";
 import {
   Menubar,
   MenubarContent,
@@ -165,21 +193,14 @@ import {
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
-} from "@/components/ui/menubar";
+} from "@vibe-ui/registry/ui/neubrutalism/menubar";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable";
-import { Spinner } from "@/components/ui/spinner";
-import { Kbd } from "@/components/ui/kbd";
+} from "@vibe-ui/registry/ui/neubrutalism/carousel";
 import {
   Bold,
   Italic,

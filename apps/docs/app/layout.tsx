@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { StyleProvider } from "@/components/style-provider";
-import { Toaster } from "sonner";
+import { Toaster } from "@vibe-ui/registry/ui/neubrutalism/sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning data-style="neubrutalism">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.variable} antialiased min-h-screen bg-background text-foreground`}
       >

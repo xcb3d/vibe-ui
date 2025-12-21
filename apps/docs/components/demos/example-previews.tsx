@@ -1,15 +1,15 @@
 "use client";
 
 import * as React from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Settings } from "lucide-react";
+import { Button } from "@vibe-ui/registry/ui/neubrutalism/button";
+import { Input } from "@vibe-ui/registry/ui/neubrutalism/input";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@vibe-ui/registry/ui/neubrutalism/accordion";
+import { Settings } from "lucide-react";
 
 // Example previews for accordion component
 export const accordionPreviews: Record<string, React.ReactNode> = {
