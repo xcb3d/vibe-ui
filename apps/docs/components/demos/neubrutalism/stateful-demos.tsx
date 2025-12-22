@@ -4,7 +4,6 @@ import * as React from "react";
 // Registry components
 import { Button } from "@vibe-ui/registry/ui/neubrutalism/button";
 import { Input } from "@vibe-ui/registry/ui/neubrutalism/input";
-import { Label } from "@vibe-ui/registry/ui/neubrutalism/label";
 import {
   Popover,
   PopoverContent,

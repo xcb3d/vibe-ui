@@ -23,12 +23,16 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-zinc-900 text-white border-zinc-900 shadow-sm hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:border-white dark:hover:bg-gray-100",
+        primary:
+          "bg-blue-600 text-white border-blue-600 shadow-sm hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400",
+        secondary:
+          "bg-gray-100 text-zinc-900 border-gray-200 shadow-sm hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700",
         destructive:
           "bg-red-600 text-white border-red-600 shadow-sm hover:bg-red-500",
         outline:
           "bg-transparent text-zinc-900 border-gray-300 shadow-sm hover:bg-gray-50 dark:text-white dark:border-gray-600 dark:hover:bg-gray-800",
-        secondary:
-          "bg-gray-100 text-zinc-900 border-gray-200 shadow-sm hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700",
+        accent:
+          "bg-purple-600 text-white border-purple-600 shadow-sm hover:bg-purple-500 dark:bg-purple-500 dark:hover:bg-purple-400",
         ghost: "border-transparent hover:bg-gray-100 dark:hover:bg-gray-800",
         link: "border-transparent text-zinc-900 underline-offset-4 hover:underline dark:text-white",
       },

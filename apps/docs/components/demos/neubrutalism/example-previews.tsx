@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@vibe-ui/registry/ui/neubrutalism/accordion";
-import { Settings } from "lucide-react";
+import { Settings, Mail, ArrowRight, Loader2 } from "lucide-react";
 
 // Example previews for accordion component
 export const accordionPreviews: Record<string, React.ReactNode> = {
@@ -116,12 +116,61 @@ export const accordionPreviews: Record<string, React.ReactNode> = {
   ),
 };
 
+// Example previews for button component
+export const buttonPreviews: Record<string, React.ReactNode> = {
+  Variants: (
+    <div className="flex flex-wrap gap-4 items-center justify-center">
+      <Button>Default</Button>
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="destructive">Destructive</Button>
+      <Button variant="accent">Accent</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="link">Link</Button>
+    </div>
+  ),
+  Sizes: (
+    <div className="flex flex-wrap gap-4 items-center justify-center">
+      <Button size="sm">Small</Button>
+      <Button size="default">Default</Button>
+      <Button size="lg">Large</Button>
+      <Button size="icon">
+        <Settings className="h-4 w-4" />
+      </Button>
+    </div>
+  ),
+  "With Icons": (
+    <div className="flex flex-wrap gap-4 items-center justify-center">
+      <Button>
+        <Mail className="mr-2 h-4 w-4" /> Login with Email
+      </Button>
+      <Button variant="secondary">
+        Next Step <ArrowRight className="ml-2 h-4 w-4" />
+      </Button>
+    </div>
+  ),
+  "Loading State": (
+    <div className="flex flex-wrap gap-4 items-center justify-center">
+      <Button disabled>
+        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+        Please wait
+      </Button>
+    </div>
+  ),
+  Disabled: (
+    <div className="flex flex-wrap gap-4 items-center justify-center">
+      <Button disabled>Disabled</Button>
+    </div>
+  ),
+};
+
 // Combined example previews registry
 export const examplePreviews: Record<
   string,
   Record<string, React.ReactNode>
 > = {
   accordion: accordionPreviews,
+  button: buttonPreviews,
 };
 
 // Get example preview for a specific component and example title

@@ -1,5 +1,8 @@
-@import "tailwindcss";
+@import "tailwindcss" source("../../");
 @plugin "tailwindcss-animate";
+
+/* Explicitly scan registry package */
+@source "../../packages/registry";
 
 /* Custom theme colors - Tailwind's defaults */
 @theme {

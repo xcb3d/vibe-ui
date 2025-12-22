@@ -7,6 +7,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@vibe-ui/registry/ui/neubrutalism/card";
@@ -214,39 +215,61 @@ import {
   Calendar as CalendarIcon,
 } from "lucide-react";
 
-// Import stateful demo components
+// Import stateful demo components (theme-aware)
 import {
-  CollapsibleDemo,
-  CalendarDemo,
-  DatePickerDemo,
-  SonnerDemo,
-  FormDemo,
-} from "./demos/stateful-demos";
-
-// Re-export getExamplePreview for backward compatibility
-export { getExamplePreview } from "./demos/example-previews";
+  CollapsibleDemoNeubrutalism as CollapsibleDemo,
+  CalendarDemoNeubrutalism as CalendarDemo,
+  DatePickerDemoNeubrutalism as DatePickerDemo,
+  SonnerDemoNeubrutalism as SonnerDemo,
+  FormDemoNeubrutalism as FormDemo,
+} from "../demos";
 
 // Component demos registry - static previews for each component
-const componentDemos: Record<string, React.ReactNode> = {
+export const componentDemos: Record<string, React.ReactNode> = {
   button: (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 items-center">
+      <Button size="sm">Small</Button>
       <Button>Default</Button>
+      <Button size="lg">Large</Button>
+      <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
       <Button variant="destructive">Destructive</Button>
+      <Button variant="accent">Accent</Button>
+      <Button variant="ghost">Ghost</Button>
       <Button variant="link">Link</Button>
     </div>
   ),
   card: (
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card description goes here.</CardDescription>
+        <CardTitle>Create Project</CardTitle>
+        <CardDescription>Deploy your new project in one-click.</CardDescription>
       </CardHeader>
       <CardContent>
-        <p>Card content</p>
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="project-name">Name</Label>
+            <Input id="project-name" placeholder="Name of your project" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="framework">Framework</Label>
+            <Select>
+              <SelectTrigger id="framework">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="next">Next.js</SelectItem>
+                <SelectItem value="svelte">SvelteKit</SelectItem>
+                <SelectItem value="remix">Remix</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
       </CardContent>
+      <CardFooter className="justify-end gap-2">
+        <Button variant="outline">Cancel</Button>
+        <Button>Deploy</Button>
+      </CardFooter>
     </Card>
   ),
   input: (

@@ -37,7 +37,7 @@ export const componentDocs: Record<string, ComponentDoc> = {
     props: [
       {
         name: "variant",
-        type: '"default" | "destructive" | "outline" | "secondary" | "ghost" | "link"',
+        type: '"default" | "primary" | "secondary" | "destructive" | "outline" | "accent" | "ghost" | "link"',
         default: '"default"',
         description: "The visual style of the button",
       },
@@ -52,6 +52,50 @@ export const componentDocs: Record<string, ComponentDoc> = {
         type: "boolean",
         default: "false",
         description: "Render as child element using Radix Slot",
+      },
+    ],
+    examples: [
+      {
+        title: "Variants",
+        color: "primary",
+        code: `<Button>Default</Button>
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="destructive">Destructive</Button>
+<Button variant="accent">Accent</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>`,
+      },
+      {
+        title: "Sizes",
+        color: "accent",
+        code: `<Button size="sm">Small</Button>
+<Button size="default">Default</Button>
+<Button size="lg">Large</Button>
+<Button size="icon"><Settings /></Button>`,
+      },
+      {
+        title: "With Icons",
+        color: "info",
+        code: `<Button>
+  <Mail className="mr-2 h-4 w-4" /> Login with Email
+</Button>
+<Button variant="secondary">
+  Next Step <ArrowRight className="ml-2 h-4 w-4" />
+</Button>`,
+      },
+      {
+        title: "Loading State",
+        color: "warning",
+        code: `<Button disabled>
+  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+  Please wait
+</Button>`,
+      },
+      {
+        title: "Disabled",
+        color: "muted",
+        code: `<Button disabled>Disabled</Button>`,
       },
     ],
   },
