@@ -1,8 +1,13 @@
-@import "tailwindcss" source("../../");
+@import "tailwindcss";
 @plugin "tailwindcss-animate";
 
 /* Explicitly scan registry package */
 @source "../../packages/registry";
+
+/* Safelist for CVA size variants - Tailwind can't detect these from registry */
+@utility px-12 {
+  padding-inline: calc(var(--spacing) * 12);
+}
 
 /* Custom theme colors - Tailwind's defaults */
 @theme {
