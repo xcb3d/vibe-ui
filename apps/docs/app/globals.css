@@ -3,6 +3,7 @@
 
 /* Explicit source scanning */
 @source ".";
+@source "../components";
 @source "../../../packages/registry";
 
 /* Custom theme colors - Tailwind's defaults */
