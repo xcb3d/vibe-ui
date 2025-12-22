@@ -59,11 +59,10 @@ export const componentDocs: Record<string, ComponentDoc> = {
         title: "Variants",
         color: "primary",
         code: `<Button>Default</Button>
-<Button variant="primary">Primary</Button>
 <Button variant="secondary">Secondary</Button>
-<Button variant="destructive">Destructive</Button>
-<Button variant="accent">Accent</Button>
+<Button variant="outline">Outline</Button>
 <Button variant="ghost">Ghost</Button>
+<Button variant="destructive">Destructive</Button>
 <Button variant="link">Link</Button>`,
       },
       {
