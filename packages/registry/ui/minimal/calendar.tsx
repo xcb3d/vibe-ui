@@ -10,7 +10,7 @@ import {
   type MonthCaptionProps,
 } from "react-day-picker";
 import { cn } from "../../lib/utils";
-import { buttonVariants } from "./button";
+import { getButtonClasses } from "./button";
 import {
   Select,
   SelectContent,
@@ -166,11 +166,11 @@ function Calendar({
         [UI.Nav]:
           "absolute inset-x-0 top-0 flex justify-between items-center h-7 z-10 pointer-events-none",
         [UI.PreviousMonthButton]: cn(
-          buttonVariants({ variant: "outline" }),
+          getButtonClasses("outline"),
           "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 pointer-events-auto",
         ),
         [UI.NextMonthButton]: cn(
-          buttonVariants({ variant: "outline" }),
+          getButtonClasses("outline"),
           "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 pointer-events-auto",
         ),
         [UI.MonthGrid]: "w-full border-collapse space-y-1",

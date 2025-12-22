@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { CodeBlock } from "@/components/code-block";
+import { Card } from "@vibe-ui/registry/ui/minimal/card";
 import {
   ExampleSectionProps,
   ExamplesContainerProps,
@@ -22,7 +23,7 @@ export function ExampleSectionMinimal({
       </h3>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="p-8 lg:p-12 flex items-center justify-center rounded-lg relative overflow-hidden bg-muted/20 border border-border">
+        <Card className="p-8 lg:p-12 flex items-center justify-center relative overflow-hidden">
           {showPattern && (
             <div
               className="absolute inset-0"
@@ -35,7 +36,7 @@ export function ExampleSectionMinimal({
             />
           )}
           <div className="w-full max-w-sm relative z-10">{preview}</div>
-        </div>
+        </Card>
 
         <CodeBlock
           code={code}

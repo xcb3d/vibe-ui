@@ -7,9 +7,11 @@ import type * as React from "react";
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?:
     | "default"
+    | "primary"
+    | "secondary"
     | "destructive"
     | "outline"
-    | "secondary"
+    | "accent"
     | "ghost"
     | "link";
   size?: "default" | "sm" | "lg" | "icon";

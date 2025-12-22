@@ -97,10 +97,11 @@ export async function resolveComponent(
   const info = await getComponentInfo(name);
   if (!info) return null;
 
-  // Try local file first
+  // Try local file first (style-specific path)
   const localPath = getLocalRegistryPath();
   if (localPath) {
-    const componentPath = path.join(localPath, "ui", `${name}.tsx`);
+    // Use style-specific path: ui/{style}/{name}.tsx
+    const componentPath = path.join(localPath, "ui", style, `${name}.tsx`);
     if (await fs.pathExists(componentPath)) {
       const content = await fs.readFile(componentPath, "utf-8");
       return {

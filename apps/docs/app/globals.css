@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
+/* Use class-based dark mode instead of prefers-color-scheme */
+@variant dark (&:where(.dark, .dark *));
+
+/* Explicit source scanning */
+@source ".";
+@source "../components";
+@source "../../../packages/registry";
+
 /* Custom theme colors - Tailwind's defaults */
 @theme {
   --color-background: hsl(0 0% 100%);

@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { CodeBlock } from "@/components/code-block";
+import { Card } from "@vibe-ui/registry/ui/neubrutalism/card";
 import {
   ExampleSectionProps,
   ExamplesContainerProps,
@@ -19,10 +20,10 @@ export function ExampleSectionNeubrutalism({
 }: ExampleSectionProps) {
   return (
     <section id={id} className={cn("flex flex-col gap-6", className)}>
-      <h3 className="text-xl font-bold uppercase bg-secondary p-2 border-2 border-black w-fit shadow-[4px_4px_0px_0px_#000] text-foreground flex items-center gap-3">
+      <h3 className="text-xl font-bold uppercase bg-secondary p-2 border-2 border-black w-fit shadow-[4px_4px_0px_0px_#000] text-foreground flex items-center gap-3 dark:border-white dark:shadow-[4px_4px_0px_0px_#fff]">
         <span
           className={cn(
-            "w-4 h-4 border-2 border-black block rounded-full",
+            "w-4 h-4 border-2 border-black dark:border-white block rounded-full",
             colorMap[color],
           )}
         />
@@ -30,7 +31,7 @@ export function ExampleSectionNeubrutalism({
       </h3>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="p-8 lg:p-12 flex items-center justify-center rounded-lg relative overflow-hidden bg-card border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+        <Card className="p-8 lg:p-12 flex items-center justify-center relative overflow-hidden">
           {showPattern && (
             <div
               className="absolute inset-0"
@@ -43,7 +44,7 @@ export function ExampleSectionNeubrutalism({
             />
           )}
           <div className="w-full max-w-sm relative z-10">{preview}</div>
-        </div>
+        </Card>
 
         <CodeBlock
           code={code}

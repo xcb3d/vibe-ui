@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Context Menu Component Showcase - Neubrutalism UI Lib</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 60 30% 96%;
+                --foreground: 20 14.3% 4.1%;
+                --card: 0 0% 100%;
+                --card-foreground: 20 14.3% 4.1%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 20 14.3% 4.1%;
+                --primary: 47 95% 57%;
+                --primary-foreground: 26 83.3% 14.1%;
+                --secondary: 0 0% 96.1%;
+                --secondary-foreground: 24 9.8% 10%;
+                --muted: 60 4.8% 95.9%;
+                --muted-foreground: 25 5.3% 44.7%;
+                --accent: 250 100% 70%;
+                --accent-foreground: 24 9.8% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 60 9.1% 97.8%;
+                --border: 20 5.9% 90%;
+                --input: 20 5.9% 90%;
+                --ring: 20 14.3% 4.1%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 47 95% 57%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 250 100% 70%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: {
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(var(--destructive))",
+                            foreground: "hsl(var(--destructive-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(var(--accent))",
+                            foreground: "hsl(var(--accent-foreground))",
+                        },
+                        popover: {
+                            DEFAULT: "hsl(var(--popover))",
+                            foreground: "hsl(var(--popover-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'neubrutal': '5px 5px 0px 0px rgba(0,0,0,1)',
+                        'neubrutal-sm': '3px 3px 0px 0px rgba(0,0,0,1)',
+                        'neubrutal-accent': '5px 5px 0px 0px hsl(var(--accent))',
+                        'neubrutal-white': '4px 4px 0px 0px #ffffff',
+                        'neubrutal-dark': '5px 5px 0px 0px #ffffff',
+                        'neubrutal-sm-dark': '3px 3px 0px 0px #ffffff',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: hsl(var(--background)); 
+            border-left: 2px solid black;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: hsl(var(--background));
+            border-left: 2px solid white;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: hsl(var(--primary)); 
+            border: 2px solid black;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            border: 2px solid white;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsl(var(--accent)); 
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-display overflow-hidden flex flex-col h-screen transition-colors duration-300 selection:bg-primary selection:text-black">
+<header class="flex-none flex items-center justify-between whitespace-nowrap border-b-4 border-black dark:border-white bg-background px-6 lg:px-10 py-4 z-20 relative transition-colors duration-300">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-foreground hover:translate-x-1 transition-transform cursor-pointer group">
+<div class="size-10 bg-primary text-black flex items-center justify-center border-2 border-black dark:border-white shadow-neubrutal dark:shadow-neubrutal-dark group-hover:bg-accent transition-colors">
+<span class="material-symbols-outlined font-black">dataset</span>
+</div>
+<h2 class="text-2xl font-black leading-tight tracking-[-0.015em] uppercase">Neu_Lib</h2>
+</div>
+<div class="hidden lg:flex items-center gap-9">
+<a class="text-sm font-bold uppercase hover:text-accent transition-colors hover:underline decoration-4 underline-offset-4 decoration-primary" href="#">Components</a>
+<a class="text-muted-foreground text-sm font-bold uppercase hover:text-foreground transition-colors" href="#">Docs</a>
+<a class="text-muted-foreground text-sm font-bold uppercase hover:text-foreground transition-colors" href="#">Blog</a>
+<a class="text-muted-foreground text-sm font-bold uppercase hover:text-foreground transition-colors" href="#">Github</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<button aria-label="Toggle Dark Mode" class="group flex items-center justify-center h-10 w-10 bg-white dark:bg-zinc-900 text-black dark:text-white border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark hover:shadow-neubrutal dark:hover:shadow-neubrutal-dark hover:-translate-y-0.5 transition-all active:translate-y-0 active:shadow-neubrutal-sm dark:active:shadow-neubrutal-sm-dark rounded-md" id="theme-toggle">
+<span class="material-symbols-outlined dark:hidden">light_mode</span>
+<span class="material-symbols-outlined hidden dark:block">dark_mode</span>
+</button>
+<label class="hidden md:flex flex-col min-w-40 h-10 max-w-64 group">
+<div class="flex w-full flex-1 items-stretch border-2 border-black dark:border-white bg-background shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark group-focus-within:shadow-neubrutal dark:group-focus-within:shadow-neubrutal-dark transition-all rounded-md overflow-hidden">
+<div class="text-black dark:text-white flex items-center justify-center pl-3">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden bg-transparent text-foreground focus:outline-none placeholder:text-muted-foreground px-3 text-sm font-bold" placeholder="Search..." value=""/>
+</div>
+</label>
+<button class="hidden sm:flex h-10 px-6 bg-accent border-2 border-black dark:border-white text-black dark:text-white text-sm font-bold uppercase tracking-wide items-center justify-center shadow-neubrutal dark:shadow-neubrutal-dark hover:-translate-y-1 hover:shadow-[7px_7px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[7px_7px_0px_0px_#ffffff] transition-all active:translate-y-0 active:shadow-neubrutal-sm dark:active:shadow-neubrutal-sm-dark rounded-md">
+<span>Get Started</span>
+</button>
+<button class="md:hidden text-foreground">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden relative">
+<aside class="hidden md:flex flex-col w-64 border-r-4 border-black dark:border-white bg-background overflow-y-auto pb-10 flex-none sticky top-0 h-full transition-colors duration-300">
+<div class="p-6">
+<div class="flex flex-col mb-8">
+<h1 class="text-foreground text-lg font-black uppercase tracking-wider mb-1">Components</h1>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-accent border-2 border-black dark:border-white rounded-full animate-pulse"></span>
+<p class="text-muted-foreground text-xs font-mono font-bold">v2.0.0 Stable</p>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<a class="group flex items-center gap-3 px-3 py-2 border-2 border-transparent hover:border-black dark:hover:border-white hover:bg-primary/20 hover:shadow-neubrutal-sm dark:hover:shadow-neubrutal-sm-dark rounded-md transition-all" href="#">
+<span class="material-symbols-outlined text-muted-foreground group-hover:text-black dark:group-hover:text-white">home</span>
+<p class="text-muted-foreground group-hover:text-black dark:group-hover:text-white text-sm font-bold">Installation</p>
+</a>
+<div class="h-1 bg-black dark:bg-white my-2 rounded-full"></div>
+<p class="text-xs font-black text-accent px-3 uppercase tracking-wider mt-2 mb-1">Overlay</p>
+<a class="group flex items-center gap-3 px-3 py-2 bg-primary border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-md" href="#">
+<span class="material-symbols-outlined text-black">menu_open</span>
+<p class="text-black text-sm font-black uppercase">Context Menu</p>
+</a>
+<a class="group flex items-center gap-3 px-3 py-2 border-2 border-transparent hover:border-black dark:hover:border-white hover:bg-primary/20 hover:shadow-neubrutal-sm dark:hover:shadow-neubrutal-sm-dark rounded-md transition-all" href="#">
+<span class="material-symbols-outlined text-muted-foreground group-hover:text-black dark:group-hover:text-white">filter_none</span>
+<p class="text-muted-foreground group-hover:text-black dark:group-hover:text-white text-sm font-bold">Dialog</p>
+</a>
+<a class="group flex items-center gap-3 px-3 py-2 border-2 border-transparent hover:border-black dark:hover:border-white hover:bg-primary/20 hover:shadow-neubrutal-sm dark:hover:shadow-neubrutal-sm-dark rounded-md transition-all" href="#">
+<span class="material-symbols-outlined text-muted-foreground group-hover:text-black dark:group-hover:text-white">info</span>
+<p class="text-muted-foreground group-hover:text-black dark:group-hover:text-white text-sm font-bold">Hover Card</p>
+</a>
+<p class="text-xs font-black text-accent px-3 uppercase tracking-wider mt-4 mb-1">Base</p>
+<a class="group flex items-center gap-3 px-3 py-2 border-2 border-transparent hover:border-black dark:hover:border-white hover:bg-primary/20 hover:shadow-neubrutal-sm dark:hover:shadow-neubrutal-sm-dark rounded-md transition-all" href="#">
+<span class="material-symbols-outlined text-muted-foreground group-hover:text-black dark:group-hover:text-white">smart_button</span>
+<p class="text-muted-foreground group-hover:text-black dark:group-hover:text-white text-sm font-bold">Buttons</p>
+</a>
+<a class="group flex items-center gap-3 px-3 py-2 border-2 border-transparent hover:border-black dark:hover:border-white hover:bg-primary/20 hover:shadow-neubrutal-sm dark:hover:shadow-neubrutal-sm-dark rounded-md transition-all" href="#">
+<span class="material-symbols-outlined text-muted-foreground group-hover:text-black dark:group-hover:text-white">view_list</span>
+<p class="text-muted-foreground group-hover:text-black dark:group-hover:text-white text-sm font-bold">Accordion</p>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto bg-background relative z-10 scroll-smooth transition-colors duration-300">
+<div class="max-w-5xl mx-auto px-6 py-10 lg:px-12 lg:py-16 flex flex-col gap-12 pb-32">
+<div class="flex items-center gap-2 text-sm text-muted-foreground font-mono font-bold mb-4">
+<span class="hover:text-primary cursor-pointer hover:underline">Docs</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="hover:text-primary cursor-pointer hover:underline">Overlay</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-foreground font-black underline decoration-primary decoration-4 underline-offset-4">Context Menu</span>
+</div>
+<div class="flex flex-col gap-4">
+<h1 class="text-foreground text-5xl lg:text-7xl font-black uppercase tracking-tighter drop-shadow-[4px_4px_0px_hsl(var(--primary))]">Context Menu</h1>
+<p class="text-muted-foreground text-xl font-medium leading-relaxed max-w-2xl border-l-4 border-primary pl-4">
+                        Displays a menu to the user — such as a set of actions or functions — triggered by a right-click. Designed for high-impact interactions.
+                    </p>
+<div class="flex gap-4 mt-4">
+<a class="px-4 py-2 bg-white dark:bg-black text-black dark:text-white font-bold border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark hover:shadow-neubrutal dark:hover:shadow-neubrutal-dark hover:-translate-y-0.5 transition-all text-sm uppercase rounded-md" href="#">API Reference</a>
+<a class="px-4 py-2 bg-black dark:bg-white text-white dark:text-black font-bold border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark hover:shadow-neubrutal dark:hover:shadow-neubrutal-dark hover:-translate-y-0.5 transition-all text-sm uppercase rounded-md" href="#">Source Code</a>
+</div>
+</div>
+<div class="flex flex-col gap-8">
+<div class="flex items-center justify-between border-b-4 border-black dark:border-white pb-0">
+<div class="flex gap-2">
+<button class="text-black bg-primary font-black uppercase text-sm border-x-2 border-t-2 border-black dark:border-white px-6 py-3 rounded-t-lg relative top-[2px] z-10">Preview</button>
+<button class="text-muted-foreground font-bold uppercase text-sm hover:text-foreground transition-colors px-6 py-3">Code</button>
+</div>
+</div>
+<div class="bg-secondary/50 dark:bg-zinc-900 border-4 border-black dark:border-white min-h-[450px] flex items-center justify-center p-8 lg:p-12 shadow-neubrutal dark:shadow-neubrutal-dark relative overflow-hidden rounded-xl transition-all">
+<div class="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none" style="background-image: radial-gradient(currentColor 2px, transparent 2px); background-size: 24px 24px;"></div>
+<div class="w-full h-full flex items-center justify-center relative z-10">
+<div class="w-72 h-48 border-2 border-dashed border-black dark:border-white rounded-lg flex items-center justify-center bg-white/50 dark:bg-zinc-800/50 relative group cursor-context-menu hover:bg-white/80 dark:hover:bg-zinc-800/80 transition-colors">
+<span class="font-bold text-muted-foreground uppercase tracking-widest text-xs">Right Click Here</span>
+<div class="absolute top-1/2 left-1/2 mt-4 ml-4 w-60 bg-white dark:bg-zinc-900 border-2 border-black dark:border-white shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#fff] rounded-md z-20 flex flex-col p-1.5 animate-in fade-in zoom-in-95 duration-200">
+<div class="px-2 py-2 text-sm font-bold hover:bg-primary hover:text-black dark:hover:text-black cursor-pointer rounded-sm flex justify-between items-center group/item text-black dark:text-white transition-colors">
+<span>Back</span>
+<span class="text-[10px] text-muted-foreground group-hover/item:text-black font-mono">⌘[</span>
+</div>
+<div class="px-2 py-2 text-sm font-bold text-muted-foreground/50 cursor-not-allowed rounded-sm flex justify-between items-center">
+<span>Forward</span>
+<span class="text-[10px] opacity-50 font-mono">⌘]</span>
+</div>
+<div class="px-2 py-2 text-sm font-bold hover:bg-primary hover:text-black dark:hover:text-black cursor-pointer rounded-sm flex justify-between items-center group/item text-black dark:text-white transition-colors">
+<span>Reload</span>
+<span class="text-[10px] text-muted-foreground group-hover/item:text-black font-mono">⌘R</span>
+</div>
+<div class="h-[2px] bg-black dark:bg-white my-1 rounded-full opacity-20"></div>
+<div class="px-2 py-2 text-sm font-bold hover:bg-primary hover:text-black dark:hover:text-black cursor-pointer rounded-sm flex justify-between items-center group/item text-black dark:text-white transition-colors">
+<span>Save As...</span>
+<span class="text-[10px] text-muted-foreground group-hover/item:text-black font-mono">⌘S</span>
+</div>
+<div class="px-2 py-2 text-sm font-bold hover:bg-primary hover:text-black dark:hover:text-black cursor-pointer rounded-sm flex justify-between items-center group/item text-black dark:text-white transition-colors">
+<span>Print...</span>
+<span class="text-[10px] text-muted-foreground group-hover/item:text-black font-mono">⌘P</span>
+</div>
+</div>
+<span class="material-symbols-outlined absolute top-1/2 left-1/2 ml-2 mt-2 text-black dark:text-white drop-shadow-[2px_2px_0px_rgba(255,255,255,0.5)] dark:drop-shadow-[2px_2px_0px_rgba(0,0,0,0.5)] text-3xl z-30 pointer-events-none fill-current">arrow_selector_tool</span>
+</div>
+</div>
+</div>
+</div>
+<section class="flex flex-col gap-6 border-b-4 border-black dark:border-white pb-10 border-dashed">
+<h2 class="text-foreground text-3xl font-black uppercase flex items-center gap-2">
+<span class="text-primary bg-black dark:bg-white dark:text-black px-2 py-1 rounded text-2xl">#</span>
+                        Installation
+                    </h2>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-black dark:bg-zinc-900 text-white dark:text-white border-2 border-black dark:border-white rounded-md overflow-hidden w-full shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark">
+<div class="bg-accent text-black px-4 py-4 flex items-center border-r-2 border-black dark:border-white">
+<span class="material-symbols-outlined text-lg font-bold">terminal</span>
+</div>
+<code class="font-mono text-sm px-6 py-4 flex-1 text-primary">npm install @neubrutal/context-menu</code>
+<button class="px-6 py-4 hover:bg-primary hover:text-black transition-colors border-l-2 border-white/20">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6 border-b-4 border-black dark:border-white pb-10 border-dashed">
+<h2 class="text-foreground text-3xl font-black uppercase flex items-center gap-2">
+<span class="text-primary bg-black dark:bg-white dark:text-black px-2 py-1 rounded text-2xl">#</span>
+                        Usage
+                    </h2>
+<div class="bg-[#1e1e1e] dark:bg-black border-2 border-black dark:border-white p-6 font-mono text-sm overflow-x-auto shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
+<pre class="text-gray-300"><code><span class="text-accent">import</span> {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} <span class="text-accent">from</span> <span class="text-primary">"@/components/ui/context-menu"</span>
+<span class="text-accent">export function</span> <span class="text-primary">ContextMenuDemo</span>() {
+  <span class="text-accent">return</span> (
+    &lt;<span class="text-primary">ContextMenu</span>&gt;
+      &lt;<span class="text-primary">ContextMenuTrigger</span>&gt;Right click here&lt;/<span class="text-primary">ContextMenuTrigger</span>&gt;
+      &lt;<span class="text-primary">ContextMenuContent</span>&gt;
+        &lt;<span class="text-primary">ContextMenuItem</span>&gt;Profile&lt;/<span class="text-primary">ContextMenuItem</span>&gt;
+        &lt;<span class="text-primary">ContextMenuItem</span>&gt;Billing&lt;/<span class="text-primary">ContextMenuItem</span>&gt;
+        &lt;<span class="text-primary">ContextMenuItem</span>&gt;Team&lt;/<span class="text-primary">ContextMenuItem</span>&gt;
+        &lt;<span class="text-primary">ContextMenuItem</span>&gt;Subscription&lt;/<span class="text-primary">ContextMenuItem</span>&gt;
+      &lt;/<span class="text-primary">ContextMenuContent</span>&gt;
+    &lt;/<span class="text-primary">ContextMenu</span>&gt;
+  )
+}</code></pre>
+</div>
+</section>
+<div class="flex flex-col gap-2 mt-4">
+<h2 class="text-foreground text-4xl font-black uppercase flex items-center gap-2 drop-shadow-[2px_2px_0px_rgba(255,255,255,0.2)] dark:drop-shadow-[2px_2px_0px_rgba(0,0,0,0.5)]">
+                        Examples
+                    </h2>
+<p class="text-muted-foreground font-medium text-lg">Distinctive menus for every interaction.</p>
+</div>
+<section class="flex flex-col gap-6">
+<h3 class="text-foreground text-xl font-bold uppercase flex items-center gap-3 bg-secondary p-2 border-2 border-black dark:border-white w-fit shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff]">
+<span class="w-4 h-4 bg-primary border-2 border-black dark:border-white block rounded-full"></span>
+                        With Icons
+                    </h3>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<div class="p-8 lg:p-12 flex items-center justify-center bg-card border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg relative overflow-hidden">
+<div class="w-56 bg-white dark:bg-zinc-900 border-2 border-black dark:border-white shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#fff] rounded-md p-1.5 z-10">
+<div class="px-2 py-2 text-sm font-bold hover:bg-accent hover:text-black dark:hover:text-black cursor-pointer rounded-sm flex items-center gap-3 text-black dark:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">content_cut</span>
+<span>Cut</span>
+</div>
+<div class="px-2 py-2 text-sm font-bold hover:bg-accent hover:text-black dark:hover:text-black cursor-pointer rounded-sm flex items-center gap-3 text-black dark:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+<span>Copy</span>
+</div>
+<div class="px-2 py-2 text-sm font-bold hover:bg-accent hover:text-black dark:hover:text-black cursor-pointer rounded-sm flex items-center gap-3 text-black dark:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">content_paste</span>
+<span>Paste</span>
+</div>
+</div>
+</div>
+<div class="bg-[#1e1e1e] dark:bg-black border-2 border-black dark:border-white p-6 overflow-x-auto flex items-center shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
+<pre class="text-xs font-mono text-gray-300"><code>&lt;<span class="text-primary">ContextMenuContent</span>&gt;
+  &lt;<span class="text-primary">ContextMenuItem</span>&gt;
+    &lt;<span class="text-white">CutIcon</span> class=<span class="text-accent">"mr-2 h-4 w-4"</span> /&gt;
+    Cut
+  &lt;/<span class="text-primary">ContextMenuItem</span>&gt;
+  &lt;<span class="text-primary">ContextMenuItem</span>&gt;
+    &lt;<span class="text-white">CopyIcon</span> class=<span class="text-accent">"mr-2 h-4 w-4"</span> /&gt;
+    Copy
+  &lt;/<span class="text-primary">ContextMenuItem</span>&gt;
+  &lt;<span class="text-primary">ContextMenuItem</span>&gt;
+    &lt;<span class="text-white">PasteIcon</span> class=<span class="text-accent">"mr-2 h-4 w-4"</span> /&gt;
+    Paste
+  &lt;/<span class="text-primary">ContextMenuItem</span>&gt;
+&lt;/<span class="text-primary">ContextMenuContent</span>&gt;</code></pre>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6">
+<h3 class="text-foreground text-xl font-bold uppercase flex items-center gap-3 bg-secondary p-2 border-2 border-black dark:border-white w-fit shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff]">
+<span class="w-4 h-4 bg-accent border-2 border-black dark:border-white block rounded-full"></span>
+                        Nested Submenus
+                    </h3>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<div class="p-8 lg:p-12 flex items-center justify-center bg-card border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg overflow-visible">
+<div class="relative w-full h-48 flex items-center justify-center">
+<div class="absolute left-4 top-4 w-48 bg-white dark:bg-zinc-900 border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff] rounded-md p-1.5 z-10">
+<div class="px-2 py-2 text-sm font-bold hover:bg-primary hover:text-black cursor-pointer rounded-sm flex justify-between items-center text-black dark:text-white">
+<span>New Folder...</span>
+</div>
+<div class="bg-primary text-black px-2 py-2 text-sm font-bold rounded-sm flex justify-between items-center cursor-default">
+<span>More Tools</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+<div class="px-2 py-2 text-sm font-bold hover:bg-primary hover:text-black cursor-pointer rounded-sm flex justify-between items-center text-black dark:text-white">
+<span>Developer</span>
+</div>
+</div>
+<div class="absolute left-[13.5rem] top-12 w-48 bg-white dark:bg-zinc-900 border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff] rounded-md p-1.5 z-20">
+<div class="px-2 py-2 text-sm font-bold hover:bg-accent hover:text-black dark:hover:text-black cursor-pointer rounded-sm flex justify-between items-center text-black dark:text-white transition-colors">
+<span>Save Page As...</span>
+</div>
+<div class="px-2 py-2 text-sm font-bold hover:bg-accent hover:text-black dark:hover:text-black cursor-pointer rounded-sm flex justify-between items-center text-black dark:text-white transition-colors">
+<span>Create Shortcut...</span>
+</div>
+<div class="h-[2px] bg-black dark:bg-white my-1 rounded-full opacity-20"></div>
+<div class="px-2 py-2 text-sm font-bold hover:bg-accent hover:text-black dark:hover:text-black cursor-pointer rounded-sm flex justify-between items-center text-black dark:text-white transition-colors">
+<span>Name Window...</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-[#1e1e1e] dark:bg-black border-2 border-black dark:border-white p-6 overflow-x-auto flex items-center shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
+<pre class="text-xs font-mono text-gray-300"><code>&lt;<span class="text-primary">ContextMenuSub</span>&gt;
+  &lt;<span class="text-primary">ContextMenuSubTrigger</span>&gt;More Tools&lt;/<span class="text-primary">ContextMenuSubTrigger</span>&gt;
+  &lt;<span class="text-primary">ContextMenuSubContent</span>&gt;
+    &lt;<span class="text-primary">ContextMenuItem</span>&gt;Save Page As...&lt;/<span class="text-primary">ContextMenuItem</span>&gt;
+    &lt;<span class="text-primary">ContextMenuItem</span>&gt;Create Shortcut...&lt;/<span class="text-primary">ContextMenuItem</span>&gt;
+    &lt;<span class="text-primary">ContextMenuSeparator</span> /&gt;
+    &lt;<span class="text-primary">ContextMenuItem</span>&gt;Name Window...&lt;/<span class="text-primary">ContextMenuItem</span>&gt;
+  &lt;/<span class="text-primary">ContextMenuSubContent</span>&gt;
+&lt;/<span class="text-primary">ContextMenuSub</span>&gt;</code></pre>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6">
+<h3 class="text-foreground text-xl font-bold uppercase flex items-center gap-3 bg-secondary p-2 border-2 border-black dark:border-white w-fit shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff]">
+<span class="w-4 h-4 bg-[#ff6b6b] border-2 border-black dark:border-white block rounded-full"></span>
+                        Checkboxes
+                    </h3>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<div class="p-8 lg:p-12 flex items-center justify-center bg-card border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
+<div class="w-64 bg-white dark:bg-zinc-900 border-2 border-black dark:border-white shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#fff] rounded-md p-1.5 z-10">
+<div class="text-xs font-black uppercase text-muted-foreground px-2 py-1 mb-1 ml-1 tracking-widest border-b border-dashed border-muted-foreground/30">View Options</div>
+<div class="px-2 py-2 text-sm font-bold hover:bg-secondary cursor-pointer rounded-sm flex items-center gap-2 text-black dark:text-white">
+<div class="w-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-base font-black">check</span>
+</div>
+<span>Show Bookmarks Bar</span>
+<span class="ml-auto text-[10px] text-muted-foreground font-mono">⌘B</span>
+</div>
+<div class="px-2 py-2 text-sm font-bold hover:bg-secondary cursor-pointer rounded-sm flex items-center gap-2 text-black dark:text-white">
+<div class="w-4 flex items-center justify-center">
+</div>
+<span>Show Full URLs</span>
+</div>
+</div>
+</div>
+<div class="bg-[#1e1e1e] dark:bg-black border-2 border-black dark:border-white p-6 overflow-x-auto flex items-center shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
+<pre class="text-xs font-mono text-gray-300"><code>&lt;<span class="text-primary">ContextMenuCheckboxItem</span> checked&gt;
+  Show Bookmarks Bar
+  &lt;<span class="text-primary">ContextMenuShortcut</span>&gt;⌘B&lt;/<span class="text-primary">ContextMenuShortcut</span>&gt;
+&lt;/<span class="text-primary">ContextMenuCheckboxItem</span>&gt;
+&lt;<span class="text-primary">ContextMenuCheckboxItem</span>&gt;
+  Show Full URLs
+&lt;/<span class="text-primary">ContextMenuCheckboxItem</span>&gt;</code></pre>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6">
+<h3 class="text-foreground text-xl font-bold uppercase flex items-center gap-3 bg-secondary p-2 border-2 border-black dark:border-white w-fit shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff]">
+<span class="w-4 h-4 bg-muted-foreground border-2 border-black dark:border-white block rounded-full"></span>
+                        Disabled State
+                    </h3>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<div class="p-8 lg:p-12 flex items-center justify-center bg-card border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
+<div class="w-64 bg-white dark:bg-zinc-900 border-2 border-black dark:border-white shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#fff] rounded-md p-1.5 z-10">
+<div class="px-2 py-2 text-sm font-bold hover:bg-primary hover:text-black dark:hover:text-black cursor-pointer rounded-sm flex justify-between items-center text-black dark:text-white transition-colors">
+<span>New Window</span>
+</div>
+<div class="h-[2px] bg-black dark:bg-white my-1 rounded-full opacity-20"></div>
+<div class="px-2 py-2 text-sm font-bold text-muted-foreground/50 cursor-not-allowed rounded-sm flex justify-between items-center bg-muted/20">
+<span>Undo (Nothing to undo)</span>
+</div>
+<div class="px-2 py-2 text-sm font-bold text-muted-foreground/50 cursor-not-allowed rounded-sm flex justify-between items-center bg-muted/20">
+<span>Redo</span>
+</div>
+</div>
+</div>
+<div class="bg-[#1e1e1e] dark:bg-black border-2 border-black dark:border-white p-6 overflow-x-auto flex items-center shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
+<pre class="text-xs font-mono text-gray-300"><code>&lt;<span class="text-primary">ContextMenuItem</span> disabled&gt;
+  Undo (Nothing to undo)
+&lt;/<span class="text-primary">ContextMenuItem</span>&gt;
+&lt;<span class="text-primary">ContextMenuItem</span> disabled&gt;
+  Redo
+&lt;/<span class="text-primary">ContextMenuItem</span>&gt;</code></pre>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6 mt-10 border-t-4 border-black dark:border-white pt-10 border-dashed">
+<h2 class="text-foreground text-3xl font-black uppercase flex items-center gap-2">
+                        API Reference
+                    </h2>
+<p class="text-muted-foreground text-lg max-w-3xl font-medium">Built using primitive Radix UI components, styled with Neubrutalism principles.</p>
+<div class="overflow-x-auto border-2 border-black dark:border-white shadow-neubrutal dark:shadow-neubrutal-dark bg-card mt-4 rounded-lg">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-black dark:bg-white text-white dark:text-black border-b-2 border-black dark:border-white">
+<th class="p-4 text-sm font-black uppercase tracking-wider border-r-2 border-white/20 dark:border-black/20 w-1/4">Prop</th>
+<th class="p-4 text-sm font-black uppercase tracking-wider border-r-2 border-white/20 dark:border-black/20 w-1/4">Type</th>
+<th class="p-4 text-sm font-black uppercase tracking-wider border-r-2 border-white/20 dark:border-black/20 w-1/4">Default</th>
+<th class="p-4 text-sm font-black uppercase tracking-wider">Description</th>
+</tr>
+</thead>
+<tbody class="divide-y-2 divide-black dark:divide-white text-sm font-medium">
+<tr class="hover:bg-primary/20 group transition-colors">
+<td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">modal</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-muted-foreground font-mono">boolean</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-foreground font-mono">true</td>
+<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">The modality of the context menu.</td>
+</tr>
+<tr class="hover:bg-primary/20 group transition-colors">
+<td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">onOpenChange</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-muted-foreground font-mono">function</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-foreground font-mono">-</td>
+<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">Event handler called when the open state of the context menu changes.</td>
+</tr>
+<tr class="hover:bg-primary/20 group transition-colors">
+<td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">disabled</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-muted-foreground font-mono">boolean</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-foreground font-mono">false</td>
+<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">When enabled, prevents the user from interacting with the item.</td>
+</tr>
+<tr class="hover:bg-primary/20 group transition-colors">
+<td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">checked</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-muted-foreground font-mono">boolean</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-foreground font-mono">false</td>
+<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">The controlled checked state of the item.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<footer class="mt-20 pt-10 border-t-4 border-black dark:border-white border-double flex flex-col md:flex-row justify-between items-center gap-4 text-muted-foreground text-sm font-bold">
+<p>© 2024 Neu_Lib. Built with Neubrutalism.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary hover:underline decoration-2 underline-offset-4" href="#">Twitter</a>
+<a class="hover:text-primary hover:underline decoration-2 underline-offset-4" href="#">GitHub</a>
+<a class="hover:text-primary hover:underline decoration-2 underline-offset-4" href="#">Discord</a>
+</div>
+</footer>
+</div>
+</main>
+<aside class="hidden xl:flex w-64 flex-col gap-4 p-10 border-l-4 border-black dark:border-white sticky top-0 h-full overflow-y-auto bg-background transition-colors duration-300">
+<h4 class="font-black text-sm uppercase tracking-wide text-foreground border-b-2 border-black dark:border-white pb-2 mb-2">On this page</h4>
+<nav class="flex flex-col gap-3 text-sm font-bold text-muted-foreground">
+<a class="hover:text-primary transition-colors hover:translate-x-1 flex items-center gap-2 group" href="#">
+<span class="w-2 h-2 bg-black dark:bg-white opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    Installation
+                </a>
+<a class="hover:text-primary transition-colors hover:translate-x-1 flex items-center gap-2 group" href="#">
+<span class="w-2 h-2 bg-black dark:bg-white opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    Usage
+                </a>
+<a class="hover:text-primary transition-colors hover:translate-x-1 flex items-center gap-2 group" href="#">
+<span class="w-2 h-2 bg-black dark:bg-white opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    Examples
+                </a>
+<div class="pl-4 flex flex-col gap-2 border-l-2 border-black/20 dark:border-white/20 ml-1">
+<a class="hover:text-foreground transition-colors py-1" href="#">Basic</a>
+<a class="hover:text-foreground transition-colors py-1" href="#">With Icons</a>
+<a class="hover:text-foreground transition-colors py-1" href="#">Submenus</a>
+<a class="hover:text-foreground transition-colors py-1" href="#">Checkboxes</a>
+<a class="hover:text-foreground transition-colors py-1" href="#">Disabled State</a>
+</div>
+<a class="hover:text-primary transition-colors hover:translate-x-1 flex items-center gap-2 group" href="#">
+<span class="w-2 h-2 bg-black dark:bg-white opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    API Reference
+                </a>
+</nav>
+</aside>
+</div>
+<script>
+        // Minimal Javascript for Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+            });
+        }
+    </script>
+
+</body></html>

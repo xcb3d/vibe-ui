@@ -5,7 +5,7 @@ import * as LabelPrimitive from "@radix-ui/react-label";
 import { cn } from "../../lib/utils";
 
 /**
- * Neubrutalism Label - Bold uppercase
+ * Neubrutalism Label - Bold uppercase with strong typography
  */
 const Label = React.forwardRef<
   React.ComponentRef<typeof LabelPrimitive.Root>,
@@ -14,9 +14,9 @@ const Label = React.forwardRef<
   <LabelPrimitive.Root
     ref={ref}
     className={cn(
-      "text-sm font-bold uppercase tracking-wide text-black",
+      "text-xs font-black uppercase tracking-wider",
+      "text-black dark:text-white",
       "peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-      "dark:text-white",
       className,
     )}
     {...props}
