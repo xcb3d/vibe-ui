@@ -5,12 +5,14 @@ import { cn } from "@/lib/utils";
 import { ApiTableProps } from "./api-table-types";
 
 interface ApiTableComponents {
-  Table: React.ComponentType<any>;
-  TableHeader: React.ComponentType<any>;
-  TableBody: React.ComponentType<any>;
-  TableRow: React.ComponentType<any>;
-  TableHead: React.ComponentType<any>;
-  TableCell: React.ComponentType<any>;
+  Table: React.ComponentType<React.HTMLAttributes<HTMLTableElement>>;
+  TableHeader: React.ComponentType<
+    React.HTMLAttributes<HTMLTableSectionElement>
+  >;
+  TableBody: React.ComponentType<React.HTMLAttributes<HTMLTableSectionElement>>;
+  TableRow: React.ComponentType<React.HTMLAttributes<HTMLTableRowElement>>;
+  TableHead: React.ComponentType<React.HTMLAttributes<HTMLTableCellElement>>;
+  TableCell: React.ComponentType<React.HTMLAttributes<HTMLTableCellElement>>;
 }
 
 export interface ApiTableBaseProps extends ApiTableProps, ApiTableComponents {}
