@@ -3,8 +3,6 @@
 import * as React from "react";
 import { Suspense, lazy, useMemo } from "react";
 import { useStyle } from "@/components/style-provider";
-import { calendarPreviews as neubrutalismCalendarPreviews } from "./neubrutalism/stateful-demos";
-import { calendarPreviews as minimalCalendarPreviews } from "./minimal/stateful-demos";
 import {
   themeRegistry,
   DEFAULT_STYLE,
@@ -77,33 +75,6 @@ function createThemedDemo(demoName: keyof StatefulDemosModule) {
       </Suspense>
     );
   };
-}
-
-// Theme-aware calendar example preview component
-export function CalendarExamplePreview({
-  exampleTitle,
-}: {
-  exampleTitle: string;
-}) {
-  const { style } = useStyle();
-
-  if (style === "minimal") {
-    return (
-      <>
-        {minimalCalendarPreviews[exampleTitle] || (
-          <p className="text-muted-foreground">No preview available.</p>
-        )}
-      </>
-    );
-  }
-
-  return (
-    <>
-      {neubrutalismCalendarPreviews[exampleTitle] || (
-        <p className="text-muted-foreground">No preview available.</p>
-      )}
-    </>
-  );
 }
 
 // Theme-aware stateful demo exports (O(1) lookup, lazy loaded)
