@@ -71,12 +71,12 @@ const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
       <div
         ref={ref}
         className={cn(
-          "font-mono text-sm overflow-x-auto rounded-lg relative",
+          "font-mono text-sm rounded-lg relative",
           "bg-slate-950 border border-slate-800 p-6 shadow-sm",
           className,
         )}
       >
-        <pre className="text-slate-400">
+        <pre className="text-slate-400 whitespace-pre-wrap break-words">
           <code>{highlightCodeToElements(code, language, syntaxColors)}</code>
         </pre>
         {showCopyButton && (

@@ -105,9 +105,114 @@ export const componentDocs: Record<string, ComponentDoc> = {
     dependencies: [],
     props: [
       {
-        name: "className",
-        type: "string",
-        description: "Additional CSS classes",
+        name: "Card",
+        type: "React.HTMLAttributes<HTMLDivElement>",
+        description:
+          "The main card container. Accepts className and all div props.",
+      },
+      {
+        name: "CardHeader",
+        type: "React.HTMLAttributes<HTMLDivElement>",
+        description:
+          "Container for title and description. Has default padding.",
+      },
+      {
+        name: "CardTitle",
+        type: "React.HTMLAttributes<HTMLDivElement>",
+        description: "The card title with semibold font styling.",
+      },
+      {
+        name: "CardDescription",
+        type: "React.HTMLAttributes<HTMLDivElement>",
+        description: "Muted text for card description.",
+      },
+      {
+        name: "CardContent",
+        type: "React.HTMLAttributes<HTMLDivElement>",
+        description: "Main content area with horizontal padding.",
+      },
+      {
+        name: "CardFooter",
+        type: "React.HTMLAttributes<HTMLDivElement>",
+        description: "Footer area with flex layout for actions.",
+      },
+    ],
+    examples: [
+      {
+        title: "Basic Card",
+        color: "primary",
+        code: `<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description goes here.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Your content here.</p>
+  </CardContent>
+</Card>`,
+      },
+      {
+        title: "With Footer",
+        color: "accent",
+        code: `<Card>
+  <CardHeader>
+    <CardTitle>Account</CardTitle>
+    <CardDescription>Manage your account settings.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Configure your preferences below.</p>
+  </CardContent>
+  <CardFooter>
+    <Button>Save Changes</Button>
+  </CardFooter>
+</Card>`,
+      },
+      {
+        title: "Login Form",
+        color: "info",
+        code: `<Card className="w-[350px]">
+  <CardHeader>
+    <CardTitle>Login</CardTitle>
+    <CardDescription>Enter your credentials.</CardDescription>
+  </CardHeader>
+  <CardContent className="space-y-4">
+    <Input placeholder="Email" />
+    <Input type="password" placeholder="Password" />
+  </CardContent>
+  <CardFooter>
+    <Button className="w-full">Sign In</Button>
+  </CardFooter>
+</Card>`,
+      },
+      {
+        title: "Notification Card",
+        color: "warning",
+        code: `<Card>
+  <CardHeader className="flex flex-row items-center gap-4">
+    <Avatar>
+      <AvatarFallback>JD</AvatarFallback>
+    </Avatar>
+    <div>
+      <CardTitle className="text-sm">John Doe</CardTitle>
+      <CardDescription>Sent you a message</CardDescription>
+    </div>
+  </CardHeader>
+</Card>`,
+      },
+      {
+        title: "Stats Card",
+        color: "success",
+        code: `<Card>
+  <CardHeader className="pb-2">
+    <CardDescription>Total Revenue</CardDescription>
+    <CardTitle className="text-4xl">$45,231.89</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p className="text-xs text-muted-foreground">
+      +20.1% from last month
+    </p>
+  </CardContent>
+</Card>`,
       },
     ],
   },
@@ -380,6 +485,169 @@ export const componentDocs: Record<string, ComponentDoc> = {
     slug: "table",
     description: "A responsive table component with header, body, and footer.",
     dependencies: [],
+    props: [
+      {
+        name: "Table",
+        type: "React.HTMLAttributes<HTMLTableElement>",
+        description: "The main table container with overflow handling.",
+      },
+      {
+        name: "TableHeader",
+        type: "React.HTMLAttributes<HTMLTableSectionElement>",
+        description: "Container for table header rows (thead).",
+      },
+      {
+        name: "TableBody",
+        type: "React.HTMLAttributes<HTMLTableSectionElement>",
+        description: "Container for table body rows (tbody).",
+      },
+      {
+        name: "TableFooter",
+        type: "React.HTMLAttributes<HTMLTableSectionElement>",
+        description: "Container for table footer rows (tfoot).",
+      },
+      {
+        name: "TableRow",
+        type: "React.HTMLAttributes<HTMLTableRowElement>",
+        description: "A table row with hover and selected states.",
+      },
+      {
+        name: "TableHead",
+        type: "React.ThHTMLAttributes<HTMLTableCellElement>",
+        description: "Table header cell (th) with medium font weight.",
+      },
+      {
+        name: "TableCell",
+        type: "React.TdHTMLAttributes<HTMLTableCellElement>",
+        description: "Table data cell (td) with padding.",
+      },
+      {
+        name: "TableCaption",
+        type: "React.HTMLAttributes<HTMLTableCaptionElement>",
+        description: "Caption displayed below the table.",
+      },
+    ],
+    examples: [
+      {
+        title: "Basic Table",
+        color: "primary",
+        code: `<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>John Doe</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Developer</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`,
+      },
+      {
+        title: "With Footer",
+        color: "accent",
+        code: `<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Item</TableHead>
+      <TableHead className="text-right">Price</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Product A</TableCell>
+      <TableCell className="text-right">$99.00</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Product B</TableCell>
+      <TableCell className="text-right">$149.00</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableFooter>
+    <TableRow>
+      <TableCell>Total</TableCell>
+      <TableCell className="text-right">$248.00</TableCell>
+    </TableRow>
+  </TableFooter>
+</Table>`,
+      },
+      {
+        title: "With Caption",
+        color: "info",
+        code: `<Table>
+  <TableCaption>A list of recent invoices.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Invoice</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead className="text-right">Amount</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>INV001</TableCell>
+      <TableCell>Paid</TableCell>
+      <TableCell className="text-right">$250.00</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`,
+      },
+      {
+        title: "Striped Rows",
+        color: "warning",
+        code: `<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Email</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow className="bg-muted/50">
+      <TableCell>Alice</TableCell>
+      <TableCell>alice@email.com</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob</TableCell>
+      <TableCell>bob@email.com</TableCell>
+    </TableRow>
+    <TableRow className="bg-muted/50">
+      <TableCell>Charlie</TableCell>
+      <TableCell>charlie@email.com</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`,
+      },
+      {
+        title: "With Actions",
+        color: "success",
+        code: `<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead className="text-right">Actions</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell className="font-medium">Project Alpha</TableCell>
+      <TableCell>
+        <Badge variant="secondary">In Progress</Badge>
+      </TableCell>
+      <TableCell className="text-right">
+        <Button variant="ghost" size="sm">Edit</Button>
+      </TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`,
+      },
+    ],
   },
   progress: {
     name: "Progress",
@@ -461,6 +729,111 @@ export const componentDocs: Record<string, ComponentDoc> = {
     slug: "calendar",
     description: "A date picker calendar component.",
     dependencies: ["react-day-picker", "date-fns", "lucide-react"],
+    props: [
+      {
+        name: "mode",
+        type: '"single" | "multiple" | "range"',
+        default: '"single"',
+        description: "The selection mode of the calendar.",
+      },
+      {
+        name: "selected",
+        type: "Date | Date[] | DateRange | undefined",
+        description: "The currently selected date(s).",
+      },
+      {
+        name: "onSelect",
+        type: "(date: Date | undefined) => void",
+        description: "Callback when a date is selected.",
+      },
+      {
+        name: "month",
+        type: "Date",
+        description: "The month to display in the calendar.",
+      },
+      {
+        name: "onMonthChange",
+        type: "(month: Date) => void",
+        description: "Callback when the displayed month changes.",
+      },
+      {
+        name: "disabled",
+        type: "Matcher | Matcher[]",
+        description: "Dates that should be disabled.",
+      },
+      {
+        name: "numberOfMonths",
+        type: "number",
+        default: "1",
+        description: "Number of months to display.",
+      },
+      {
+        name: "showOutsideDays",
+        type: "boolean",
+        default: "true",
+        description: "Show days from previous/next months.",
+      },
+    ],
+    examples: [
+      {
+        title: "Single Date",
+        color: "primary",
+        code: `const [date, setDate] = useState<Date | undefined>(new Date());
+
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  className="rounded-md border"
+/>`,
+      },
+      {
+        title: "Date Range",
+        color: "accent",
+        code: `const [range, setRange] = useState<DateRange | undefined>();
+
+<Calendar
+  mode="range"
+  selected={range}
+  onSelect={setRange}
+  numberOfMonths={2}
+  className="rounded-md border"
+/>`,
+      },
+      {
+        title: "Multiple Dates",
+        color: "info",
+        code: `const [dates, setDates] = useState<Date[] | undefined>([]);
+
+<Calendar
+  mode="multiple"
+  selected={dates}
+  onSelect={setDates}
+  className="rounded-md border"
+/>`,
+      },
+      {
+        title: "Disabled Dates",
+        color: "warning",
+        code: `<Calendar
+  mode="single"
+  disabled={[
+    { before: new Date() }, // disable past dates
+    { dayOfWeek: [0, 6] },  // disable weekends
+  ]}
+  className="rounded-md border"
+/>`,
+      },
+      {
+        title: "Two Months",
+        color: "success",
+        code: `<Calendar
+  mode="single"
+  numberOfMonths={2}
+  className="rounded-md border"
+/>`,
+      },
+    ],
   },
   "date-picker": {
     name: "Date Picker",

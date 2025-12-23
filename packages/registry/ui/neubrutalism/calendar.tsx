@@ -129,6 +129,7 @@ function Calendar({
   showOutsideDays = true,
   month,
   onMonthChange,
+  numberOfMonths,
   ...props
 }: CalendarProps) {
   // Internal month state for uncontrolled mode
@@ -150,28 +151,41 @@ function Calendar({
     [onMonthChange],
   );
 
+  // For multiple months, hide individual nav buttons and use container-level navigation
+  const isMultiMonth = numberOfMonths && numberOfMonths > 1;
+
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
       month={displayMonth}
       onMonthChange={handleMonthChange}
+      numberOfMonths={numberOfMonths}
       className={cn("p-3", className)}
       classNames={{
-        [UI.Months]:
-          "relative flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
-        [UI.Month]: "space-y-4",
+        [UI.Months]: cn(
+          "relative flex",
+          isMultiMonth
+            ? "flex-col sm:flex-row gap-4 sm:gap-0"
+            : "flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
+        ),
+        [UI.Month]: cn("space-y-4", isMultiMonth && "sm:px-4"),
         [UI.MonthCaption]:
           "flex justify-center pt-1 relative items-center h-7 px-10 z-20",
         [UI.CaptionLabel]: "text-sm font-bold uppercase hidden",
-        [UI.Nav]:
-          "absolute inset-x-0 top-0 flex justify-between items-center h-7 z-10 pointer-events-none",
+        [UI.Nav]: cn(
+          isMultiMonth
+            ? "absolute inset-x-0 top-0 flex justify-between items-center h-7 z-10 px-1"
+            : "absolute inset-x-0 top-0 flex justify-between items-center h-7 z-10 pointer-events-none",
+        ),
         [UI.PreviousMonthButton]: cn(
           getButtonClasses("outline"),
-          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 pointer-events-auto",
+          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
+          !isMultiMonth && "pointer-events-auto",
         ),
         [UI.NextMonthButton]: cn(
           getButtonClasses("outline"),
-          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 pointer-events-auto",
+          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
+          !isMultiMonth && "pointer-events-auto",
         ),
         [UI.MonthGrid]: "w-full border-collapse space-y-1",
         [UI.Weekdays]: "flex",
@@ -186,7 +200,7 @@ function Calendar({
         [SelectionState.selected]:
           "bg-primary text-primary-foreground border-2 border-black dark:border-white hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
         [SelectionState.range_middle]:
-          "aria-selected:bg-yellow-100 dark:aria-selected:bg-yellow-900/30 aria-selected:text-foreground",
+          "aria-selected:bg-yellow-100 dark:aria-selected:bg-yellow-900/30 aria-selected:text-foreground rounded-none",
         [DayFlag.today]:
           "bg-yellow-200 dark:bg-yellow-900/50 text-foreground font-bold",
         [DayFlag.outside]:

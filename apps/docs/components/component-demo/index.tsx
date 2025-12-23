@@ -12,7 +12,11 @@ import {
 } from "./component-demo-minimal";
 
 // Re-export getExamplePreview from demos for backward compatibility
-export { getExamplePreview, ExamplePreview } from "../demos";
+export {
+  getExamplePreview,
+  ExamplePreview,
+  CalendarExamplePreview,
+} from "../demos";
 
 // Theme-aware component demos registry
 export function ComponentDemo({ slug }: { slug: string }) {

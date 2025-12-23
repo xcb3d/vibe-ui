@@ -4,6 +4,8 @@ import * as React from "react";
 import { useStyle } from "@/components/style-provider";
 import { getExamplePreview as getNeubrutalismPreview } from "./neubrutalism/example-previews";
 import { getExamplePreview as getMinimalPreview } from "./minimal/example-previews";
+import { calendarPreviews as neubrutalismCalendarPreviews } from "./neubrutalism/stateful-demos";
+import { calendarPreviews as minimalCalendarPreviews } from "./minimal/stateful-demos";
 
 // Theme-aware example preview getter
 export function getExamplePreview(
@@ -108,4 +110,31 @@ export function FormDemo() {
 
   const { FormDemo: Demo } = require("./neubrutalism/stateful-demos");
   return <Demo />;
+}
+
+// Theme-aware calendar example preview component
+export function CalendarExamplePreview({
+  exampleTitle,
+}: {
+  exampleTitle: string;
+}) {
+  const { style } = useStyle();
+
+  if (style === "minimal") {
+    return (
+      <>
+        {minimalCalendarPreviews[exampleTitle] || (
+          <p className="text-muted-foreground">No preview available.</p>
+        )}
+      </>
+    );
+  }
+
+  return (
+    <>
+      {neubrutalismCalendarPreviews[exampleTitle] || (
+        <p className="text-muted-foreground">No preview available.</p>
+      )}
+    </>
+  );
 }

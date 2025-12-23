@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { ExampleSection, ExamplesContainer } from "./example-section";
-import { ExamplePreview } from "./component-demo";
+import { ExamplePreview, CalendarExamplePreview } from "./component-demo";
 import type { ComponentExample } from "@/lib/component-docs";
 
 interface ExamplesRendererProps {
@@ -19,7 +19,13 @@ export function ExamplesRenderer({ slug, examples }: ExamplesRendererProps) {
           id={example.title.toLowerCase().replace(/\s+/g, "-")}
           title={example.title}
           color={example.color}
-          preview={<ExamplePreview slug={slug} exampleTitle={example.title} />}
+          preview={
+            slug === "calendar" ? (
+              <CalendarExamplePreview exampleTitle={example.title} />
+            ) : (
+              <ExamplePreview slug={slug} exampleTitle={example.title} />
+            )
+          }
           code={example.code}
           showPattern={example.showPattern}
         />
