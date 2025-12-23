@@ -1,8 +1,8 @@
 # Vibe UI - Development Guide
 
-## Tổng quan
+## Overview
 
-Vibe UI là một component library giống shadcn/ui nhưng hỗ trợ **nhiều visual styles** (hiện tại 5, target 20+).
+Vibe UI is a component library like shadcn/ui but supports **multiple visual styles** (currently 2, target 20+).
 
 **Tech Stack:**
 
@@ -12,27 +12,46 @@ Vibe UI là một component library giống shadcn/ui nhưng hỗ trợ **nhiề
 - Turborepo monorepo
 - pnpm workspaces
 
-## Cấu trúc Project
+## Project Structure
 
 ```
 vibe-ui/
 ├── apps/
-│   └── docs/                   # Next.js 15 documentation site
+│   └── docs/                           # Next.js 15 documentation site
 │       ├── app/
-│       │   ├── page.tsx        # Homepage với style switcher
-│       │   ├── docs/           # Documentation pages
-│       │   └── components/     # Component documentation
+│       │   ├── page.tsx                # Homepage with style switcher
+│       │   ├── docs/                   # Documentation pages
+│       │   └── components/             # Component documentation
 │       ├── components/
-│       │   ├── ui/             # UI components (18 components)
-│       │   ├── style-provider.tsx
-│       │   ├── style-switcher.tsx
-│       │   └── docs-sidebar.tsx
+│       │   ├── demos/                  # Demo & Preview system
+│       │   │   ├── create-stateless-previews.tsx   # Factory: stateless JSX
+│       │   │   ├── create-stateful-previews.tsx    # Factory: stateful JSX
+│       │   │   ├── create-stateful-demos.tsx       # Factory: demo components
+│       │   │   ├── theme-registry.ts               # Theme component registry
+│       │   │   ├── index.tsx                       # Themed demo exports
+│       │   │   ├── minimal/
+│       │   │   │   ├── stateless-previews.tsx      # Minimal stateless
+│       │   │   │   ├── stateful-previews.tsx       # Minimal stateful
+│       │   │   │   ├── example-previews.tsx        # Merge file
+│       │   │   │   └── stateful-demos.tsx          # Demo components
+│       │   │   └── neubrutalism/
+│       │   │       ├── stateless-previews.tsx      # Neubrutalism stateless
+│       │   │       ├── stateful-previews.tsx       # Neubrutalism stateful
+│       │   │       ├── example-previews.tsx        # Merge file
+│       │   │       └── stateful-demos.tsx          # Demo components
+│       │   ├── style-provider.tsx      # Style context & hook
+│       │   ├── style-switcher/         # Style switcher component
+│       │   ├── theme-switcher/         # Dark/light mode switcher
+│       │   ├── docs-sidebar/           # Sidebar navigation
+│       │   ├── site-header/            # Header component
+│       │   ├── preview-code-tabs/      # Code preview tabs
+│       │   └── ...
 │       └── lib/
 │           ├── utils.ts
-│           └── component-docs.ts
+│           └── component-docs.ts       # Component documentation data
 │
 ├── packages/
-│   ├── cli/                    # CLI tool (@vibe-ui/cli)
+│   ├── cli/                            # CLI tool (@vibe-ui/cli)
 │   │   ├── src/
 │   │   │   ├── index.ts
 │   │   │   ├── commands/
@@ -41,18 +60,24 @@ vibe-ui/
 │   │   │   │   └── list.ts
 │   │   │   └── utils/
 │   │   │       └── registry.ts
-│   │   └── dist/               # Built CLI
+│   │   └── dist/                       # Built CLI
 │   │
-│   ├── registry/               # Component registry
-│   │   ├── registry.json       # Component metadata
-│   │   ├── ui/                 # Component source files
-│   │   ├── styles/             # Style CSS files
+│   ├── registry/                       # Component registry
+│   │   ├── registry.json               # Component metadata
+│   │   ├── ui/                         # Component source files
+│   │   │   ├── minimal/                # Minimal theme components
+│   │   │   └── neubrutalism/           # Neubrutalism theme components
+│   │   ├── styles/                     # Style CSS files
 │   │   │   ├── minimal/
 │   │   │   └── neubrutalism/
 │   │   └── lib/
 │   │
-│   ├── ui/                     # NPM package (future)
-│   └── config/                 # Shared configs
+│   ├── ui/                             # NPM package (future)
+│   └── config/                         # Shared configs
+│
+└── docs/                               # Development documentation
+    ├── DEVELOPMENT.md                  # This file
+    └── demos-and-previews.md           # Demo system documentation
 ```
 
 ## Commands
@@ -73,32 +98,39 @@ pnpm build
 
 ## Style System
 
-### 2 Styles hiện có
+### Current Styles
 
-| Style          | Mô tả                                |
+| Style          | Description                          |
 | -------------- | ------------------------------------ |
 | `minimal`      | Clean, Swiss-style, white background |
 | `neubrutalism` | Vivid colors and hard shadows        |
 
-### Cách hoạt động
+### How It Works
 
-1. CSS variables được định nghĩa trong `globals.css` với selector `[data-style="..."]`
-2. `StyleProvider` context quản lý state và set `data-style` attribute trên `<html>`
-3. Components sử dụng CSS variables (`bg-primary`, `text-foreground`, etc.)
+1. Each style has its own component folder in `packages/registry/ui/{style}/`
+2. Components use **direct Tailwind classes** (e.g., `bg-zinc-900`, `text-white`)
+3. Dark mode uses Tailwind's `dark:` variant (e.g., `dark:bg-gray-800`)
+4. `StyleProvider` context manages which style folder to use
+5. No shared CSS variables - each style defines its own colors inline
 
-### Thêm style mới
+### Adding a New Style
 
-1. Thêm CSS trong `apps/docs/app/globals.css`:
+1. Create component folder `packages/registry/ui/new-style/`
 
-```css
-[data-style="new-style"] {
-  --color-background: hsl(...);
-  --color-foreground: hsl(...);
-  /* ... other variables */
-}
+2. Create components with style-specific Tailwind classes:
+
+```tsx
+// packages/registry/ui/new-style/button.tsx
+export const buttonStyles = {
+  base: "inline-flex items-center justify-center ...",
+  variants: {
+    default: "bg-your-color text-white hover:bg-your-hover dark:bg-dark-color",
+    // ... other variants
+  },
+};
 ```
 
-2. Update `apps/docs/components/style-provider.tsx`:
+3. Update `apps/docs/components/style-provider.tsx`:
 
 ```typescript
 const styles = [
@@ -107,42 +139,67 @@ const styles = [
 ];
 ```
 
-3. Copy CSS to `packages/registry/styles/new-style/globals.css`
+4. Update `packages/registry/registry.json` to add new style
 
-4. Update `packages/registry/registry.json` để thêm style mới
+5. Create demo files in `apps/docs/components/demos/new-style/`
+
+6. (Optional) Create CSS file `packages/registry/styles/new-style/globals.css` for any shared variables
 
 ## Components
 
-### 18 Components hiện có
+### Current Components (47)
 
-**Form:** button, input, label, textarea, checkbox, switch, select
-**Display:** card, badge, avatar, separator, skeleton
-**Feedback:** alert, tooltip, sonner
-**Overlay:** dialog, dropdown-menu
-**Navigation:** tabs
+**Form:** button, input, label, textarea, checkbox, switch, select, form, radio-group
+**Display:** card, badge, avatar, separator, skeleton, calendar, table
+**Feedback:** alert, tooltip, sonner, progress
+**Overlay:** dialog, dropdown-menu, popover, sheet, alert-dialog, context-menu
+**Navigation:** tabs, accordion, collapsible, navigation-menu, breadcrumb, pagination, menubar
+**Data Entry:** slider, toggle, toggle-group, command, date-picker
+**Layout:** aspect-ratio, scroll-area, resizable
+**Typography:** hover-card
 
-### Thêm component mới
+### Adding a New Component
 
-1. Tạo component trong `apps/docs/components/ui/new-component.tsx`
+1. Create component in `packages/registry/ui/{theme}/new-component.tsx`
 
-2. Copy sang `packages/registry/ui/new-component.tsx`
-
-3. Update `packages/registry/registry.json`:
+2. Update `packages/registry/registry.json`:
 
 ```json
 {
   "name": "new-component",
   "type": "registry:ui",
   "description": "...",
-  "files": [{ "path": "ui/new-component.tsx", "type": "registry:ui" }],
+  "files": [{ "path": "ui/{theme}/new-component.tsx", "type": "registry:ui" }],
   "dependencies": ["@radix-ui/react-xxx"],
   "registryDependencies": []
 }
 ```
 
-4. Thêm docs trong `apps/docs/lib/component-docs.ts`
+3. Add docs in `apps/docs/lib/component-docs.ts`
 
-5. Update sidebar trong `apps/docs/components/docs-sidebar.tsx`
+4. Add preview (see [Demos & Previews](./demos-and-previews.md))
+
+## Demo & Preview System
+
+See [demos-and-previews.md](./demos-and-previews.md) for detailed documentation.
+
+### Quick Reference
+
+| File                             | Purpose                              |
+| -------------------------------- | ------------------------------------ |
+| `create-stateless-previews.tsx`  | Factory for components WITHOUT hooks |
+| `create-stateful-previews.tsx`   | Factory for components WITH hooks    |
+| `create-stateful-demos.tsx`      | Factory for full demo components     |
+| `{theme}/stateless-previews.tsx` | Theme-specific stateless previews    |
+| `{theme}/stateful-previews.tsx`  | Theme-specific stateful previews     |
+| `{theme}/example-previews.tsx`   | Merge stateless + stateful           |
+| `{theme}/stateful-demos.tsx`     | Theme-specific demo components       |
+
+### Adding a Preview
+
+**Stateless (no hooks):** Edit `create-stateless-previews.tsx` + `{theme}/stateless-previews.tsx`
+
+**Stateful (uses hooks):** Edit `create-stateful-previews.tsx` + `{theme}/stateful-previews.tsx`
 
 ## CLI
 
@@ -160,11 +217,11 @@ node dist/index.mjs add button card
 
 ### Commands
 
-| Command                    | Mô tả                       |
-| -------------------------- | --------------------------- |
-| `vibe-ui init`             | Khởi tạo project            |
-| `vibe-ui add <components>` | Thêm components             |
-| `vibe-ui list`             | Liệt kê components & styles |
+| Command                    | Description              |
+| -------------------------- | ------------------------ |
+| `vibe-ui init`             | Initialize project       |
+| `vibe-ui add <components>` | Add components           |
+| `vibe-ui list`             | List components & styles |
 
 ### Environment Variables
 
@@ -178,40 +235,40 @@ VIBE_UI_REGISTRY_URL="https://registry.vibe-ui.dev"
 
 ## Development Workflow
 
-### Thêm feature mới
+### Adding a New Feature
 
-1. **Component mới:**
-   - Tạo trong `apps/docs/components/ui/`
-   - Test trên docs site
-   - Copy sang `packages/registry/ui/`
+1. **New Component:**
+   - Create in `packages/registry/ui/{theme}/`
    - Update registry.json & component-docs.ts
+   - Add preview in demos system
 
-2. **Style mới:**
-   - Thêm CSS variables trong globals.css
+2. **New Style:**
+   - Add CSS variables in globals.css
    - Update StyleProvider
-   - Copy CSS sang registry
+   - Copy CSS to registry
+   - Create theme folder in `packages/registry/ui/`
 
-3. **CLI feature:**
-   - Edit files trong `packages/cli/src/`
-   - Build và test local
+3. **CLI Feature:**
+   - Edit files in `packages/cli/src/`
+   - Build and test locally
 
-### File quan trọng
+### Important Files
 
-| File                                      | Mục đích                        |
-| ----------------------------------------- | ------------------------------- |
-| `apps/docs/app/globals.css`               | CSS variables cho tất cả styles |
-| `apps/docs/components/style-provider.tsx` | Style context & hook            |
-| `packages/registry/registry.json`         | Component metadata              |
-| `packages/cli/src/utils/registry.ts`      | Registry resolver               |
+| File                                      | Purpose                      |
+| ----------------------------------------- | ---------------------------- |
+| `apps/docs/app/globals.css`               | CSS variables for all styles |
+| `apps/docs/components/style-provider.tsx` | Style context & hook         |
+| `packages/registry/registry.json`         | Component metadata           |
+| `packages/cli/src/utils/registry.ts`      | Registry resolver            |
+| `apps/docs/components/demos/`             | Demo & preview system        |
 
 ## Roadmap
 
-- [ ] Thêm 15+ styles nữa (target 20+)
-- [ ] Thêm components: Accordion, Sheet, Popover, Command, Calendar...
-- [ ] Publish @vibe-ui/cli lên npm
-- [ ] Deploy docs lên Vercel
-- [ ] Thêm dark mode cho mỗi style
-- [ ] Component playground trên docs
+- [ ] Add 15+ more styles (target 20+)
+- [ ] Publish @vibe-ui/cli to npm
+- [ ] Deploy docs to Vercel
+- [ ] Add dark mode for each style
+- [ ] Component playground on docs
 
 ## Links
 
