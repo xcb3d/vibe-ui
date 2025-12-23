@@ -22,16 +22,17 @@ import {
   FormLabel,
   FormMessage,
 } from "@vibe-ui/registry/ui/neubrutalism/form";
-import { createStatefulDemos } from "../create-stateful-demos";
+import { createStatefulPreviews } from "../create-stateful-previews";
 
-// Create stateful demo components with neubrutalism theme
+// Create stateful previews with neubrutalism theme components
 export const {
-  CollapsibleDemo,
-  CalendarDemo,
-  DatePickerDemo,
-  SonnerDemo,
-  FormDemo,
-} = createStatefulDemos({
+  calendarPreviews,
+  collapsiblePreviews,
+  datepickerPreviews,
+  formPreviews,
+  sonnerPreviews,
+  statefulPreviews,
+} = createStatefulPreviews({
   Button,
   Input,
   Popover,

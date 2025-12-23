@@ -4,6 +4,7 @@ import * as React from "react";
 import { Settings, Mail, ArrowRight, Loader2 } from "lucide-react";
 
 // Type for themed components injected by each theme
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface ThemeComponents {
   Button: React.ComponentType<{
     variant?:
@@ -107,7 +108,7 @@ export interface ThemeComponents {
  * Factory function that creates example previews with injected themed components.
  * This enables DRY code - JSX is defined once, components are injected per theme.
  */
-export function createExamplePreviews(C: ThemeComponents) {
+export function createStatelessPreviews(C: ThemeComponents) {
   // Example previews for accordion component
   const accordionPreviews: Record<string, React.ReactNode> = {
     "Single Item": (

@@ -7,9 +7,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
-// Type for themed components injected by each theme
+// Type for themed components needed for stateful previews
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface StatefulDemoComponents {
+export interface StatefulPreviewComponents {
   Button: React.ComponentType<{
     variant?:
       | "default"
@@ -71,12 +71,12 @@ const formSchema = z.object({
 });
 
 /**
- * Factory function that creates stateful demo components.
- * Demo components are full-page demos, not preview snippets.
+ * Factory function that creates stateful previews with injected themed components.
+ * Stateful previews use React hooks (useState, useForm, etc.)
  */
-export function createStatefulDemos(C: StatefulDemoComponents) {
-  // Collapsible demo
-  function CollapsibleDemo() {
+export function createStatefulPreviews(C: StatefulPreviewComponents) {
+  // --- Collapsible Preview ---
+  function CollapsiblePreview() {
     const [isOpen, setIsOpen] = React.useState(false);
     return (
       <C.Collapsible
@@ -110,8 +110,8 @@ export function createStatefulDemos(C: StatefulDemoComponents) {
     );
   }
 
-  // Calendar demo
-  function CalendarDemo() {
+  // --- Calendar Previews ---
+  function CalendarSinglePreview() {
     const [date, setDate] = React.useState<Date | undefined>(new Date());
     const [month, setMonth] = React.useState<Date>(new Date());
     return (
@@ -128,8 +128,82 @@ export function createStatefulDemos(C: StatefulDemoComponents) {
     );
   }
 
-  // Date picker demo
-  function DatePickerDemo() {
+  function CalendarRangePreview() {
+    const [range, setRange] = React.useState<{
+      from: Date | undefined;
+      to?: Date | undefined;
+    }>();
+    const [month, setMonth] = React.useState<Date>(new Date());
+    return (
+      <div className="flex justify-center w-full">
+        <C.Calendar
+          mode="range"
+          selected={range}
+          onSelect={setRange}
+          month={month}
+          onMonthChange={setMonth}
+          numberOfMonths={2}
+          className="rounded-md border"
+        />
+      </div>
+    );
+  }
+
+  function CalendarMultiplePreview() {
+    const [dates, setDates] = React.useState<Date[] | undefined>([new Date()]);
+    const [month, setMonth] = React.useState<Date>(new Date());
+    return (
+      <div className="flex justify-center w-full">
+        <C.Calendar
+          mode="multiple"
+          selected={dates}
+          onSelect={setDates}
+          month={month}
+          onMonthChange={setMonth}
+          className="rounded-md border"
+        />
+      </div>
+    );
+  }
+
+  function CalendarDisabledPreview() {
+    const [date, setDate] = React.useState<Date | undefined>();
+    const [month, setMonth] = React.useState<Date>(new Date());
+    return (
+      <div className="flex justify-center w-full">
+        <C.Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          month={month}
+          onMonthChange={setMonth}
+          disabled={[{ before: new Date() }, { dayOfWeek: [0, 6] }]}
+          className="rounded-md border"
+        />
+      </div>
+    );
+  }
+
+  function CalendarTwoMonthsPreview() {
+    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [month, setMonth] = React.useState<Date>(new Date());
+    return (
+      <div className="flex justify-center w-full">
+        <C.Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          month={month}
+          onMonthChange={setMonth}
+          numberOfMonths={2}
+          className="rounded-md border"
+        />
+      </div>
+    );
+  }
+
+  // --- DatePicker Preview ---
+  function DatePickerPreview() {
     const [date, setDate] = React.useState<Date>();
     return (
       <C.Popover>
@@ -149,8 +223,8 @@ export function createStatefulDemos(C: StatefulDemoComponents) {
     );
   }
 
-  // Sonner/toast demo
-  function SonnerDemo() {
+  // --- Sonner Preview ---
+  function SonnerPreview() {
     return (
       <div className="flex flex-wrap gap-2">
         <C.Button
@@ -195,8 +269,8 @@ export function createStatefulDemos(C: StatefulDemoComponents) {
     );
   }
 
-  // Form demo
-  function FormDemo() {
+  // --- Form Preview ---
+  function FormPreview() {
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
@@ -255,11 +329,46 @@ export function createStatefulDemos(C: StatefulDemoComponents) {
     );
   }
 
+  // --- Preview Registries ---
+  const calendarPreviews: Record<string, React.ReactNode> = {
+    "Single Date": <CalendarSinglePreview />,
+    "Date Range": <CalendarRangePreview />,
+    "Multiple Dates": <CalendarMultiplePreview />,
+    "Disabled Dates": <CalendarDisabledPreview />,
+    "Two Months": <CalendarTwoMonthsPreview />,
+  };
+
+  const collapsiblePreviews: Record<string, React.ReactNode> = {
+    "Basic Toggle": <CollapsiblePreview />,
+  };
+
+  const datepickerPreviews: Record<string, React.ReactNode> = {
+    "Date Picker": <DatePickerPreview />,
+  };
+
+  const formPreviews: Record<string, React.ReactNode> = {
+    "Basic Form": <FormPreview />,
+  };
+
+  const sonnerPreviews: Record<string, React.ReactNode> = {
+    Toasts: <SonnerPreview />,
+  };
+
+  // Combined stateful previews
+  const statefulPreviews: Record<string, Record<string, React.ReactNode>> = {
+    calendar: calendarPreviews,
+    collapsible: collapsiblePreviews,
+    datepicker: datepickerPreviews,
+    form: formPreviews,
+    sonner: sonnerPreviews,
+  };
+
   return {
-    CollapsibleDemo,
-    CalendarDemo,
-    DatePickerDemo,
-    SonnerDemo,
-    FormDemo,
+    calendarPreviews,
+    collapsiblePreviews,
+    datepickerPreviews,
+    formPreviews,
+    sonnerPreviews,
+    statefulPreviews,
   };
 }

@@ -22,16 +22,17 @@ import {
   FormLabel,
   FormMessage,
 } from "@vibe-ui/registry/ui/minimal/form";
-import { createStatefulDemos } from "../create-stateful-demos";
+import { createStatefulPreviews } from "../create-stateful-previews";
 
-// Create stateful demo components with minimal theme
+// Create stateful previews with minimal theme components
 export const {
-  CollapsibleDemo,
-  CalendarDemo,
-  DatePickerDemo,
-  SonnerDemo,
-  FormDemo,
-} = createStatefulDemos({
+  calendarPreviews,
+  collapsiblePreviews,
+  datepickerPreviews,
+  formPreviews,
+  sonnerPreviews,
+  statefulPreviews,
+} = createStatefulPreviews({
   Button,
   Input,
   Popover,
