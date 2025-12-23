@@ -2,8 +2,15 @@
 
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import {
+  type StyleName,
+  getAllStyles,
+  DEFAULT_STYLE,
+  isValidStyle,
+} from "@/components/demos/theme-registry";
 
-export type StyleName = "minimal" | "neubrutalism";
+// Re-export StyleName for backward compatibility
+export type { StyleName };
 
 interface StyleContextType {
   style: StyleName;
@@ -11,14 +18,8 @@ interface StyleContextType {
   styles: { name: StyleName; label: string; description: string }[];
 }
 
-const styles: StyleContextType["styles"] = [
-  { name: "minimal", label: "Minimal", description: "Clean and simple" },
-  {
-    name: "neubrutalism",
-    label: "Neubrutalism",
-    description: "Vivid colors and hard shadows",
-  },
-];
+// Derived from theme registry (single source of truth)
+const styles = getAllStyles();
 
 const StyleContext = React.createContext<StyleContextType | undefined>(
   undefined,
@@ -40,24 +41,22 @@ function loadThemeCSS(theme: StyleName) {
 }
 
 export function StyleProvider({ children }: { children: React.ReactNode }) {
-  const [style, setStyleState] = React.useState<StyleName>("neubrutalism");
+  const [style, setStyleState] = React.useState<StyleName>(DEFAULT_STYLE);
 
   const setStyle = React.useCallback((newStyle: StyleName) => {
     setStyleState(newStyle);
-    // Load theme CSS dynamically
     loadThemeCSS(newStyle);
-    // Persist to localStorage
     localStorage.setItem("vibe-ui-style", newStyle);
   }, []);
 
   // Load saved style on mount
   React.useEffect(() => {
-    const saved = localStorage.getItem("vibe-ui-style") as StyleName | null;
-    if (saved && styles.some((s) => s.name === saved)) {
+    const saved = localStorage.getItem("vibe-ui-style");
+    if (saved && isValidStyle(saved)) {
       setStyleState(saved);
       loadThemeCSS(saved);
     } else {
-      loadThemeCSS("neubrutalism");
+      loadThemeCSS(DEFAULT_STYLE);
     }
   }, []);
 
