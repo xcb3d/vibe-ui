@@ -55,7 +55,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-sm font-bold uppercase transition-colors border-2 border-black dark:border-white bg-background hover:bg-yellow-100 dark:hover:bg-yellow-900/30 focus:bg-yellow-100 dark:focus:bg-yellow-900/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-yellow-200 dark:data-[active]:bg-yellow-900/50 data-[state=open]:bg-yellow-200 dark:data-[state=open]:bg-yellow-900/50",
+  "group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-sm font-bold uppercase transition-colors border-2 border-black dark:border-white bg-amber-50 dark:bg-slate-800 hover:bg-yellow-100 dark:hover:bg-yellow-900/30 focus:bg-yellow-100 dark:focus:bg-yellow-900/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-yellow-200 dark:data-[active]:bg-yellow-900/50 data-[state=open]:bg-yellow-200 dark:data-[state=open]:bg-yellow-900/50",
 );
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -102,7 +102,7 @@ const NavigationMenuViewport = React.forwardRef<
   <div className={cn("absolute left-0 top-full flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden border-2 border-black dark:border-white bg-popover text-popover-foreground shadow-[4px_4px_0_black] dark:shadow-[4px_4px_0_white] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
+        "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden border-2 border-black dark:border-white bg-white dark:bg-slate-800 text-stone-900 dark:text-stone-50 shadow-[4px_4px_0_black] dark:shadow-[4px_4px_0_white] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
         className,
       )}
       ref={ref}

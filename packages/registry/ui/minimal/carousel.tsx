@@ -191,7 +191,7 @@ const CarouselPrevious = React.forwardRef<
       ref={ref}
       data-slot="carousel-previous"
       className={cn(
-        "absolute h-8 w-8 rounded-full inline-flex items-center justify-center border border-gray-200 dark:border-gray-700 bg-background shadow-sm hover:bg-gray-100 dark:hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 disabled:pointer-events-none disabled:opacity-50 transition-colors",
+        "absolute h-8 w-8 rounded-full inline-flex items-center justify-center border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-950 shadow-sm hover:bg-gray-100 dark:hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 disabled:pointer-events-none disabled:opacity-50 transition-colors",
         orientation === "horizontal"
           ? "-left-12 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -219,7 +219,7 @@ const CarouselNext = React.forwardRef<
       ref={ref}
       data-slot="carousel-next"
       className={cn(
-        "absolute h-8 w-8 rounded-full inline-flex items-center justify-center border border-gray-200 dark:border-gray-700 bg-background shadow-sm hover:bg-gray-100 dark:hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 disabled:pointer-events-none disabled:opacity-50 transition-colors",
+        "absolute h-8 w-8 rounded-full inline-flex items-center justify-center border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-950 shadow-sm hover:bg-gray-100 dark:hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 disabled:pointer-events-none disabled:opacity-50 transition-colors",
         orientation === "horizontal"
           ? "-right-12 top-1/2 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",

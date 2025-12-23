@@ -18,16 +18,18 @@ export function DocsSidebarMinimal() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed top-16 left-0 z-30 hidden h-[calc(100vh-4rem)] w-64 overflow-y-auto border-r border-border/50 bg-background/50 pb-10 lg:block">
+    <aside className="fixed top-16 left-0 z-30 hidden h-[calc(100vh-4rem)] w-64 overflow-y-auto border-r border-zinc-200/50 dark:border-zinc-800/50 bg-white/50 dark:bg-zinc-950/50 pb-10 lg:block">
       <div className="p-4 pt-6">
         {/* Header */}
         <div className="flex flex-col mb-6 px-2">
-          <h1 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+          <h1 className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">
             Platform
           </h1>
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-neutral-500 rounded-full" />
-            <p className="text-foreground text-sm font-medium">v3.0.0 (Mono)</p>
+            <p className="text-zinc-950 dark:text-zinc-50 text-sm font-medium">
+              v3.0.0 (Mono)
+            </p>
           </div>
         </div>
 
@@ -42,8 +44,8 @@ export function DocsSidebarMinimal() {
                 className={cn(
                   "group flex items-center gap-2.5 px-3 py-2 rounded-md transition-all",
                   pathname === item.href
-                    ? "bg-foreground/5 text-foreground font-semibold"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50",
+                    ? "bg-zinc-950/5 dark:bg-zinc-50/5 text-zinc-950 dark:text-zinc-50 font-semibold"
+                    : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50",
                 )}
               >
                 <Icon className="h-[18px] w-[18px] opacity-70" />
@@ -53,12 +55,12 @@ export function DocsSidebarMinimal() {
           })}
 
           {/* Separator */}
-          <div className="h-px bg-border/50 my-2 mx-3" />
+          <div className="h-px bg-zinc-200/50 dark:bg-zinc-800/50 my-2 mx-3" />
 
           {/* Component categories */}
           {componentCategories.map((category) => (
             <div key={category.title}>
-              <p className="text-[10px] font-bold text-muted-foreground px-3 uppercase tracking-wider mt-4 mb-1">
+              <p className="text-[10px] font-bold text-zinc-500 dark:text-zinc-400 px-3 uppercase tracking-wider mt-4 mb-1">
                 {category.title}
               </p>
               {category.items.map((item) => {
@@ -70,8 +72,8 @@ export function DocsSidebarMinimal() {
                     className={cn(
                       "group flex items-center gap-2.5 px-3 py-2 rounded-md transition-all",
                       pathname === item.href
-                        ? "bg-foreground/5 text-foreground font-semibold"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50",
+                        ? "bg-zinc-950/5 dark:bg-zinc-50/5 text-zinc-950 dark:text-zinc-50 font-semibold"
+                        : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50",
                     )}
                   >
                     <Icon className="h-[18px] w-[18px] opacity-70" />
@@ -91,13 +93,15 @@ export function MobileSidebarMinimal() {
   const pathname = usePathname();
 
   return (
-    <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm lg:hidden">
-      <aside className="fixed inset-y-0 left-0 z-50 w-72 bg-background p-6 overflow-y-auto border-r border-border/50">
+    <div className="fixed inset-0 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-sm lg:hidden">
+      <aside className="fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-zinc-950 p-6 overflow-y-auto border-r border-zinc-200/50 dark:border-zinc-800/50">
         <div className="flex flex-col mb-6">
-          <h1 className="text-lg font-bold text-foreground mb-1">Components</h1>
+          <h1 className="text-lg font-bold text-zinc-950 dark:text-zinc-50 mb-1">
+            Components
+          </h1>
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-neutral-500 rounded-full" />
-            <p className="text-muted-foreground text-xs font-medium">
+            <p className="text-zinc-500 dark:text-zinc-400 text-xs font-medium">
               v3.0.0 (Mono)
             </p>
           </div>
@@ -105,7 +109,7 @@ export function MobileSidebarMinimal() {
         <nav className="space-y-4">
           {componentCategories.map((category) => (
             <div key={category.title}>
-              <p className="text-[10px] font-bold text-muted-foreground px-3 uppercase tracking-wider mb-1">
+              <p className="text-[10px] font-bold text-zinc-500 dark:text-zinc-400 px-3 uppercase tracking-wider mb-1">
                 {category.title}
               </p>
               {category.items.map((item) => {
@@ -117,8 +121,8 @@ export function MobileSidebarMinimal() {
                     className={cn(
                       "flex items-center gap-2.5 px-3 py-2 text-sm rounded-md transition-colors",
                       pathname === item.href
-                        ? "bg-foreground/5 text-foreground font-medium"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50",
+                        ? "bg-zinc-950/5 dark:bg-zinc-50/5 text-zinc-950 dark:text-zinc-50 font-medium"
+                        : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50",
                     )}
                   >
                     <Icon className="h-[18px] w-[18px] opacity-70" />

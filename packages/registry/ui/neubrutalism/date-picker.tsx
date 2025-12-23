@@ -34,7 +34,7 @@ function DatePicker({
           variant="outline"
           className={cn(
             "w-[280px] justify-start text-left font-medium",
-            !selectedDate && "text-muted-foreground",
+            !selectedDate && "text-stone-500 dark:text-stone-400",
             className,
           )}
         >

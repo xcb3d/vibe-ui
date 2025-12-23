@@ -190,22 +190,22 @@ function Calendar({
         [UI.MonthGrid]: "w-full border-collapse space-y-1",
         [UI.Weekdays]: "flex",
         [UI.Weekday]:
-          "text-muted-foreground rounded-md w-9 font-bold text-[0.8rem] uppercase",
+          "text-stone-500 dark:text-stone-400 rounded-md w-9 font-bold text-[0.8rem] uppercase",
         [UI.Week]: "flex w-full mt-2",
         [UI.Day]:
           "h-9 w-9 text-center text-sm p-0 relative focus-within:relative focus-within:z-20",
         [UI.DayButton]:
-          "inline-flex items-center justify-center h-9 w-9 p-0 font-medium text-sm transition-colors hover:bg-yellow-100 dark:hover:bg-yellow-900/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 aria-selected:opacity-100",
+          "inline-flex items-center justify-center h-9 w-9 p-0 font-medium text-sm transition-colors hover:bg-yellow-100 dark:hover:bg-yellow-900/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 dark:focus-visible:ring-yellow-500 disabled:pointer-events-none disabled:opacity-50 aria-selected:opacity-100",
         [SelectionState.range_end]: "day-range-end",
         [SelectionState.selected]:
-          "bg-primary text-primary-foreground border-2 border-black dark:border-white hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
+          "bg-yellow-400 text-amber-950 border-2 border-black dark:border-white hover:bg-yellow-400 hover:text-amber-950 focus:bg-yellow-400 focus:text-amber-950",
         [SelectionState.range_middle]:
-          "aria-selected:bg-yellow-100 dark:aria-selected:bg-yellow-900/30 aria-selected:text-foreground rounded-none",
+          "aria-selected:bg-yellow-100 dark:aria-selected:bg-yellow-900/30 aria-selected:text-stone-900 dark:aria-selected:text-stone-50 rounded-none",
         [DayFlag.today]:
-          "bg-yellow-200 dark:bg-yellow-900/50 text-foreground font-bold",
+          "bg-yellow-200 dark:bg-yellow-900/50 text-stone-900 dark:text-stone-50 font-bold",
         [DayFlag.outside]:
-          "day-outside text-muted-foreground aria-selected:text-muted-foreground",
-        [DayFlag.disabled]: "text-muted-foreground opacity-50",
+          "day-outside text-stone-500 dark:text-stone-400 aria-selected:text-stone-500 dark:aria-selected:text-stone-400",
+        [DayFlag.disabled]: "text-stone-500 dark:text-stone-400 opacity-50",
         [DayFlag.hidden]: "invisible",
         ...classNames,
       }}

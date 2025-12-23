@@ -75,7 +75,7 @@ const Menubar = React.forwardRef<
     ref={ref}
     data-slot="menubar"
     className={cn(
-      "flex h-10 items-center space-x-1 border-2 border-black dark:border-white bg-background p-1 shadow-[3px_3px_0_black] dark:shadow-[3px_3px_0_white]",
+      "flex h-10 items-center space-x-1 border-2 border-black dark:border-white bg-amber-50 dark:bg-slate-800 p-1 shadow-[3px_3px_0_black] dark:shadow-[3px_3px_0_white]",
       className,
     )}
     {...props}
@@ -92,8 +92,8 @@ const MenubarTrigger = React.forwardRef<
     data-slot="menubar-trigger"
     className={cn(
       "flex cursor-default select-none items-center px-3 py-1.5 text-sm font-bold uppercase outline-none",
-      "focus:bg-yellow-100 dark:focus:bg-yellow-900/30 focus:text-foreground",
-      "data-[state=open]:bg-yellow-200 dark:data-[state=open]:bg-yellow-900/50 data-[state=open]:text-foreground",
+      "focus:bg-yellow-100 dark:focus:bg-yellow-900/30 focus:text-stone-900 dark:focus:text-stone-50",
+      "data-[state=open]:bg-yellow-200 dark:data-[state=open]:bg-yellow-900/50 data-[state=open]:text-stone-900 dark:data-[state=open]:text-stone-50",
       className,
     )}
     {...props}
@@ -110,8 +110,8 @@ const MenubarSubTrigger = React.forwardRef<
     data-slot="menubar-sub-trigger"
     className={cn(
       "flex cursor-default select-none items-center gap-2 px-2 py-1.5 text-sm font-bold outline-none",
-      "focus:bg-yellow-100 dark:focus:bg-yellow-900/30 focus:text-foreground",
-      "data-[state=open]:bg-yellow-100 dark:data-[state=open]:bg-yellow-900/30 data-[state=open]:text-foreground",
+      "focus:bg-yellow-100 dark:focus:bg-yellow-900/30 focus:text-stone-900 dark:focus:text-stone-50",
+      "data-[state=open]:bg-yellow-100 dark:data-[state=open]:bg-yellow-900/30 data-[state=open]:text-stone-900 dark:data-[state=open]:text-stone-50",
       "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
       inset && "pl-8",
       className,
@@ -132,7 +132,7 @@ const MenubarSubContent = React.forwardRef<
     ref={ref}
     data-slot="menubar-sub-content"
     className={cn(
-      "z-50 min-w-[8rem] overflow-hidden border-2 border-black dark:border-white bg-popover p-1 text-popover-foreground shadow-[4px_4px_0_black] dark:shadow-[4px_4px_0_white]",
+      "z-50 min-w-[8rem] overflow-hidden border-2 border-black dark:border-white bg-white dark:bg-slate-800 p-1 text-stone-900 dark:text-stone-50 shadow-[4px_4px_0_black] dark:shadow-[4px_4px_0_white]",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -161,7 +161,7 @@ const MenubarContent = React.forwardRef<
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[12rem] overflow-hidden border-2 border-black dark:border-white bg-popover p-1 text-popover-foreground shadow-[4px_4px_0_black] dark:shadow-[4px_4px_0_white]",
+          "z-50 min-w-[12rem] overflow-hidden border-2 border-black dark:border-white bg-white dark:bg-slate-800 p-1 text-stone-900 dark:text-stone-50 shadow-[4px_4px_0_black] dark:shadow-[4px_4px_0_white]",
           "data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
           "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",
@@ -184,7 +184,7 @@ const MenubarItem = React.forwardRef<
     data-slot="menubar-item"
     className={cn(
       "relative flex cursor-default select-none items-center gap-2 px-2 py-1.5 text-sm font-medium outline-none transition-colors",
-      "focus:bg-yellow-100 dark:focus:bg-yellow-900/30 focus:text-foreground",
+      "focus:bg-yellow-100 dark:focus:bg-yellow-900/30 focus:text-stone-900 dark:focus:text-stone-50",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       "[&>svg]:size-4 [&>svg]:shrink-0",
       inset && "pl-8",
@@ -204,7 +204,7 @@ const MenubarCheckboxItem = React.forwardRef<
     data-slot="menubar-checkbox-item"
     className={cn(
       "relative flex cursor-default select-none items-center py-1.5 pl-8 pr-2 text-sm font-medium outline-none transition-colors",
-      "focus:bg-yellow-100 dark:focus:bg-yellow-900/30 focus:text-foreground",
+      "focus:bg-yellow-100 dark:focus:bg-yellow-900/30 focus:text-stone-900 dark:focus:text-stone-50",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className,
     )}
@@ -230,7 +230,7 @@ const MenubarRadioItem = React.forwardRef<
     data-slot="menubar-radio-item"
     className={cn(
       "relative flex cursor-default select-none items-center py-1.5 pl-8 pr-2 text-sm font-medium outline-none transition-colors",
-      "focus:bg-yellow-100 dark:focus:bg-yellow-900/30 focus:text-foreground",
+      "focus:bg-yellow-100 dark:focus:bg-yellow-900/30 focus:text-stone-900 dark:focus:text-stone-50",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className,
     )}
@@ -283,7 +283,7 @@ const MenubarShortcut = ({
   return (
     <span
       className={cn(
-        "ml-auto text-xs tracking-widest text-muted-foreground",
+        "ml-auto text-xs tracking-widest text-stone-500 dark:text-stone-400",
         className,
       )}
       {...props}

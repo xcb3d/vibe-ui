@@ -13,15 +13,15 @@ export const buttonStyles = {
     "inline-flex items-center justify-center gap-2",
     "whitespace-nowrap text-sm font-bold",
     "rounded-md",
-    "ring-offset-background transition-all",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+    "ring-offset-white dark:ring-offset-slate-800 transition-all",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 dark:focus-visible:ring-yellow-500 focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-50",
     "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   ].join(" "),
 
   variants: {
     default: [
-      "border-2 border-black bg-primary text-black",
+      "border-2 border-black bg-yellow-400 text-black",
       "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
       "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]",
       "active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
@@ -31,7 +31,7 @@ export const buttonStyles = {
       "dark:active:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]",
     ].join(" "),
     primary: [
-      "border-2 border-black bg-primary text-black",
+      "border-2 border-black bg-yellow-400 text-black",
       "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
       "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]",
       "active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
@@ -51,7 +51,7 @@ export const buttonStyles = {
       "dark:active:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]",
     ].join(" "),
     destructive: [
-      "border-2 border-black bg-destructive text-destructive-foreground",
+      "border-2 border-black bg-red-500 text-white",
       "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
       "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]",
       "active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
@@ -61,9 +61,9 @@ export const buttonStyles = {
       "dark:active:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]",
     ].join(" "),
     outline: [
-      "border-2 border-black bg-background text-foreground",
+      "border-2 border-black bg-amber-50 dark:bg-slate-800 text-stone-900 dark:text-stone-50",
       "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
-      "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:bg-muted",
+      "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:bg-stone-100 dark:hover:bg-stone-700",
       "active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
       "dark:border-white",
       "dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]",
@@ -71,7 +71,7 @@ export const buttonStyles = {
       "dark:active:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]",
     ].join(" "),
     accent: [
-      "border-2 border-black bg-accent text-white",
+      "border-2 border-black bg-violet-500 text-white",
       "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
       "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]",
       "active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
@@ -81,14 +81,14 @@ export const buttonStyles = {
       "dark:active:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]",
     ].join(" "),
     ghost: [
-      "border-2 border-dashed border-black bg-transparent text-foreground",
+      "border-2 border-dashed border-black bg-transparent text-stone-900 dark:text-stone-50",
       "shadow-none",
-      "hover:bg-muted hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]",
+      "hover:bg-stone-100 dark:hover:bg-stone-700 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]",
       "dark:border-white",
       "dark:hover:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]",
     ].join(" "),
     link: [
-      "border-none bg-transparent text-primary",
+      "border-none bg-transparent text-yellow-400",
       "shadow-none",
       "underline-offset-4 hover:underline",
       "hover:translate-x-0 hover:translate-y-0",
@@ -120,7 +120,16 @@ export function getButtonClasses(
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "default", size = "default", asChild = false, ...props }, ref) => {
+  (
+    {
+      className,
+      variant = "default",
+      size = "default",
+      asChild = false,
+      ...props
+    },
+    ref,
+  ) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp

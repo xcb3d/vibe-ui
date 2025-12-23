@@ -27,7 +27,7 @@ const Command = React.forwardRef<
     ref={ref}
     data-slot="command"
     className={cn(
-      "flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground",
+      "flex h-full w-full flex-col overflow-hidden rounded-md bg-white dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50",
       className,
     )}
     {...props}
@@ -108,7 +108,7 @@ const CommandGroup = React.forwardRef<
     ref={ref}
     data-slot="command-group"
     className={cn(
-      "overflow-hidden p-1 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-gray-500 dark:[&_[cmdk-group-heading]]:text-gray-400",
+      "overflow-hidden p-1 text-zinc-950 dark:text-zinc-50 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-gray-500 dark:[&_[cmdk-group-heading]]:text-gray-400",
       className,
     )}
     {...props}

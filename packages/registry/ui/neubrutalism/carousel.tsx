@@ -191,7 +191,7 @@ const CarouselPrevious = React.forwardRef<
       ref={ref}
       data-slot="carousel-previous"
       className={cn(
-        "absolute h-8 w-8 inline-flex items-center justify-center border-2 border-black dark:border-white bg-background shadow-[2px_2px_0_black] dark:shadow-[2px_2px_0_white] hover:bg-yellow-100 dark:hover:bg-yellow-900/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all",
+        "absolute h-8 w-8 inline-flex items-center justify-center border-2 border-black dark:border-white bg-amber-50 dark:bg-slate-800 shadow-[2px_2px_0_black] dark:shadow-[2px_2px_0_white] hover:bg-yellow-100 dark:hover:bg-yellow-900/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 dark:focus-visible:ring-yellow-500 disabled:pointer-events-none disabled:opacity-50 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all",
         orientation === "horizontal"
           ? "-left-12 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -219,7 +219,7 @@ const CarouselNext = React.forwardRef<
       ref={ref}
       data-slot="carousel-next"
       className={cn(
-        "absolute h-8 w-8 inline-flex items-center justify-center border-2 border-black dark:border-white bg-background shadow-[2px_2px_0_black] dark:shadow-[2px_2px_0_white] hover:bg-yellow-100 dark:hover:bg-yellow-900/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all",
+        "absolute h-8 w-8 inline-flex items-center justify-center border-2 border-black dark:border-white bg-amber-50 dark:bg-slate-800 shadow-[2px_2px_0_black] dark:shadow-[2px_2px_0_white] hover:bg-yellow-100 dark:hover:bg-yellow-900/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 dark:focus-visible:ring-yellow-500 disabled:pointer-events-none disabled:opacity-50 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all",
         orientation === "horizontal"
           ? "-right-12 top-1/2 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",

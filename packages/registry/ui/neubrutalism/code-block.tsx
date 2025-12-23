@@ -14,9 +14,9 @@ import type { CodeBlockProps, SyntaxColors } from "../types/code-block";
  * Bold borders, hard shadows, accent colors
  */
 const syntaxColors: SyntaxColors = {
-  keyword: "text-accent",
-  string: "text-primary",
-  component: "text-primary",
+  keyword: "text-violet-500",
+  string: "text-yellow-400",
+  component: "text-yellow-400",
 };
 
 const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
@@ -44,16 +44,16 @@ const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
             className,
           )}
         >
-          <div className="px-4 py-4 flex items-center bg-accent text-black border-r-2 border-black dark:border-white">
+          <div className="px-4 py-4 flex items-center bg-violet-500 text-black border-r-2 border-black dark:border-white">
             <Terminal className="h-5 w-5" />
           </div>
-          <code className="font-mono text-sm flex-1 px-6 py-4 text-primary">
+          <code className="font-mono text-sm flex-1 px-6 py-4 text-yellow-400">
             {code}
           </code>
           {showCopyButton && (
             <button
               onClick={copyToClipboard}
-              className="px-6 py-4 hover:bg-primary hover:text-black border-l-2 border-white/20 transition-colors"
+              className="px-6 py-4 hover:bg-yellow-400 hover:text-black border-l-2 border-white/20 transition-colors"
               aria-label="Copy code"
             >
               {copied ? (

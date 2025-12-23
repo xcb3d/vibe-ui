@@ -94,7 +94,7 @@ const Lead = React.forwardRef<HTMLParagraphElement, TypographyProps>(
   ({ className, children, ...props }, ref) => (
     <p
       ref={ref}
-      className={cn("text-xl text-muted-foreground", className)}
+      className={cn("text-xl text-zinc-500 dark:text-zinc-400", className)}
       {...props}
     >
       {children}
@@ -133,7 +133,7 @@ const Muted = React.forwardRef<HTMLParagraphElement, TypographyProps>(
   ({ className, children, ...props }, ref) => (
     <p
       ref={ref}
-      className={cn("text-sm text-muted-foreground", className)}
+      className={cn("text-sm text-zinc-500 dark:text-zinc-400", className)}
       {...props}
     >
       {children}
@@ -160,7 +160,7 @@ const InlineCode = React.forwardRef<HTMLElement, TypographyProps>(
     <code
       ref={ref}
       className={cn(
-        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
+        "relative rounded bg-zinc-100 dark:bg-zinc-800 px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
         className,
       )}
       {...props}

@@ -200,9 +200,9 @@ function Calendar({
         [SelectionState.selected]:
           "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 rounded-md hover:bg-zinc-800 dark:hover:bg-gray-100 focus:bg-zinc-900 focus:text-white dark:focus:bg-white dark:focus:text-zinc-900",
         [SelectionState.range_middle]:
-          "aria-selected:bg-gray-100 dark:aria-selected:bg-gray-800 aria-selected:text-foreground rounded-none",
+          "aria-selected:bg-gray-100 dark:aria-selected:bg-gray-800 aria-selected:text-zinc-950 dark:aria-selected:text-zinc-50 rounded-none",
         [DayFlag.today]:
-          "bg-gray-100 dark:bg-gray-800 text-foreground rounded-md",
+          "bg-gray-100 dark:bg-gray-800 text-zinc-950 dark:text-zinc-50 rounded-md",
         [DayFlag.outside]:
           "day-outside text-gray-400 dark:text-gray-500 aria-selected:text-gray-400 dark:aria-selected:text-gray-500",
         [DayFlag.disabled]: "text-gray-400 dark:text-gray-500 opacity-50",

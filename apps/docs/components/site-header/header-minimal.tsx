@@ -15,7 +15,7 @@ const navLinks = [
 
 export function SiteHeaderMinimal() {
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border/50 flex-none">
+    <header className="sticky top-0 z-50 w-full bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200/50 dark:border-zinc-800/50 flex-none">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-10">
         <div className="flex items-center gap-8">
           {/* Logo */}
@@ -23,7 +23,7 @@ export function SiteHeaderMinimal() {
             href="/"
             className="flex items-center gap-3 group transition-all"
           >
-            <div className="size-8 flex items-center justify-center bg-foreground/10 text-foreground rounded-lg transition-colors group-hover:bg-foreground group-hover:text-background">
+            <div className="size-8 flex items-center justify-center bg-zinc-950/10 dark:bg-zinc-50/10 text-zinc-950 dark:text-zinc-50 rounded-lg transition-colors group-hover:bg-zinc-950 dark:group-hover:bg-zinc-50 group-hover:text-white dark:group-hover:text-zinc-950">
               <span className="text-sm font-bold">V</span>
             </div>
             <span className="text-lg font-bold leading-tight tracking-tight">
@@ -43,7 +43,7 @@ export function SiteHeaderMinimal() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-md transition-colors"
+                  className="px-3 py-1.5 text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 rounded-md transition-colors"
                 >
                   {link.title}
                 </a>
@@ -51,7 +51,7 @@ export function SiteHeaderMinimal() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-md transition-colors"
+                  className="px-3 py-1.5 text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 rounded-md transition-colors"
                 >
                   {link.title}
                 </Link>

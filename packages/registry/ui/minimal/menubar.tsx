@@ -75,7 +75,7 @@ const Menubar = React.forwardRef<
     ref={ref}
     data-slot="menubar"
     className={cn(
-      "flex h-10 items-center space-x-1 rounded-md border border-gray-200 bg-background p-1 shadow-sm dark:border-gray-700",
+      "flex h-10 items-center space-x-1 rounded-md border border-gray-200 bg-white dark:bg-zinc-950 p-1 shadow-sm dark:border-gray-700",
       className,
     )}
     {...props}
@@ -132,7 +132,7 @@ const MenubarSubContent = React.forwardRef<
     ref={ref}
     data-slot="menubar-sub-content"
     className={cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-gray-200 bg-popover p-1 text-popover-foreground shadow-lg dark:border-gray-700",
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-gray-200 bg-white dark:bg-zinc-950 p-1 text-zinc-950 dark:text-zinc-50 shadow-lg dark:border-gray-700",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -161,7 +161,7 @@ const MenubarContent = React.forwardRef<
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[12rem] overflow-hidden rounded-md border border-gray-200 bg-popover p-1 text-popover-foreground shadow-md dark:border-gray-700",
+          "z-50 min-w-[12rem] overflow-hidden rounded-md border border-gray-200 bg-white dark:bg-zinc-950 p-1 text-zinc-950 dark:text-zinc-50 shadow-md dark:border-gray-700",
           "data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
           "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",

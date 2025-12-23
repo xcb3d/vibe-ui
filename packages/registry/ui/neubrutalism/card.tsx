@@ -19,7 +19,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ref={ref}
       data-slot="card"
       className={cn(
-        "rounded-lg bg-card text-card-foreground",
+        "rounded-lg bg-white dark:bg-slate-800 text-stone-900 dark:text-stone-50",
         "border-2 border-black shadow-[6px_6px_0_black]",
         "dark:border-white dark:shadow-[6px_6px_0_white]",
         className,
@@ -56,7 +56,10 @@ const CardDescription = React.forwardRef<HTMLDivElement, CardDescriptionProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("text-sm font-bold text-muted-foreground", className)}
+      className={cn(
+        "text-sm font-bold text-stone-500 dark:text-stone-400",
+        className,
+      )}
       {...props}
     />
   ),
@@ -76,7 +79,7 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
       ref={ref}
       className={cn(
         "flex items-center px-6 py-4",
-        "border-t-2 border-black bg-secondary",
+        "border-t-2 border-black bg-zinc-100 dark:bg-zinc-800",
         "dark:border-white",
         className,
       )}
