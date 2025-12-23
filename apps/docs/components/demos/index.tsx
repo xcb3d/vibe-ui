@@ -1,23 +1,25 @@
 "use client";
 
 import * as React from "react";
+import { Suspense, lazy, useMemo } from "react";
 import { useStyle } from "@/components/style-provider";
-import { getExamplePreview as getNeubrutalismPreview } from "./neubrutalism/example-previews";
-import { getExamplePreview as getMinimalPreview } from "./minimal/example-previews";
 import { calendarPreviews as neubrutalismCalendarPreviews } from "./neubrutalism/stateful-demos";
 import { calendarPreviews as minimalCalendarPreviews } from "./minimal/stateful-demos";
+import {
+  themeRegistry,
+  DEFAULT_STYLE,
+  type StatefulDemosModule,
+} from "./theme-registry";
 
-// Theme-aware example preview getter
+// Theme-aware example preview getter (non-hook version, uses default style)
 export function getExamplePreview(
   slug: string,
   exampleTitle: string,
 ): React.ReactNode {
-  // Note: This function cannot use hooks directly, so we export individual getters
-  // Use GetExamplePreviewComponent for React context-aware rendering
-  return getNeubrutalismPreview(slug, exampleTitle);
+  return themeRegistry[DEFAULT_STYLE].getExamplePreview(slug, exampleTitle);
 }
 
-// React component that respects theme context
+// React component that respects theme context (O(1) registry lookup)
 export function ExamplePreview({
   slug,
   exampleTitle,
@@ -26,15 +28,11 @@ export function ExamplePreview({
   exampleTitle: string;
 }) {
   const { style } = useStyle();
-
-  if (style === "minimal") {
-    return <>{getMinimalPreview(slug, exampleTitle)}</>;
-  }
-
-  return <>{getNeubrutalismPreview(slug, exampleTitle)}</>;
+  const preview = themeRegistry[style].getExamplePreview(slug, exampleTitle);
+  return <>{preview}</>;
 }
 
-// Re-export stateful demos based on theme
+// Re-export stateful demos for direct theme access
 export {
   CollapsibleDemo as CollapsibleDemoNeubrutalism,
   CalendarDemo as CalendarDemoNeubrutalism,
@@ -51,65 +49,34 @@ export {
   FormDemo as FormDemoMinimal,
 } from "./minimal/stateful-demos";
 
-// Theme-aware stateful demo components
-export function CollapsibleDemo() {
+// Loading fallback for lazy-loaded demos
+const DemoFallback = () => (
+  <div className="animate-pulse h-20 bg-muted rounded" />
+);
+
+// Hook to create lazy-loaded themed demo component
+function useThemedDemo(demoName: keyof StatefulDemosModule) {
   const { style } = useStyle();
 
-  if (style === "minimal") {
-    const { CollapsibleDemo: Demo } = require("./minimal/stateful-demos");
-    return <Demo />;
-  }
-
-  const { CollapsibleDemo: Demo } = require("./neubrutalism/stateful-demos");
-  return <Demo />;
+  return useMemo(() => {
+    return lazy(async () => {
+      const module = await themeRegistry[style].loadStatefulDemos();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return { default: module[demoName] as React.ComponentType<any> };
+    });
+  }, [style, demoName]);
 }
 
-export function CalendarDemo() {
-  const { style } = useStyle();
-
-  if (style === "minimal") {
-    const { CalendarDemo: Demo } = require("./minimal/stateful-demos");
-    return <Demo />;
-  }
-
-  const { CalendarDemo: Demo } = require("./neubrutalism/stateful-demos");
-  return <Demo />;
-}
-
-export function DatePickerDemo() {
-  const { style } = useStyle();
-
-  if (style === "minimal") {
-    const { DatePickerDemo: Demo } = require("./minimal/stateful-demos");
-    return <Demo />;
-  }
-
-  const { DatePickerDemo: Demo } = require("./neubrutalism/stateful-demos");
-  return <Demo />;
-}
-
-export function SonnerDemo() {
-  const { style } = useStyle();
-
-  if (style === "minimal") {
-    const { SonnerDemo: Demo } = require("./minimal/stateful-demos");
-    return <Demo />;
-  }
-
-  const { SonnerDemo: Demo } = require("./neubrutalism/stateful-demos");
-  return <Demo />;
-}
-
-export function FormDemo() {
-  const { style } = useStyle();
-
-  if (style === "minimal") {
-    const { FormDemo: Demo } = require("./minimal/stateful-demos");
-    return <Demo />;
-  }
-
-  const { FormDemo: Demo } = require("./neubrutalism/stateful-demos");
-  return <Demo />;
+// Factory to create themed demo components (eliminates if/else chains)
+function createThemedDemo(demoName: keyof StatefulDemosModule) {
+  return function ThemedDemo() {
+    const LazyDemo = useThemedDemo(demoName);
+    return (
+      <Suspense fallback={<DemoFallback />}>
+        <LazyDemo />
+      </Suspense>
+    );
+  };
 }
 
 // Theme-aware calendar example preview component
@@ -138,3 +105,10 @@ export function CalendarExamplePreview({
     </>
   );
 }
+
+// Theme-aware stateful demo exports (O(1) lookup, lazy loaded)
+export const CollapsibleDemo = createThemedDemo("CollapsibleDemo");
+export const CalendarDemo = createThemedDemo("CalendarDemo");
+export const DatePickerDemo = createThemedDemo("DatePickerDemo");
+export const SonnerDemo = createThemedDemo("SonnerDemo");
+export const FormDemo = createThemedDemo("FormDemo");
