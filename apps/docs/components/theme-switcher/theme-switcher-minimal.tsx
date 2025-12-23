@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-import { useTheme } from "next-themes";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,100 +8,27 @@ import {
   DropdownMenuTrigger,
 } from "@vibe-ui/registry/ui/minimal/dropdown-menu";
 import { Button } from "@vibe-ui/registry/ui/minimal/button";
-import { SunIcon, MoonIcon, themes } from "./theme-switcher-icons";
+import { ThemeSwitcherBase, ThemeToggleBase } from "./theme-switcher-base";
 
-export function ThemeSwitcherMinimal() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
+const classNames = {
+  button: "hover:bg-muted/50",
+  buttonDisabled: "hover:bg-muted/50",
+  content: "border border-border shadow-sm",
+  item: "flex items-center gap-2",
+};
 
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+export const ThemeSwitcherMinimal = () => (
+  <ThemeSwitcherBase
+    Button={Button}
+    DropdownMenu={DropdownMenu}
+    DropdownMenuTrigger={DropdownMenuTrigger}
+    DropdownMenuContent={DropdownMenuContent}
+    DropdownMenuRadioGroup={DropdownMenuRadioGroup}
+    DropdownMenuRadioItem={DropdownMenuRadioItem}
+    classNames={classNames}
+  />
+);
 
-  if (!mounted) {
-    return (
-      <Button
-        variant="ghost"
-        size="icon"
-        disabled
-        className="hover:bg-muted/50"
-      >
-        <SunIcon />
-        <span className="sr-only">Toggle theme</span>
-      </Button>
-    );
-  }
-
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          title="Toggle theme"
-          className="hover:bg-muted/50"
-        >
-          <SunIcon />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="end"
-        className="border border-border shadow-sm"
-      >
-        <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
-          {themes.map((t) => (
-            <DropdownMenuRadioItem
-              key={t.value}
-              value={t.value}
-              className="flex items-center gap-2"
-            >
-              <t.icon />
-              {t.label}
-            </DropdownMenuRadioItem>
-          ))}
-        </DropdownMenuRadioGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-}
-
-export function ThemeToggleMinimal() {
-  const { setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <Button
-        variant="ghost"
-        size="icon"
-        disabled
-        className="hover:bg-muted/50"
-      >
-        <SunIcon />
-        <span className="sr-only">Toggle theme</span>
-      </Button>
-    );
-  }
-
-  const isDark = resolvedTheme === "dark";
-
-  return (
-    <Button
-      variant="ghost"
-      size="icon"
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="hover:bg-muted/50"
-    >
-      {isDark ? <SunIcon /> : <MoonIcon />}
-      <span className="sr-only">
-        {isDark ? "Switch to light mode" : "Switch to dark mode"}
-      </span>
-    </Button>
-  );
-}
+export const ThemeToggleMinimal = () => (
+  <ThemeToggleBase Button={Button} classNames={classNames} />
+);
