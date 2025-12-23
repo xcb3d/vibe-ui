@@ -3,21 +3,23 @@ import { cn } from "../../lib/utils";
 import type { TextareaProps } from "../types/textarea";
 
 /**
- * Neubrutalism Textarea - Bold borders, hard shadow on focus
+ * Neubrutalism Textarea - Bold borders, hard shadow with press effect
  */
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, ...props }, ref) => {
     return (
       <textarea
         className={cn(
-          "flex min-h-[80px] w-full rounded-lg px-4 py-3 text-base",
+          "flex min-h-[80px] w-full rounded-md px-4 py-3 text-sm font-bold",
           "bg-white text-black border-2 border-black",
+          "shadow-[4px_4px_0px_0px_#000]",
           "placeholder:text-gray-500",
-          "focus:outline-none focus:shadow-[4px_4px_0_black]",
-          "disabled:cursor-not-allowed disabled:opacity-50",
-          "dark:bg-gray-900 dark:text-white dark:border-white",
+          "focus:outline-none focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-none",
+          "transition-all",
+          "disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none",
+          "dark:bg-zinc-800 dark:text-white dark:border-white",
+          "dark:shadow-[4px_4px_0px_0px_#fff]",
           "dark:placeholder:text-gray-400",
-          "dark:focus:shadow-[4px_4px_0_white]",
           className,
         )}
         ref={ref}

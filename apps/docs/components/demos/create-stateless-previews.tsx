@@ -102,6 +102,17 @@ export interface ThemeComponents {
     className?: string;
     children?: React.ReactNode;
   }>;
+  Textarea: React.ComponentType<{
+    placeholder?: string;
+    className?: string;
+    disabled?: boolean;
+    id?: string;
+  }>;
+  Label: React.ComponentType<{
+    htmlFor?: string;
+    className?: string;
+    children?: React.ReactNode;
+  }>;
 }
 
 /**
@@ -448,12 +459,60 @@ export function createStatelessPreviews(C: ThemeComponents) {
     ),
   };
 
+  // Example previews for textarea component
+  const textareaPreviews: Record<string, React.ReactNode> = {
+    Default: (
+      <div className="w-full max-w-sm">
+        <C.Textarea placeholder="Type your message here." />
+      </div>
+    ),
+    "With Label": (
+      <div className="w-full max-w-sm grid gap-2">
+        <C.Label htmlFor="message">Your Message</C.Label>
+        <C.Textarea placeholder="Type your message here." id="message" />
+        <p className="text-xs text-muted-foreground">
+          Your message will be copied to the support team.
+        </p>
+      </div>
+    ),
+    "With Custom Placeholder": (
+      <div className="w-full max-w-sm grid gap-2">
+        <C.Label>Bio</C.Label>
+        <C.Textarea placeholder="I'm a software engineer based in..." />
+      </div>
+    ),
+    "With Button": (
+      <div className="w-full max-w-sm grid gap-4">
+        <C.Textarea placeholder="Write a comment..." />
+        <C.Button>Send Message</C.Button>
+      </div>
+    ),
+    "Error State": (
+      <div className="w-full max-w-sm grid gap-2">
+        <C.Label className="text-destructive">Description</C.Label>
+        <C.Textarea
+          className="border-destructive"
+          placeholder="Type something..."
+        />
+        <p className="text-xs text-destructive font-medium">
+          Please enter a valid description.
+        </p>
+      </div>
+    ),
+    "Disabled State": (
+      <div className="w-full max-w-sm">
+        <C.Textarea disabled placeholder="You cannot type here." />
+      </div>
+    ),
+  };
+
   // Combined example previews registry
   const examplePreviews: Record<string, Record<string, React.ReactNode>> = {
     accordion: accordionPreviews,
     button: buttonPreviews,
     card: cardPreviews,
     table: tablePreviews,
+    textarea: textareaPreviews,
   };
 
   // Get example preview for a specific component and example title
@@ -473,6 +532,7 @@ export function createStatelessPreviews(C: ThemeComponents) {
     buttonPreviews,
     cardPreviews,
     tablePreviews,
+    textareaPreviews,
     examplePreviews,
     getExamplePreview,
   };

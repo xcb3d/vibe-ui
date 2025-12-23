@@ -22,6 +22,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@vibe-ui/registry/ui/neubrutalism/form";
+import { Textarea } from "@vibe-ui/registry/ui/neubrutalism/textarea";
 import { createStatefulPreviews } from "../create-stateful-previews";
 
 // Create stateful previews with neubrutalism theme components
@@ -31,6 +32,7 @@ export const {
   datepickerPreviews,
   formPreviews,
   sonnerPreviews,
+  textareaPreviews,
   statefulPreviews,
 } = createStatefulPreviews({
   Button,
@@ -49,4 +51,5 @@ export const {
   FormItem,
   FormLabel,
   FormMessage,
+  Textarea,
 });

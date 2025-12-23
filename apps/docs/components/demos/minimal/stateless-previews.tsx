@@ -28,6 +28,8 @@ import {
   TableCaption,
 } from "@vibe-ui/registry/ui/minimal/table";
 import { Badge } from "@vibe-ui/registry/ui/minimal/badge";
+import { Textarea } from "@vibe-ui/registry/ui/minimal/textarea";
+import { Label } from "@vibe-ui/registry/ui/minimal/label";
 import { createStatelessPreviews } from "../create-stateless-previews";
 
 // Create stateless previews with minimal theme components
@@ -36,6 +38,7 @@ const {
   buttonPreviews,
   cardPreviews,
   tablePreviews,
+  textareaPreviews,
   examplePreviews: statelessPreviews,
 } = createStatelessPreviews({
   Button,
@@ -61,6 +64,8 @@ const {
   TableCell,
   TableCaption,
   Badge,
+  Textarea,
+  Label,
 });
 
 export {
@@ -68,5 +73,6 @@ export {
   buttonPreviews,
   cardPreviews,
   tablePreviews,
+  textareaPreviews,
   statelessPreviews,
 };

@@ -22,6 +22,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@vibe-ui/registry/ui/minimal/form";
+import { Textarea } from "@vibe-ui/registry/ui/minimal/textarea";
 import { createStatefulPreviews } from "../create-stateful-previews";
 
 // Create stateful previews with minimal theme components
@@ -31,6 +32,7 @@ export const {
   datepickerPreviews,
   formPreviews,
   sonnerPreviews,
+  textareaPreviews,
   statefulPreviews,
 } = createStatefulPreviews({
   Button,
@@ -49,4 +51,5 @@ export const {
   FormItem,
   FormLabel,
   FormMessage,
+  Textarea,
 });

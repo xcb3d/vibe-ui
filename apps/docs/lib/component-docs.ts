@@ -248,6 +248,86 @@ export const componentDocs: Record<string, ComponentDoc> = {
     slug: "textarea",
     description: "A multi-line text input component.",
     dependencies: [],
+    props: [
+      {
+        name: "placeholder",
+        type: "string",
+        description: "Placeholder text for the textarea.",
+      },
+      {
+        name: "disabled",
+        type: "boolean",
+        default: "false",
+        description: "Disables the textarea.",
+      },
+    ],
+    examples: [
+      {
+        title: "Default",
+        color: "primary",
+        code: `<Textarea placeholder="Type your message here." />`,
+      },
+      {
+        title: "With Label",
+        color: "accent",
+        code: `<div className="grid gap-2">
+  <Label htmlFor="message">Your Message</Label>
+  <Textarea placeholder="Type your message here." id="message" />
+  <p className="text-sm text-muted-foreground">
+    Your message will be copied to the support team.
+  </p>
+</div>`,
+      },
+      {
+        title: "With Custom Placeholder",
+        color: "info",
+        code: `<div className="grid gap-2">
+  <Label>Bio</Label>
+  <Textarea placeholder="I'm a software engineer based in..." />
+</div>`,
+      },
+      {
+        title: "With Button",
+        color: "primary",
+        code: `<div className="grid gap-4">
+  <Textarea placeholder="Write a comment..." />
+  <Button>Send Message</Button>
+</div>`,
+      },
+      {
+        title: "Error State",
+        color: "destructive",
+        code: `<div className="grid gap-2">
+  <Label className="text-destructive">Description</Label>
+  <Textarea className="border-destructive" placeholder="Type something..." />
+  <p className="text-sm text-destructive">Please enter a valid description.</p>
+</div>`,
+      },
+      {
+        title: "Disabled State",
+        color: "muted",
+        code: `<Textarea disabled placeholder="You cannot type here." />`,
+      },
+      {
+        title: "Character Counter",
+        color: "accent",
+        code: `const [value, setValue] = useState("");
+const maxLength = 280;
+
+<div className="relative">
+  <Textarea
+    placeholder="Tweet something..."
+    value={value}
+    onChange={(e) => setValue(e.target.value)}
+    maxLength={maxLength}
+    className="pb-8"
+  />
+  <div className="absolute bottom-3 right-3 text-xs text-muted-foreground">
+    {value.length}/{maxLength}
+  </div>
+</div>`,
+      },
+    ],
   },
   checkbox: {
     name: "Checkbox",

@@ -58,6 +58,13 @@ export interface StatefulPreviewComponents {
   FormItem: React.ComponentType<{ children?: React.ReactNode }>;
   FormLabel: React.ComponentType<{ children?: React.ReactNode }>;
   FormMessage: React.ComponentType<Record<string, never>>;
+  Textarea: React.ComponentType<{
+    placeholder?: string;
+    className?: string;
+    value?: string;
+    onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    maxLength?: number;
+  }>;
 }
 
 // Form validation schema
@@ -329,6 +336,27 @@ export function createStatefulPreviews(C: StatefulPreviewComponents) {
     );
   }
 
+  // --- Textarea Character Counter Preview ---
+  function TextareaCharacterCounterPreview() {
+    const [value, setValue] = React.useState("");
+    const maxLength = 280;
+
+    return (
+      <div className="w-full max-w-sm relative">
+        <C.Textarea
+          placeholder="Tweet something..."
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          maxLength={maxLength}
+          className="pb-8 resize-none min-h-[120px]"
+        />
+        <div className="absolute bottom-3 right-3 text-xs font-medium text-muted-foreground">
+          {value.length}/{maxLength}
+        </div>
+      </div>
+    );
+  }
+
   // --- Preview Registries ---
   const calendarPreviews: Record<string, React.ReactNode> = {
     "Single Date": <CalendarSinglePreview />,
@@ -354,6 +382,10 @@ export function createStatefulPreviews(C: StatefulPreviewComponents) {
     Toasts: <SonnerPreview />,
   };
 
+  const textareaPreviews: Record<string, React.ReactNode> = {
+    "Character Counter": <TextareaCharacterCounterPreview />,
+  };
+
   // Combined stateful previews
   const statefulPreviews: Record<string, Record<string, React.ReactNode>> = {
     calendar: calendarPreviews,
@@ -361,6 +393,7 @@ export function createStatefulPreviews(C: StatefulPreviewComponents) {
     datepicker: datepickerPreviews,
     form: formPreviews,
     sonner: sonnerPreviews,
+    textarea: textareaPreviews,
   };
 
   return {
@@ -369,6 +402,7 @@ export function createStatefulPreviews(C: StatefulPreviewComponents) {
     datepickerPreviews,
     formPreviews,
     sonnerPreviews,
+    textareaPreviews,
     statefulPreviews,
   };
 }

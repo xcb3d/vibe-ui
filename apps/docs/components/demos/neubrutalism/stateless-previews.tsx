@@ -31,6 +31,8 @@ import {
   TableCaption,
 } from "@vibe-ui/registry/ui/neubrutalism/table";
 import { Badge } from "@vibe-ui/registry/ui/neubrutalism/badge";
+import { Textarea } from "@vibe-ui/registry/ui/neubrutalism/textarea";
+import { Label } from "@vibe-ui/registry/ui/neubrutalism/label";
 import { createStatelessPreviews } from "../create-stateless-previews";
 
 // Create stateless previews with neubrutalism theme components
@@ -39,6 +41,7 @@ const {
   buttonPreviews,
   cardPreviews,
   tablePreviews,
+  textareaPreviews,
   examplePreviews: statelessPreviews,
 } = createStatelessPreviews({
   Button,
@@ -64,6 +67,8 @@ const {
   TableCell,
   TableCaption,
   Badge,
+  Textarea,
+  Label,
 });
 
 export {
@@ -71,5 +76,6 @@ export {
   buttonPreviews,
   cardPreviews,
   tablePreviews,
+  textareaPreviews,
   statelessPreviews,
 };
