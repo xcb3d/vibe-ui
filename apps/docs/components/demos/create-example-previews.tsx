@@ -21,6 +21,35 @@ export interface ThemeComponents {
   Input: React.ComponentType<{
     type?: string;
     placeholder?: string;
+    className?: string;
+  }>;
+  Card: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  CardHeader: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  CardTitle: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  CardDescription: React.ComponentType<{
+    children?: React.ReactNode;
+  }>;
+  CardContent: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  CardFooter: React.ComponentType<{
+    children?: React.ReactNode;
+  }>;
+  Avatar: React.ComponentType<{
+    children?: React.ReactNode;
+  }>;
+  AvatarFallback: React.ComponentType<{
+    children?: React.ReactNode;
   }>;
   Accordion: React.ComponentType<{
     type?: "single" | "multiple";
@@ -35,6 +64,43 @@ export interface ThemeComponents {
     children?: React.ReactNode;
   }>;
   AccordionTrigger: React.ComponentType<{ children?: React.ReactNode }>;
+  Table: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  TableHeader: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  TableBody: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  TableFooter: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  TableRow: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  TableHead: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  TableCell: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  TableCaption: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  Badge: React.ComponentType<{
+    variant?: "default" | "secondary" | "destructive" | "outline";
+    className?: string;
+    children?: React.ReactNode;
+  }>;
 }
 
 /**
@@ -196,10 +262,197 @@ export function createExamplePreviews(C: ThemeComponents) {
     ),
   };
 
+  // Example previews for card component
+  const cardPreviews: Record<string, React.ReactNode> = {
+    "Basic Card": (
+      <C.Card>
+        <C.CardHeader>
+          <C.CardTitle>Card Title</C.CardTitle>
+          <C.CardDescription>Card description goes here.</C.CardDescription>
+        </C.CardHeader>
+        <C.CardContent>
+          <p>Your content here.</p>
+        </C.CardContent>
+      </C.Card>
+    ),
+    "With Footer": (
+      <C.Card>
+        <C.CardHeader>
+          <C.CardTitle>Account</C.CardTitle>
+          <C.CardDescription>Manage your account settings.</C.CardDescription>
+        </C.CardHeader>
+        <C.CardContent>
+          <p>Configure your preferences below.</p>
+        </C.CardContent>
+        <C.CardFooter>
+          <C.Button>Save Changes</C.Button>
+        </C.CardFooter>
+      </C.Card>
+    ),
+    "Login Form": (
+      <C.Card className="w-[350px]">
+        <C.CardHeader>
+          <C.CardTitle>Login</C.CardTitle>
+          <C.CardDescription>Enter your credentials.</C.CardDescription>
+        </C.CardHeader>
+        <C.CardContent className="space-y-4">
+          <C.Input placeholder="Email" />
+          <C.Input type="password" placeholder="Password" />
+        </C.CardContent>
+        <C.CardFooter>
+          <C.Button className="w-full">Sign In</C.Button>
+        </C.CardFooter>
+      </C.Card>
+    ),
+    "Notification Card": (
+      <C.Card>
+        <C.CardHeader className="flex flex-row items-center gap-4">
+          <C.Avatar>
+            <C.AvatarFallback>JD</C.AvatarFallback>
+          </C.Avatar>
+          <div>
+            <C.CardTitle className="text-sm">John Doe</C.CardTitle>
+            <C.CardDescription>Sent you a message</C.CardDescription>
+          </div>
+        </C.CardHeader>
+      </C.Card>
+    ),
+    "Stats Card": (
+      <C.Card>
+        <C.CardHeader className="pb-2">
+          <C.CardDescription>Total Revenue</C.CardDescription>
+          <C.CardTitle className="text-4xl">$45,231.89</C.CardTitle>
+        </C.CardHeader>
+        <C.CardContent>
+          <p className="text-xs text-muted-foreground">
+            +20.1% from last month
+          </p>
+        </C.CardContent>
+      </C.Card>
+    ),
+  };
+
+  // Example previews for table component
+  const tablePreviews: Record<string, React.ReactNode> = {
+    "Basic Table": (
+      <C.Table>
+        <C.TableHeader>
+          <C.TableRow>
+            <C.TableHead>Name</C.TableHead>
+            <C.TableHead>Status</C.TableHead>
+            <C.TableHead>Role</C.TableHead>
+          </C.TableRow>
+        </C.TableHeader>
+        <C.TableBody>
+          <C.TableRow>
+            <C.TableCell>John Doe</C.TableCell>
+            <C.TableCell>Active</C.TableCell>
+            <C.TableCell>Developer</C.TableCell>
+          </C.TableRow>
+        </C.TableBody>
+      </C.Table>
+    ),
+    "With Footer": (
+      <C.Table>
+        <C.TableHeader>
+          <C.TableRow>
+            <C.TableHead>Item</C.TableHead>
+            <C.TableHead className="text-right">Price</C.TableHead>
+          </C.TableRow>
+        </C.TableHeader>
+        <C.TableBody>
+          <C.TableRow>
+            <C.TableCell>Product A</C.TableCell>
+            <C.TableCell className="text-right">$99.00</C.TableCell>
+          </C.TableRow>
+          <C.TableRow>
+            <C.TableCell>Product B</C.TableCell>
+            <C.TableCell className="text-right">$149.00</C.TableCell>
+          </C.TableRow>
+        </C.TableBody>
+        <C.TableFooter>
+          <C.TableRow>
+            <C.TableCell>Total</C.TableCell>
+            <C.TableCell className="text-right">$248.00</C.TableCell>
+          </C.TableRow>
+        </C.TableFooter>
+      </C.Table>
+    ),
+    "With Caption": (
+      <C.Table>
+        <C.TableCaption>A list of recent invoices.</C.TableCaption>
+        <C.TableHeader>
+          <C.TableRow>
+            <C.TableHead>Invoice</C.TableHead>
+            <C.TableHead>Status</C.TableHead>
+            <C.TableHead className="text-right">Amount</C.TableHead>
+          </C.TableRow>
+        </C.TableHeader>
+        <C.TableBody>
+          <C.TableRow>
+            <C.TableCell>INV001</C.TableCell>
+            <C.TableCell>Paid</C.TableCell>
+            <C.TableCell className="text-right">$250.00</C.TableCell>
+          </C.TableRow>
+        </C.TableBody>
+      </C.Table>
+    ),
+    "Striped Rows": (
+      <C.Table>
+        <C.TableHeader>
+          <C.TableRow>
+            <C.TableHead>Name</C.TableHead>
+            <C.TableHead>Email</C.TableHead>
+          </C.TableRow>
+        </C.TableHeader>
+        <C.TableBody>
+          <C.TableRow className="bg-muted/50">
+            <C.TableCell>Alice</C.TableCell>
+            <C.TableCell>alice@email.com</C.TableCell>
+          </C.TableRow>
+          <C.TableRow>
+            <C.TableCell>Bob</C.TableCell>
+            <C.TableCell>bob@email.com</C.TableCell>
+          </C.TableRow>
+          <C.TableRow className="bg-muted/50">
+            <C.TableCell>Charlie</C.TableCell>
+            <C.TableCell>charlie@email.com</C.TableCell>
+          </C.TableRow>
+        </C.TableBody>
+      </C.Table>
+    ),
+    "With Actions": (
+      <C.Table>
+        <C.TableHeader>
+          <C.TableRow>
+            <C.TableHead>Name</C.TableHead>
+            <C.TableHead>Status</C.TableHead>
+            <C.TableHead className="text-right">Actions</C.TableHead>
+          </C.TableRow>
+        </C.TableHeader>
+        <C.TableBody>
+          <C.TableRow>
+            <C.TableCell className="font-medium">Project Alpha</C.TableCell>
+            <C.TableCell>
+              <C.Badge variant="secondary">In Progress</C.Badge>
+            </C.TableCell>
+            <C.TableCell className="text-right">
+              <C.Button variant="ghost" size="sm">
+                Edit
+              </C.Button>
+            </C.TableCell>
+          </C.TableRow>
+        </C.TableBody>
+      </C.Table>
+    ),
+  };
+
   // Combined example previews registry
   const examplePreviews: Record<string, Record<string, React.ReactNode>> = {
     accordion: accordionPreviews,
     button: buttonPreviews,
+    card: cardPreviews,
+    table: tablePreviews,
   };
 
   // Get example preview for a specific component and example title
@@ -217,6 +470,8 @@ export function createExamplePreviews(C: ThemeComponents) {
   return {
     accordionPreviews,
     buttonPreviews,
+    cardPreviews,
+    tablePreviews,
     examplePreviews,
     getExamplePreview,
   };

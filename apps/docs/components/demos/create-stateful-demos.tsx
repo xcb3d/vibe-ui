@@ -120,7 +120,7 @@ export function createStatefulDemos(C: StatefulDemoComponents) {
     const [month, setMonth] = React.useState<Date>(new Date());
 
     return (
-      <div className="w-fit">
+      <div className="flex justify-center w-full">
         <C.Calendar
           mode="single"
           selected={date}
@@ -261,11 +261,118 @@ export function createStatefulDemos(C: StatefulDemoComponents) {
     );
   }
 
+  // Calendar preview demos
+  function CalendarSingleDemo() {
+    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [month, setMonth] = React.useState<Date>(new Date());
+
+    return (
+      <div className="flex justify-center w-full">
+        <C.Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          month={month}
+          onMonthChange={setMonth}
+          className="rounded-md border"
+        />
+      </div>
+    );
+  }
+
+  function CalendarRangeDemo() {
+    const [range, setRange] = React.useState<{
+      from: Date | undefined;
+      to?: Date | undefined;
+    }>();
+    const [month, setMonth] = React.useState<Date>(new Date());
+
+    return (
+      <div className="flex justify-center w-full">
+        <C.Calendar
+          mode="range"
+          selected={range}
+          onSelect={setRange}
+          month={month}
+          onMonthChange={setMonth}
+          numberOfMonths={2}
+          className="rounded-md border"
+        />
+      </div>
+    );
+  }
+
+  function CalendarMultipleDemo() {
+    const [dates, setDates] = React.useState<Date[] | undefined>([new Date()]);
+    const [month, setMonth] = React.useState<Date>(new Date());
+
+    return (
+      <div className="flex justify-center w-full">
+        <C.Calendar
+          mode="multiple"
+          selected={dates}
+          onSelect={setDates}
+          month={month}
+          onMonthChange={setMonth}
+          className="rounded-md border"
+        />
+      </div>
+    );
+  }
+
+  function CalendarDisabledDemo() {
+    const [date, setDate] = React.useState<Date | undefined>();
+    const [month, setMonth] = React.useState<Date>(new Date());
+
+    return (
+      <div className="flex justify-center w-full">
+        <C.Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          month={month}
+          onMonthChange={setMonth}
+          disabled={[{ before: new Date() }, { dayOfWeek: [0, 6] }]}
+          className="rounded-md border"
+        />
+      </div>
+    );
+  }
+
+  function CalendarTwoMonthsDemo() {
+    const [date, setDate] = React.useState<Date | undefined>(new Date());
+    const [month, setMonth] = React.useState<Date>(new Date());
+
+    return (
+      <div className="flex justify-center w-full">
+        <C.Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          month={month}
+          onMonthChange={setMonth}
+          numberOfMonths={2}
+          className="rounded-md border"
+        />
+      </div>
+    );
+  }
+
+  // Calendar previews registry
+  const calendarPreviews: Record<string, React.ReactNode> = {
+    "Single Date": <CalendarSingleDemo />,
+    "Date Range": <CalendarRangeDemo />,
+    "Multiple Dates": <CalendarMultipleDemo />,
+    "Disabled Dates": <CalendarDisabledDemo />,
+    "Two Months": <CalendarTwoMonthsDemo />,
+  };
+
   return {
     CollapsibleDemo,
     CalendarDemo,
     DatePickerDemo,
     SonnerDemo,
     FormDemo,
+    calendarPreviews,
   };
 }

@@ -30,6 +30,7 @@ export const {
   DatePickerDemo,
   SonnerDemo,
   FormDemo,
+  calendarPreviews,
 } = createStatefulDemos({
   Button,
   Input,
