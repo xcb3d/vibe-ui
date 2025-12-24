@@ -313,9 +313,98 @@ export const componentDocs: Record<string, ComponentDoc> = {
   label: {
     name: "Label",
     slug: "label",
-    description: "A label component for form elements.",
+    description:
+      "A label component for form elements with neubrutalism styling.",
     dependencies: ["@radix-ui/react-label"],
     radixDocs: "https://www.radix-ui.com/primitives/docs/components/label",
+    props: [
+      {
+        name: "variant",
+        type: '"default" | "solid"',
+        default: '"default"',
+        description: "Text-only or badge/tag style with background and border",
+      },
+      {
+        name: "color",
+        type: '"default" | "primary" | "secondary" | "accent" | "destructive" | "muted" | "success"',
+        default: '"default"',
+        description: "The color scheme of the label",
+      },
+      {
+        name: "size",
+        type: '"sm" | "default" | "md" | "lg"',
+        default: '"default"',
+        description: "The size of the label",
+      },
+      {
+        name: "required",
+        type: "boolean",
+        default: "false",
+        description: "Shows an asterisk indicator for required fields",
+      },
+      {
+        name: "htmlFor",
+        type: "string",
+        default: "-",
+        description: "The id of the element the label is associated with",
+      },
+    ],
+    examples: [
+      {
+        title: "Text Colors",
+        color: "primary",
+        code: `<div className="flex flex-col gap-3">
+  <Label>Default Label</Label>
+  <Label color="primary">Primary Label</Label>
+  <Label color="accent">Accent Label</Label>
+  <Label color="destructive">Destructive Label</Label>
+  <Label color="muted">Muted Label</Label>
+</div>`,
+      },
+      {
+        title: "Solid Variants",
+        color: "accent",
+        code: `<div className="flex flex-wrap gap-3">
+  <Label variant="solid">Default</Label>
+  <Label variant="solid" color="primary">Primary</Label>
+  <Label variant="solid" color="accent">Accent</Label>
+  <Label variant="solid" color="destructive">Destructive</Label>
+  <Label variant="solid" color="success">Success</Label>
+</div>`,
+      },
+      {
+        title: "Sizes",
+        color: "info",
+        code: `<div className="flex items-end gap-4">
+  <Label size="sm">Small</Label>
+  <Label size="default">Default</Label>
+  <Label size="md">Medium</Label>
+  <Label size="lg">Large</Label>
+</div>`,
+      },
+      {
+        title: "With Form Elements",
+        color: "success",
+        code: `<div className="flex flex-col gap-4 w-full max-w-sm">
+  <div className="flex flex-col gap-2">
+    <Label htmlFor="email">Email Address</Label>
+    <Input id="email" placeholder="john@example.com" />
+  </div>
+  <div className="flex flex-col gap-2">
+    <Label htmlFor="username" required>Username</Label>
+    <Input id="username" placeholder="@neubrutal" />
+  </div>
+</div>`,
+      },
+      {
+        title: "With Checkbox",
+        color: "warning",
+        code: `<div className="flex items-center space-x-3">
+  <Checkbox id="terms" />
+  <Label htmlFor="terms">Accept terms and conditions</Label>
+</div>`,
+      },
+    ],
   },
   textarea: {
     name: "Textarea",

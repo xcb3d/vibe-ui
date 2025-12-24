@@ -36,6 +36,7 @@ export interface ThemeComponents {
     value?: string;
     readOnly?: boolean;
     disabled?: boolean;
+    id?: string;
   }>;
   Card: React.ComponentType<{
     className?: string;
@@ -127,6 +128,17 @@ export interface ThemeComponents {
     htmlFor?: string;
     className?: string;
     children?: React.ReactNode;
+    variant?: "default" | "solid";
+    color?:
+      | "default"
+      | "primary"
+      | "secondary"
+      | "accent"
+      | "destructive"
+      | "muted"
+      | "success";
+    size?: "sm" | "default" | "md" | "lg";
+    required?: boolean;
   }>;
   Checkbox?: React.ComponentType<{
     id?: string;
@@ -541,6 +553,68 @@ export function createStatelessPreviews(C: ThemeComponents) {
     "Disabled State": (
       <div className="w-full max-w-sm">
         <C.Textarea disabled placeholder="You cannot type here." />
+      </div>
+    ),
+  };
+
+  // Example previews for label component
+  const labelPreviews: Record<string, React.ReactNode> = {
+    "Text Colors": (
+      <div className="flex flex-col gap-3">
+        <C.Label>Default Label</C.Label>
+        <C.Label color="primary">Primary Label</C.Label>
+        <C.Label color="accent">Accent Label</C.Label>
+        <C.Label color="destructive">Destructive Label</C.Label>
+        <C.Label color="muted">Muted Label</C.Label>
+      </div>
+    ),
+    "Solid Variants": (
+      <div className="flex flex-wrap gap-3">
+        <C.Label variant="solid">Default</C.Label>
+        <C.Label variant="solid" color="primary">
+          Primary
+        </C.Label>
+        <C.Label variant="solid" color="accent">
+          Accent
+        </C.Label>
+        <C.Label variant="solid" color="destructive">
+          Destructive
+        </C.Label>
+        <C.Label variant="solid" color="success">
+          Success
+        </C.Label>
+      </div>
+    ),
+    Sizes: (
+      <div className="flex items-end gap-4">
+        <C.Label size="sm">Small</C.Label>
+        <C.Label size="default">Default</C.Label>
+        <C.Label size="md">Medium</C.Label>
+        <C.Label size="lg">Large</C.Label>
+      </div>
+    ),
+    "With Form Elements": (
+      <div className="flex flex-col gap-4 w-full max-w-sm">
+        <div className="flex flex-col gap-2">
+          <C.Label htmlFor="email">Email Address</C.Label>
+          <C.Input id="email" placeholder="john@example.com" />
+        </div>
+        <div className="flex flex-col gap-2">
+          <C.Label htmlFor="username" required>
+            Username
+          </C.Label>
+          <C.Input id="username" placeholder="@neubrutal" />
+        </div>
+      </div>
+    ),
+    "With Checkbox": C.Checkbox ? (
+      <div className="flex items-center space-x-3">
+        <C.Checkbox id="terms" />
+        <C.Label htmlFor="terms">Accept terms and conditions</C.Label>
+      </div>
+    ) : (
+      <div className="flex items-center space-x-3">
+        <C.Label>Accept terms and conditions</C.Label>
       </div>
     ),
   };
@@ -1091,6 +1165,7 @@ export function createStatelessPreviews(C: ThemeComponents) {
     card: cardPreviews,
     checkbox: checkboxPreviews,
     input: inputPreviews,
+    label: labelPreviews,
     table: tablePreviews,
     textarea: textareaPreviews,
     tooltip: tooltipPreviews,
@@ -1114,6 +1189,7 @@ export function createStatelessPreviews(C: ThemeComponents) {
     cardPreviews,
     checkboxPreviews,
     inputPreviews,
+    labelPreviews,
     tablePreviews,
     textareaPreviews,
     tooltipPreviews,
