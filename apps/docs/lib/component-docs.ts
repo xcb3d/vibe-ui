@@ -748,31 +748,46 @@ const maxLength = 280;
         </Avatar>
       </button>
     </TooltipTrigger>
-    <TooltipContent side="right" className="w-64 p-0 bg-white dark:bg-zinc-900">
-      <div className="p-4">
-        <div className="flex gap-3">
-          <Avatar className="h-10 w-10">
-            <AvatarFallback>JD</AvatarFallback>
-          </Avatar>
-          <div>
-            <h4 className="font-black text-sm uppercase">Jane Doe</h4>
-            <p className="text-xs text-foreground/70 font-bold">@janedoe</p>
+    <TooltipContent side="right" className="w-64 p-0">
+      <Card className="border-0 shadow-none">
+        <CardContent className="p-4">
+          <div className="flex gap-3">
+            <Avatar className="h-10 w-10">
+              <AvatarFallback>JD</AvatarFallback>
+            </Avatar>
+            <div>
+              <h4 className="font-black text-sm uppercase text-foreground">
+                Jane Doe
+              </h4>
+              <p className="text-xs text-foreground/70 font-bold">
+                @janedoe
+              </p>
+            </div>
           </div>
-        </div>
-        <p className="text-xs mt-2 font-medium leading-relaxed">
-          Product designer building neat interfaces.
-        </p>
-        <div className="flex gap-4 mt-3">
-          <div className="flex flex-col">
-            <span className="text-xs font-black">1.2k</span>
-            <span className="text-xs text-foreground/60 font-bold uppercase">Following</span>
+          <CardDescription>
+            Product designer building neat interfaces. Love coffee
+            and code.
+          </CardDescription>
+          <div className="flex gap-4 mt-3">
+            <div className="flex flex-col">
+              <span className="text-xs font-black text-foreground">
+                1.2k
+              </span>
+              <span className="text-xs text-foreground/60 font-bold uppercase">
+                Following
+              </span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xs font-black text-foreground">
+                4.5k
+              </span>
+              <span className="text-xs text-foreground/60 font-bold uppercase">
+                Followers
+              </span>
+            </div>
           </div>
-          <div className="flex flex-col">
-            <span className="text-xs font-black">4.5k</span>
-            <span className="text-xs text-foreground/60 font-bold uppercase">Followers</span>
-          </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </TooltipContent>
   </Tooltip>
 </TooltipProvider>`,
@@ -785,21 +800,23 @@ const maxLength = 280;
     <TooltipTrigger asChild>
       <Button variant="ghost" className="uppercase">Settings</Button>
     </TooltipTrigger>
-    <TooltipContent side="bottom" className="p-0 bg-white dark:bg-zinc-900 min-w-[150px]">
-      <div className="p-3 flex flex-col gap-1">
-        <p className="text-[10px] font-black uppercase mb-1 border-b-2 border-black/10 dark:border-white/10 pb-1 px-2 text-foreground/50">
-          Quick Actions
-        </p>
-        <Button variant="ghost" size="sm" className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase">
-          <Edit className="size-3" /> Edit Profile
-        </Button>
-        <Button variant="ghost" size="sm" className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase">
-          <User className="size-3" /> Preferences
-        </Button>
-        <Button variant="ghost" size="sm" className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase text-red-500 hover:text-red-600 hover:bg-red-500/10">
-          <LogOut className="size-3" /> Logout
-        </Button>
-      </div>
+    <TooltipContent side="bottom" className="p-0 min-w-[150px]">
+      <Card className="border-0 shadow-none">
+        <CardContent className="p-3 flex flex-col gap-1">
+          <p className="text-[10px] font-black uppercase mb-1 border-b-2 border-black/10 dark:border-white/10 pb-1 px-2 text-foreground/50">
+            Quick Actions
+          </p>
+          <Button variant="ghost" size="sm" className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase">
+            <Edit className="size-3" /> Edit Profile
+          </Button>
+          <Button variant="ghost" size="sm" className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase">
+            <User className="size-3" /> Preferences
+          </Button>
+          <Button variant="ghost" size="sm" className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase text-red-500 hover:text-red-600 hover:bg-red-500/10">
+            <LogOut className="size-3" /> Logout
+          </Button>
+        </CardContent>
+      </Card>
     </TooltipContent>
   </Tooltip>
 </TooltipProvider>`,
@@ -807,14 +824,38 @@ const maxLength = 280;
       {
         title: "Delay Duration",
         color: "info",
-        code: `<TooltipProvider delayDuration={0}>
-  <Tooltip>
-    <TooltipTrigger asChild>
-      <Button variant="outline">Instant (0ms)</Button>
-    </TooltipTrigger>
-    <TooltipContent>No delay tooltip</TooltipContent>
-  </Tooltip>
-</TooltipProvider>`,
+        code: `<div className="flex items-center justify-center gap-6">
+  <TooltipProvider delayDuration={0}>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline">
+          <Clock className="size-4" /> Instant
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>No delay (0ms)</TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+  <TooltipProvider delayDuration={500}>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline">
+          <Clock className="size-4" /> Medium
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>500ms delay</TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+  <TooltipProvider delayDuration={1000}>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline">
+          <Clock className="size-4" /> Slow
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>1000ms delay</TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</div>`,
       },
       {
         title: "Disabled State",

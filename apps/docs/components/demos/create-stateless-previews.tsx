@@ -148,6 +148,7 @@ export interface ThemeComponents {
   TooltipContent?: React.ComponentType<{
     side?: "top" | "right" | "bottom" | "left";
     sideOffset?: number;
+    align?: "start" | "center" | "end";
     className?: string;
     children?: React.ReactNode;
   }>;

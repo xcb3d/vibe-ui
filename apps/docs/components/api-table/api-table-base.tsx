@@ -64,7 +64,10 @@ export function ApiTableBase({
               <TableCell className="font-mono">
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <span className="cursor-help border-b border-dashed border-muted-foreground">
+                    <span
+                      tabIndex={0}
+                      className="cursor-help border-b border-dashed border-muted-foreground"
+                    >
                       {prop.name}
                     </span>
                   </TooltipTrigger>
