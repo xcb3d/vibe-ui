@@ -29,13 +29,31 @@ const Checkbox = React.forwardRef<
   <CheckboxPrimitive.Root
     ref={ref}
     className={cn(
-      "peer h-5 w-5 shrink-0 rounded-md",
-      "border-2 border-black shadow-[2px_2px_0_black]",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2",
-      "disabled:cursor-not-allowed disabled:opacity-50",
+      "peer h-6 w-6 shrink-0 rounded-md cursor-pointer",
+      // Base: border + shadow (matching button pattern)
+      "border-2 border-black",
+      "shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]",
+      // Hover: translate up-left, larger shadow
+      "-translate-x-0 -translate-y-0",
+      "hover:-translate-x-px hover:-translate-y-px",
+      "hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)]",
+      // Active/press: translate down-right, smaller shadow
+      "active:translate-x-0.5 active:translate-y-0.5",
+      "active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
+      // Transition for smooth effects
+      "transition-all",
+      // Focus
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2",
+      // Disabled
+      "disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:translate-x-0 disabled:hover:translate-y-0",
+      // Checked state
       "data-[state=checked]:bg-yellow-400 data-[state=checked]:text-black",
-      "dark:border-white dark:shadow-[2px_2px_0_white]",
-      "dark:focus-visible:ring-white",
+      // Dark mode
+      "dark:border-white",
+      "dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]",
+      "dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,1)]",
+      "dark:active:shadow-[1px_1px_0px_0px_rgba(255,255,255,1)]",
+      "dark:focus-visible:ring-yellow-500",
       "dark:data-[state=checked]:bg-yellow-400",
       className,
     )}

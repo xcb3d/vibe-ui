@@ -445,37 +445,140 @@ const maxLength = 280;
       {
         title: "Default",
         color: "primary",
-        code: `<Checkbox id="terms" defaultChecked />\n<Label htmlFor="terms">Accept terms</Label>`,
+        code: `<div className="flex items-center space-x-3">
+  <Checkbox id="terms" defaultChecked />
+  <Label htmlFor="terms" className="font-bold">
+    Accept terms and conditions
+  </Label>
+</div>`,
       },
       {
         title: "Sizes",
         color: "accent",
-        code: `<Checkbox className="h-4 w-4" /> // Small\n<Checkbox /> // Default\n<Checkbox className="h-8 w-8 border-[3px]" /> // Large`,
+        code: `<div className="flex flex-col gap-6 items-start">
+  <div className="flex items-center gap-3">
+    <Checkbox id="size-sm" className="h-4 w-4" />
+    <Label htmlFor="size-sm" className="text-sm">Small</Label>
+  </div>
+  <div className="flex items-center gap-3">
+    <Checkbox id="size-md" defaultChecked />
+    <Label htmlFor="size-md">Medium (Default)</Label>
+  </div>
+  <div className="flex items-center gap-3">
+    <Checkbox id="size-lg" className="h-8 w-8 border-[3px]" />
+    <Label htmlFor="size-lg" className="text-2xl font-black">Large</Label>
+  </div>
+</div>`,
       },
       {
         title: "States",
         color: "info",
-        code: `<Checkbox defaultChecked /> // Checked\n<Checkbox /> // Unchecked\n<Checkbox checked="indeterminate" /> // Indeterminate\n<Checkbox disabled /> // Disabled`,
+        code: `<div className="flex flex-wrap gap-8 items-center justify-center">
+  <div className="flex flex-col items-center gap-2">
+    <Checkbox id="state-checked" defaultChecked />
+    <Label htmlFor="state-checked" className="text-xs font-mono">Checked</Label>
+  </div>
+  <div className="flex flex-col items-center gap-2">
+    <Checkbox id="state-unchecked" />
+    <Label htmlFor="state-unchecked" className="text-xs font-mono">Unchecked</Label>
+  </div>
+  <div className="flex flex-col items-center gap-2">
+    <Checkbox id="state-indeterminate" checked="indeterminate" />
+    <Label htmlFor="state-indeterminate" className="text-xs font-mono">Indeterminate</Label>
+  </div>
+  <div className="flex flex-col items-center gap-2">
+    <Checkbox id="state-disabled-checked" defaultChecked disabled />
+    <Label htmlFor="state-disabled-checked" className="text-xs font-mono text-muted-foreground">Disabled</Label>
+  </div>
+  <div className="flex flex-col items-center gap-2">
+    <Checkbox id="state-disabled" disabled />
+    <Label htmlFor="state-disabled" className="text-xs font-mono text-muted-foreground">Disabled</Label>
+  </div>
+</div>`,
       },
       {
         title: "With Description",
         color: "success",
-        code: `<div className="flex items-start space-x-3">\n  <Checkbox id="terms" />\n  <div>\n    <Label htmlFor="terms">Title</Label>\n    <p>Description text</p>\n  </div>\n</div>`,
+        code: `<div className="flex items-start space-x-3">
+  <Checkbox id="terms-desc" className="mt-1" defaultChecked />
+  <div className="grid gap-1.5 leading-none">
+    <Label htmlFor="terms-desc" className="font-bold">
+      Agree to Privacy Policy
+    </Label>
+    <p className="text-sm text-muted-foreground">
+      You agree to our Terms of Service and Privacy Policy.
+      This is a multi-line description.
+    </p>
+  </div>
+</div>`,
       },
       {
         title: "Error State",
         color: "destructive",
-        code: `<Checkbox className="border-red-500" />\n<Label className="text-red-500">Required</Label>`,
+        code: `<div className="flex flex-col gap-2">
+  <div className="flex items-center space-x-3">
+    <Checkbox id="error-check" className="border-red-500 dark:border-red-500" />
+    <Label htmlFor="error-check" className="text-sm font-bold text-red-500">
+      Accept Licensing
+    </Label>
+  </div>
+  <p className="text-xs font-bold text-red-500">This field is required</p>
+</div>`,
       },
       {
         title: "Card Selection",
         color: "warning",
-        code: `<label className="has-[:checked]:bg-primary/20">\n  <Checkbox />\n  <span>Option</span>\n</label>`,
+        code: `<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md">
+  <label className="relative flex flex-col gap-4 border-2 border-black dark:border-white p-4 cursor-pointer hover:bg-yellow-400/20 transition-colors has-[:checked]:bg-yellow-400/30 has-[:checked]:shadow-[4px_4px_0_black] dark:has-[:checked]:shadow-[4px_4px_0_white] shadow-[2px_2px_0_black] dark:shadow-[2px_2px_0_white] rounded-lg">
+    <div className="flex justify-between items-start">
+      <Settings className="size-6" />
+      <Checkbox id="card-wifi" />
+    </div>
+    <div className="space-y-1">
+      <p className="font-bold text-sm">Wifi Access</p>
+      <p className="text-xs text-muted-foreground">High speed internet.</p>
+    </div>
+  </label>
+  <label className="relative flex flex-col gap-4 border-2 border-black dark:border-white p-4 cursor-pointer hover:bg-yellow-400/20 transition-colors has-[:checked]:bg-yellow-400/30 has-[:checked]:shadow-[4px_4px_0_black] dark:has-[:checked]:shadow-[4px_4px_0_white] shadow-[2px_2px_0_black] dark:shadow-[2px_2px_0_white] rounded-lg">
+    <div className="flex justify-between items-start">
+      <Mail className="size-6" />
+      <Checkbox id="card-coffee" defaultChecked />
+    </div>
+    <div className="space-y-1">
+      <p className="font-bold text-sm">Notifications</p>
+      <p className="text-xs text-muted-foreground">Email updates.</p>
+    </div>
+  </label>
+</div>`,
       },
       {
         title: "Checkbox Group",
         color: "muted",
-        code: `<div className="space-y-3">\n  <div><Checkbox id="a" /><Label htmlFor="a">Option A</Label></div>\n  <div><Checkbox id="b" /><Label htmlFor="b">Option B</Label></div>\n</div>`,
+        code: `<div className="w-full max-w-sm">
+  <div className="border-2 border-black dark:border-white p-6 shadow-[4px_4px_0_black] dark:shadow-[4px_4px_0_white] rounded-lg">
+    <h4 className="font-bold mb-4 text-lg border-b-2 border-black dark:border-white pb-2">
+      Select Toppings
+    </h4>
+    <div className="space-y-3">
+      <div className="flex items-center space-x-3">
+        <Checkbox id="top-1" />
+        <Label htmlFor="top-1" className="text-sm font-medium cursor-pointer">Extra Cheese</Label>
+      </div>
+      <div className="flex items-center space-x-3">
+        <Checkbox id="top-2" defaultChecked />
+        <Label htmlFor="top-2" className="text-sm font-medium cursor-pointer">Mushrooms</Label>
+      </div>
+      <div className="flex items-center space-x-3">
+        <Checkbox id="top-3" />
+        <Label htmlFor="top-3" className="text-sm font-medium cursor-pointer">Pepperoni</Label>
+      </div>
+      <div className="flex items-center space-x-3">
+        <Checkbox id="top-4" disabled />
+        <Label htmlFor="top-4" className="text-sm font-medium text-muted-foreground">Pineapple (Out of stock)</Label>
+      </div>
+    </div>
+  </div>
+</div>`,
       },
     ],
   },
