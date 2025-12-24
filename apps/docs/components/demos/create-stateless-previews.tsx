@@ -23,6 +23,9 @@ export interface ThemeComponents {
     type?: string;
     placeholder?: string;
     className?: string;
+    value?: string;
+    readOnly?: boolean;
+    disabled?: boolean;
   }>;
   Card: React.ComponentType<{
     className?: string;
@@ -506,11 +509,100 @@ export function createStatelessPreviews(C: ThemeComponents) {
     ),
   };
 
+  // Example previews for input component
+  const inputPreviews: Record<string, React.ReactNode> = {
+    Default: (
+      <div className="w-full max-w-sm">
+        <C.Input type="text" placeholder="Type something..." />
+      </div>
+    ),
+    "Filled State": (
+      <div className="w-full max-w-sm">
+        <C.Input type="text" value="John Doe" readOnly />
+      </div>
+    ),
+    "Error State": (
+      <div className="w-full max-w-sm grid gap-2">
+        <C.Input
+          type="email"
+          placeholder="Email"
+          className="border-red-500 dark:border-red-500 focus:shadow-[4px_4px_0_rgb(239,68,68)]"
+        />
+        <p className="text-xs font-bold text-red-500">
+          Please enter a valid email.
+        </p>
+      </div>
+    ),
+    "Disabled State": (
+      <div className="w-full max-w-sm">
+        <C.Input type="text" placeholder="Can't touch this" disabled />
+      </div>
+    ),
+    "Read Only": (
+      <div className="w-full max-w-sm">
+        <C.Input type="text" value="ID: #839201" readOnly />
+      </div>
+    ),
+    "With Leading Icon": (
+      <div className="w-full max-w-sm relative">
+        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+          <Mail className="size-4" />
+        </div>
+        <C.Input type="email" placeholder="Email Address" className="pl-10" />
+      </div>
+    ),
+    "With Trailing Action": (
+      <div className="w-full max-w-sm flex items-stretch border-2 border-black dark:border-white rounded-md overflow-hidden shadow-[3px_3px_0_black] dark:shadow-[3px_3px_0_white]">
+        <C.Input
+          type="text"
+          placeholder="Enter coupon code"
+          className="flex-1 border-none shadow-none focus:shadow-none rounded-none"
+        />
+        <C.Button className="rounded-none border-l-2 border-black dark:border-white">
+          Apply
+        </C.Button>
+      </div>
+    ),
+    "With Prefix": (
+      <div className="w-full max-w-sm flex items-stretch border-2 border-black dark:border-white rounded-md overflow-hidden shadow-[3px_3px_0_black] dark:shadow-[3px_3px_0_white] focus-within:shadow-[5px_5px_0_black] dark:focus-within:shadow-[5px_5px_0_white] transition-all duration-200">
+        <span className="bg-zinc-100 dark:bg-zinc-800 px-3 py-2 text-sm text-muted-foreground font-bold flex items-center border-r-2 border-black dark:border-white">
+          https://
+        </span>
+        <C.Input
+          type="text"
+          placeholder="example.com"
+          className="flex-1 border-none shadow-none focus:shadow-none rounded-none"
+        />
+      </div>
+    ),
+    "With Suffix": (
+      <div className="w-full max-w-sm flex items-stretch border-2 border-black dark:border-white rounded-md overflow-hidden shadow-[3px_3px_0_black] dark:shadow-[3px_3px_0_white] focus-within:shadow-[5px_5px_0_black] dark:focus-within:shadow-[5px_5px_0_white] transition-all duration-200">
+        <C.Input
+          type="number"
+          placeholder="0.00"
+          className="flex-1 border-none shadow-none focus:shadow-none rounded-none"
+        />
+        <div className="px-3 bg-zinc-100 dark:bg-zinc-800 border-l-2 border-black dark:border-white flex items-center justify-center">
+          <span className="font-bold text-sm text-muted-foreground">USD</span>
+        </div>
+      </div>
+    ),
+    "Search with Clear": (
+      <div className="w-full max-w-sm relative">
+        <C.Input type="search" placeholder="Search..." className="pr-10" />
+        <button className="absolute right-3 top-1/2 -translate-y-1/2 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black rounded-full p-0.5 transition-colors">
+          <span className="text-sm font-bold">✕</span>
+        </button>
+      </div>
+    ),
+  };
+
   // Combined example previews registry
   const examplePreviews: Record<string, Record<string, React.ReactNode>> = {
     accordion: accordionPreviews,
     button: buttonPreviews,
     card: cardPreviews,
+    input: inputPreviews,
     table: tablePreviews,
     textarea: textareaPreviews,
   };
@@ -531,6 +623,7 @@ export function createStatelessPreviews(C: ThemeComponents) {
     accordionPreviews,
     buttonPreviews,
     cardPreviews,
+    inputPreviews,
     tablePreviews,
     textareaPreviews,
     examplePreviews,

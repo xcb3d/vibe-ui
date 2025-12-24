@@ -235,6 +235,80 @@ export const componentDocs: Record<string, ComponentDoc> = {
         description: "Whether the input is disabled",
       },
     ],
+    examples: [
+      {
+        title: "Default",
+        color: "primary",
+        code: `<Input type="text" placeholder="Type something..." />`,
+      },
+      {
+        title: "Filled State",
+        color: "accent",
+        code: `<Input type="text" value="John Doe" />`,
+      },
+      {
+        title: "Error State",
+        color: "destructive",
+        code: `<div className="grid gap-2">
+  <Input className="border-red-500" type="email" placeholder="Email" />
+  <p className="text-sm text-red-500">Please enter a valid email.</p>
+</div>`,
+      },
+      {
+        title: "Disabled State",
+        color: "muted",
+        code: `<Input type="text" placeholder="Can't touch this" disabled />`,
+      },
+      {
+        title: "Read Only",
+        color: "info",
+        code: `<Input type="text" value="ID: #839201" readOnly />`,
+      },
+      {
+        title: "With Leading Icon",
+        color: "primary",
+        code: `<div className="relative">
+  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4" />
+  <Input type="email" placeholder="Email Address" className="pl-10" />
+</div>`,
+      },
+      {
+        title: "With Trailing Action",
+        color: "accent",
+        code: `<div className="flex items-stretch border-2 border-black rounded-md overflow-hidden">
+  <Input placeholder="Enter coupon code" className="flex-1 border-none" />
+  <Button className="rounded-none border-l-2 border-black">Apply</Button>
+</div>`,
+      },
+      {
+        title: "With Prefix",
+        color: "info",
+        code: `<div className="flex items-center">
+  <span className="bg-zinc-100 border-2 border-r-0 border-black px-3 py-2 text-sm rounded-l-md">
+    https://
+  </span>
+  <Input placeholder="example.com" className="rounded-l-none" />
+</div>`,
+      },
+      {
+        title: "With Suffix",
+        color: "warning",
+        code: `<div className="relative">
+  <Input type="number" placeholder="0.00" className="pr-14" />
+  <div className="absolute right-0 top-0 bottom-0 px-3 bg-zinc-100 border-l-2 border-black flex items-center rounded-r-md">
+    <span className="font-bold text-sm">USD</span>
+  </div>
+</div>`,
+      },
+      {
+        title: "Search with Clear",
+        color: "success",
+        code: `<div className="relative">
+  <Input type="search" placeholder="Search..." className="pr-10" />
+  <button className="absolute right-3 top-1/2 -translate-y-1/2">✕</button>
+</div>`,
+      },
+    ],
   },
   label: {
     name: "Label",

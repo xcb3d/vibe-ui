@@ -16,12 +16,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           "bg-zinc-100 dark:bg-zinc-800 text-stone-900 dark:text-stone-50 border-2 border-black",
           "placeholder:text-stone-500 dark:placeholder:text-stone-400",
           "transition-all duration-200",
-          "focus:outline-none focus:ring-0 focus:shadow-[4px_4px_0_black]",
+          "focus:outline-none focus:ring-0 focus:shadow-[5px_5px_0_black]",
           "disabled:cursor-not-allowed disabled:opacity-50",
           // Dark mode
           "dark:border-white dark:bg-zinc-800 dark:text-stone-50",
           "dark:placeholder:text-stone-400",
-          "dark:focus:shadow-[4px_4px_0_white]",
+          "dark:focus:shadow-[5px_5px_0_white]",
           className,
         )}
         ref={ref}
