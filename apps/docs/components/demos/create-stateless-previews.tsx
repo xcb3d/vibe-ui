@@ -742,33 +742,33 @@ export function createStatelessPreviews(C: ThemeComponents) {
               <div className="grid grid-cols-2 gap-8 place-items-center">
                 <C.Tooltip>
                   <C.TooltipTrigger asChild>
-                    <button className="w-10 h-10 border-2 border-black dark:border-white rounded bg-white dark:bg-zinc-800 hover:bg-gray-100 dark:hover:bg-zinc-700 flex items-center justify-center font-bold">
+                    <C.Button variant="outline" size="icon">
                       T
-                    </button>
+                    </C.Button>
                   </C.TooltipTrigger>
                   <C.TooltipContent side="top">Top</C.TooltipContent>
                 </C.Tooltip>
                 <C.Tooltip>
                   <C.TooltipTrigger asChild>
-                    <button className="w-10 h-10 border-2 border-black dark:border-white rounded bg-white dark:bg-zinc-800 hover:bg-gray-100 dark:hover:bg-zinc-700 flex items-center justify-center font-bold">
+                    <C.Button variant="outline" size="icon">
                       B
-                    </button>
+                    </C.Button>
                   </C.TooltipTrigger>
                   <C.TooltipContent side="bottom">Bottom</C.TooltipContent>
                 </C.Tooltip>
                 <C.Tooltip>
                   <C.TooltipTrigger asChild>
-                    <button className="w-10 h-10 border-2 border-black dark:border-white rounded bg-white dark:bg-zinc-800 hover:bg-gray-100 dark:hover:bg-zinc-700 flex items-center justify-center font-bold">
+                    <C.Button variant="outline" size="icon">
                       L
-                    </button>
+                    </C.Button>
                   </C.TooltipTrigger>
                   <C.TooltipContent side="left">Left</C.TooltipContent>
                 </C.Tooltip>
                 <C.Tooltip>
                   <C.TooltipTrigger asChild>
-                    <button className="w-10 h-10 border-2 border-black dark:border-white rounded bg-white dark:bg-zinc-800 hover:bg-gray-100 dark:hover:bg-zinc-700 flex items-center justify-center font-bold">
+                    <C.Button variant="outline" size="icon">
                       R
-                    </button>
+                    </C.Button>
                   </C.TooltipTrigger>
                   <C.TooltipContent side="right">Right</C.TooltipContent>
                 </C.Tooltip>
@@ -781,15 +781,19 @@ export function createStatelessPreviews(C: ThemeComponents) {
               <div className="flex items-center justify-center gap-6">
                 <C.Tooltip>
                   <C.TooltipTrigger asChild>
-                    <button className="bg-white dark:bg-zinc-800 p-3 rounded-full border-2 border-black dark:border-white hover:bg-accent transition-colors">
+                    <C.Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full"
+                    >
                       <Bell className="size-5" />
-                    </button>
+                    </C.Button>
                   </C.TooltipTrigger>
                   <C.TooltipContent>Notifications</C.TooltipContent>
                 </C.Tooltip>
                 <C.Tooltip>
                   <C.TooltipTrigger asChild>
-                    <span className="underline decoration-wavy decoration-accent cursor-help font-bold text-lg">
+                    <span className="underline decoration-wavy decoration-accent cursor-help font-bold text-lg text-foreground">
                       Hover text
                     </span>
                   </C.TooltipTrigger>
@@ -810,43 +814,46 @@ export function createStatelessPreviews(C: ThemeComponents) {
                       </C.Avatar>
                     </button>
                   </C.TooltipTrigger>
-                  <C.TooltipContent
-                    side="right"
-                    className="w-64 p-0 bg-white dark:bg-zinc-900"
-                  >
-                    <div className="p-4">
-                      <div className="flex gap-3">
-                        <C.Avatar className="h-10 w-10">
-                          <C.AvatarFallback>JD</C.AvatarFallback>
-                        </C.Avatar>
-                        <div>
-                          <h4 className="font-black text-sm uppercase">
-                            Jane Doe
-                          </h4>
-                          <p className="text-xs text-foreground/70 font-bold">
-                            @janedoe
-                          </p>
+                  <C.TooltipContent side="right" className="w-64 p-0">
+                    <C.Card className="border-0 shadow-none">
+                      <C.CardContent className="p-4">
+                        <div className="flex gap-3">
+                          <C.Avatar className="h-10 w-10">
+                            <C.AvatarFallback>JD</C.AvatarFallback>
+                          </C.Avatar>
+                          <div>
+                            <h4 className="font-black text-sm uppercase text-foreground">
+                              Jane Doe
+                            </h4>
+                            <p className="text-xs text-foreground/70 font-bold">
+                              @janedoe
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <p className="text-xs mt-2 font-medium leading-relaxed">
-                        Product designer building neat interfaces. Love coffee
-                        and code.
-                      </p>
-                      <div className="flex gap-4 mt-3">
-                        <div className="flex flex-col">
-                          <span className="text-xs font-black">1.2k</span>
-                          <span className="text-xs text-foreground/60 font-bold uppercase">
-                            Following
-                          </span>
+                        <C.CardDescription>
+                          Product designer building neat interfaces. Love coffee
+                          and code.
+                        </C.CardDescription>
+                        <div className="flex gap-4 mt-3">
+                          <div className="flex flex-col">
+                            <span className="text-xs font-black text-foreground">
+                              1.2k
+                            </span>
+                            <span className="text-xs text-foreground/60 font-bold uppercase">
+                              Following
+                            </span>
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="text-xs font-black text-foreground">
+                              4.5k
+                            </span>
+                            <span className="text-xs text-foreground/60 font-bold uppercase">
+                              Followers
+                            </span>
+                          </div>
                         </div>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-black">4.5k</span>
-                          <span className="text-xs text-foreground/60 font-bold uppercase">
-                            Followers
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                      </C.CardContent>
+                    </C.Card>
                   </C.TooltipContent>
                 </C.Tooltip>
               </div>
@@ -862,36 +869,35 @@ export function createStatelessPreviews(C: ThemeComponents) {
                       Settings
                     </C.Button>
                   </C.TooltipTrigger>
-                  <C.TooltipContent
-                    side="bottom"
-                    className="p-0 bg-white dark:bg-zinc-900 min-w-[150px]"
-                  >
-                    <div className="p-3 flex flex-col gap-1">
-                      <p className="text-[10px] font-black uppercase mb-1 border-b-2 border-black/10 dark:border-white/10 pb-1 px-2 text-foreground/50">
-                        Quick Actions
-                      </p>
-                      <C.Button
-                        variant="ghost"
-                        size="sm"
-                        className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase"
-                      >
-                        <Edit className="size-3" /> Edit Profile
-                      </C.Button>
-                      <C.Button
-                        variant="ghost"
-                        size="sm"
-                        className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase"
-                      >
-                        <User className="size-3" /> Preferences
-                      </C.Button>
-                      <C.Button
-                        variant="ghost"
-                        size="sm"
-                        className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase text-red-500 hover:text-red-600 hover:bg-red-500/10"
-                      >
-                        <LogOut className="size-3" /> Logout
-                      </C.Button>
-                    </div>
+                  <C.TooltipContent side="bottom" className="p-0 min-w-[150px]">
+                    <C.Card className="border-0 shadow-none">
+                      <C.CardContent className="p-3 flex flex-col gap-1">
+                        <p className="text-[10px] font-black uppercase mb-1 border-b-2 border-black/10 dark:border-white/10 pb-1 px-2 text-foreground/50">
+                          Quick Actions
+                        </p>
+                        <C.Button
+                          variant="ghost"
+                          size="sm"
+                          className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase"
+                        >
+                          <Edit className="size-3" /> Edit Profile
+                        </C.Button>
+                        <C.Button
+                          variant="ghost"
+                          size="sm"
+                          className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase"
+                        >
+                          <User className="size-3" /> Preferences
+                        </C.Button>
+                        <C.Button
+                          variant="ghost"
+                          size="sm"
+                          className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase text-red-500 hover:text-red-600 hover:bg-red-500/10"
+                        >
+                          <LogOut className="size-3" /> Logout
+                        </C.Button>
+                      </C.CardContent>
+                    </C.Card>
                   </C.TooltipContent>
                 </C.Tooltip>
               </div>
@@ -903,9 +909,9 @@ export function createStatelessPreviews(C: ThemeComponents) {
               <C.TooltipProvider delayDuration={0}>
                 <C.Tooltip>
                   <C.TooltipTrigger asChild>
-                    <button className="px-3 py-2 border-2 border-black dark:border-white rounded font-bold text-sm flex items-center gap-2 hover:bg-accent hover:text-black transition-colors">
+                    <C.Button variant="outline">
                       <Clock className="size-4" /> Instant
-                    </button>
+                    </C.Button>
                   </C.TooltipTrigger>
                   <C.TooltipContent>No delay (0ms)</C.TooltipContent>
                 </C.Tooltip>
@@ -913,9 +919,9 @@ export function createStatelessPreviews(C: ThemeComponents) {
               <C.TooltipProvider delayDuration={500}>
                 <C.Tooltip>
                   <C.TooltipTrigger asChild>
-                    <button className="px-3 py-2 border-2 border-black dark:border-white rounded font-bold text-sm flex items-center gap-2 hover:bg-accent hover:text-black transition-colors">
+                    <C.Button variant="outline">
                       <Clock className="size-4" /> Medium
-                    </button>
+                    </C.Button>
                   </C.TooltipTrigger>
                   <C.TooltipContent>500ms delay</C.TooltipContent>
                 </C.Tooltip>
@@ -923,9 +929,9 @@ export function createStatelessPreviews(C: ThemeComponents) {
               <C.TooltipProvider delayDuration={1000}>
                 <C.Tooltip>
                   <C.TooltipTrigger asChild>
-                    <button className="px-3 py-2 border-2 border-black dark:border-white rounded font-bold text-sm flex items-center gap-2 hover:bg-accent hover:text-black transition-colors">
+                    <C.Button variant="outline">
                       <Clock className="size-4" /> Slow
-                    </button>
+                    </C.Button>
                   </C.TooltipTrigger>
                   <C.TooltipContent>1000ms delay</C.TooltipContent>
                 </C.Tooltip>
@@ -939,12 +945,9 @@ export function createStatelessPreviews(C: ThemeComponents) {
                 <C.Tooltip>
                   <C.TooltipTrigger asChild>
                     <span tabIndex={0}>
-                      <button
-                        disabled
-                        className="px-4 py-2 border-2 border-black/30 dark:border-white/30 rounded font-bold text-sm bg-gray-100 dark:bg-zinc-800 text-muted-foreground cursor-not-allowed"
-                      >
+                      <C.Button variant="outline" disabled>
                         Disabled Button
-                      </button>
+                      </C.Button>
                     </span>
                   </C.TooltipTrigger>
                   <C.TooltipContent>
