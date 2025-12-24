@@ -435,10 +435,34 @@ const maxLength = 280;
         description: "Indicates user must check before form submission",
       },
       {
+        name: "name",
+        type: "string",
+        default: "undefined",
+        description: "The name of the checkbox for form submission",
+      },
+      {
+        name: "value",
+        type: "string",
+        default: '"on"',
+        description: "The value of the checkbox for form submission",
+      },
+      {
+        name: "id",
+        type: "string",
+        default: "undefined",
+        description: "The id attribute for the checkbox element",
+      },
+      {
         name: "onCheckedChange",
         type: '(checked: boolean | "indeterminate") => void',
         default: "undefined",
         description: "Event handler called when checked state changes",
+      },
+      {
+        name: "className",
+        type: "string",
+        default: "undefined",
+        description: "Additional CSS classes for custom styling",
       },
     ],
     examples: [
