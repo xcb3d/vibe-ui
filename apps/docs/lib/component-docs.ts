@@ -683,6 +683,186 @@ const maxLength = 280;
     description: "A tooltip component for additional information.",
     dependencies: ["@radix-ui/react-tooltip"],
     radixDocs: "https://www.radix-ui.com/primitives/docs/components/tooltip",
+    props: [
+      {
+        name: "delayDuration",
+        type: "number",
+        default: "700",
+        description: "Time in milliseconds before tooltip opens on hover.",
+      },
+      {
+        name: "side",
+        type: '"top" | "right" | "bottom" | "left"',
+        default: '"top"',
+        description: "The preferred side of the trigger to render the tooltip.",
+      },
+      {
+        name: "sideOffset",
+        type: "number",
+        default: "4",
+        description: "Distance in pixels from the trigger element.",
+      },
+      {
+        name: "align",
+        type: '"start" | "center" | "end"',
+        default: '"center"',
+        description: "The preferred alignment against the trigger.",
+      },
+    ],
+    examples: [
+      {
+        title: "Placement",
+        color: "primary",
+        code: `<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger>Hover me</TooltipTrigger>
+    <TooltipContent side="top">
+      Top tooltip
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>`,
+      },
+      {
+        title: "Trigger Types",
+        color: "accent",
+        code: `<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="ghost" size="icon">
+        <Bell className="size-4" />
+      </Button>
+    </TooltipTrigger>
+    <TooltipContent>Notifications</TooltipContent>
+  </Tooltip>
+</TooltipProvider>`,
+      },
+      {
+        title: "Rich Content",
+        color: "info",
+        code: `<TooltipProvider delayDuration={100}>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <button className="focus:outline-none">
+        <Avatar>
+          <AvatarFallback>JD</AvatarFallback>
+        </Avatar>
+      </button>
+    </TooltipTrigger>
+    <TooltipContent side="right" className="w-64 p-0 bg-white dark:bg-zinc-900">
+      <div className="p-4">
+        <div className="flex gap-3">
+          <Avatar className="h-10 w-10">
+            <AvatarFallback>JD</AvatarFallback>
+          </Avatar>
+          <div>
+            <h4 className="font-black text-sm uppercase">Jane Doe</h4>
+            <p className="text-xs text-foreground/70 font-bold">@janedoe</p>
+          </div>
+        </div>
+        <p className="text-xs mt-2 font-medium leading-relaxed">
+          Product designer building neat interfaces.
+        </p>
+        <div className="flex gap-4 mt-3">
+          <div className="flex flex-col">
+            <span className="text-xs font-black">1.2k</span>
+            <span className="text-xs text-foreground/60 font-bold uppercase">Following</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xs font-black">4.5k</span>
+            <span className="text-xs text-foreground/60 font-bold uppercase">Followers</span>
+          </div>
+        </div>
+      </div>
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>`,
+      },
+      {
+        title: "Interactive Elements",
+        color: "warning",
+        code: `<TooltipProvider delayDuration={100}>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="ghost" className="uppercase">Settings</Button>
+    </TooltipTrigger>
+    <TooltipContent side="bottom" className="p-0 bg-white dark:bg-zinc-900 min-w-[150px]">
+      <div className="p-3 flex flex-col gap-1">
+        <p className="text-[10px] font-black uppercase mb-1 border-b-2 border-black/10 dark:border-white/10 pb-1 px-2 text-foreground/50">
+          Quick Actions
+        </p>
+        <Button variant="ghost" size="sm" className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase">
+          <Edit className="size-3" /> Edit Profile
+        </Button>
+        <Button variant="ghost" size="sm" className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase">
+          <User className="size-3" /> Preferences
+        </Button>
+        <Button variant="ghost" size="sm" className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase text-red-500 hover:text-red-600 hover:bg-red-500/10">
+          <LogOut className="size-3" /> Logout
+        </Button>
+      </div>
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>`,
+      },
+      {
+        title: "Delay Duration",
+        color: "info",
+        code: `<TooltipProvider delayDuration={0}>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="outline">Instant (0ms)</Button>
+    </TooltipTrigger>
+    <TooltipContent>No delay tooltip</TooltipContent>
+  </Tooltip>
+</TooltipProvider>`,
+      },
+      {
+        title: "Disabled State",
+        color: "muted",
+        code: `<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <span tabIndex={0}>
+        <Button disabled>Disabled</Button>
+      </span>
+    </TooltipTrigger>
+    <TooltipContent>This action is unavailable</TooltipContent>
+  </Tooltip>
+</TooltipProvider>`,
+      },
+      {
+        title: "Color Variants",
+        color: "destructive",
+        code: `<TooltipProvider delayDuration={100}>
+  <div className="flex items-center justify-center gap-4">
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button size="icon">Y</Button>
+      </TooltipTrigger>
+      <TooltipContent className="bg-yellow-400 text-black border-black">
+        Yellow variant
+      </TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="secondary" size="icon">V</Button>
+      </TooltipTrigger>
+      <TooltipContent className="bg-violet-500 text-white border-violet-700">
+        Violet variant
+      </TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="destructive" size="icon">R</Button>
+      </TooltipTrigger>
+      <TooltipContent className="bg-red-500 text-white border-red-700">
+        Destructive variant
+      </TooltipContent>
+    </Tooltip>
+  </div>
+</TooltipProvider>`,
+      },
+    ],
   },
   separator: {
     name: "Separator",

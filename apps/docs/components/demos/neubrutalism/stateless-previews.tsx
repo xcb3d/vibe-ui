@@ -34,6 +34,12 @@ import { Badge } from "@vibe-ui/registry/ui/neubrutalism/badge";
 import { Textarea } from "@vibe-ui/registry/ui/neubrutalism/textarea";
 import { Label } from "@vibe-ui/registry/ui/neubrutalism/label";
 import { Checkbox } from "@vibe-ui/registry/ui/neubrutalism/checkbox";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@vibe-ui/registry/ui/neubrutalism/tooltip";
 import { createStatelessPreviews } from "../create-stateless-previews";
 
 // Create stateless previews with neubrutalism theme components
@@ -45,6 +51,7 @@ const {
   inputPreviews,
   tablePreviews,
   textareaPreviews,
+  tooltipPreviews,
   examplePreviews: statelessPreviews,
 } = createStatelessPreviews({
   Button,
@@ -73,6 +80,10 @@ const {
   Textarea,
   Label,
   Checkbox,
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
 });
 
 export {
@@ -83,5 +94,6 @@ export {
   inputPreviews,
   tablePreviews,
   textareaPreviews,
+  tooltipPreviews,
   statelessPreviews,
 };
