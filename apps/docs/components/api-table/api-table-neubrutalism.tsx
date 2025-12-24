@@ -8,6 +8,12 @@ import {
   TableHead,
   TableCell,
 } from "@vibe-ui/registry/ui/neubrutalism/table";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@vibe-ui/registry/ui/neubrutalism/tooltip";
 import { ApiTableBase } from "./api-table-base";
 import { ApiTableProps } from "./api-table-types";
 
@@ -22,6 +28,10 @@ export function ApiTableNeubrutalism({ props, className }: ApiTableProps) {
       TableRow={TableRow}
       TableHead={TableHead}
       TableCell={TableCell}
+      TooltipProvider={TooltipProvider}
+      Tooltip={Tooltip}
+      TooltipTrigger={TooltipTrigger}
+      TooltipContent={TooltipContent}
     />
   );
 }

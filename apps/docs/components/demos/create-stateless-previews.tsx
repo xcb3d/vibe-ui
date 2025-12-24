@@ -1,7 +1,17 @@
 "use client";
 
 import * as React from "react";
-import { Settings, Mail, ArrowRight, Loader2 } from "lucide-react";
+import {
+  Settings,
+  Mail,
+  ArrowRight,
+  Loader2,
+  Bell,
+  User,
+  LogOut,
+  Edit,
+  Clock,
+} from "lucide-react";
 
 // Type for themed components injected by each theme
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -50,9 +60,11 @@ export interface ThemeComponents {
     children?: React.ReactNode;
   }>;
   Avatar: React.ComponentType<{
+    className?: string;
     children?: React.ReactNode;
   }>;
   AvatarFallback: React.ComponentType<{
+    className?: string;
     children?: React.ReactNode;
   }>;
   Accordion: React.ComponentType<{
@@ -123,6 +135,22 @@ export interface ThemeComponents {
     disabled?: boolean;
     className?: string;
     onCheckedChange?: (checked: boolean | "indeterminate") => void;
+  }>;
+  TooltipProvider?: React.ComponentType<{
+    children: React.ReactNode;
+    delayDuration?: number;
+  }>;
+  Tooltip?: React.ComponentType<{ children?: React.ReactNode }>;
+  TooltipTrigger?: React.ComponentType<{
+    asChild?: boolean;
+    children?: React.ReactNode;
+  }>;
+  TooltipContent?: React.ComponentType<{
+    side?: "top" | "right" | "bottom" | "left";
+    sideOffset?: number;
+    align?: "start" | "center" | "end";
+    className?: string;
+    children?: React.ReactNode;
   }>;
 }
 
@@ -706,6 +734,268 @@ export function createStatelessPreviews(C: ThemeComponents) {
       }
     : {};
 
+  // Example previews for tooltip component (only if all Tooltip components are provided)
+  const tooltipPreviews: Record<string, React.ReactNode> =
+    C.TooltipProvider && C.Tooltip && C.TooltipTrigger && C.TooltipContent
+      ? {
+          Placement: (
+            <C.TooltipProvider delayDuration={100}>
+              <div className="grid grid-cols-2 gap-8 place-items-center">
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <C.Button variant="outline" size="icon">
+                      T
+                    </C.Button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent side="top">Top</C.TooltipContent>
+                </C.Tooltip>
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <C.Button variant="outline" size="icon">
+                      B
+                    </C.Button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent side="bottom">Bottom</C.TooltipContent>
+                </C.Tooltip>
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <C.Button variant="outline" size="icon">
+                      L
+                    </C.Button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent side="left">Left</C.TooltipContent>
+                </C.Tooltip>
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <C.Button variant="outline" size="icon">
+                      R
+                    </C.Button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent side="right">Right</C.TooltipContent>
+                </C.Tooltip>
+              </div>
+            </C.TooltipProvider>
+          ),
+
+          "Trigger Types": (
+            <C.TooltipProvider delayDuration={100}>
+              <div className="flex items-center justify-center gap-6">
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <C.Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full"
+                    >
+                      <Bell className="size-5" />
+                    </C.Button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent>Notifications</C.TooltipContent>
+                </C.Tooltip>
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <span className="underline decoration-wavy decoration-accent cursor-help font-bold text-lg text-foreground">
+                      Hover text
+                    </span>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent>More info here</C.TooltipContent>
+                </C.Tooltip>
+              </div>
+            </C.TooltipProvider>
+          ),
+
+          "Rich Content": (
+            <C.TooltipProvider delayDuration={100}>
+              <div className="flex justify-center">
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <button className="focus:outline-none">
+                      <C.Avatar>
+                        <C.AvatarFallback>JD</C.AvatarFallback>
+                      </C.Avatar>
+                    </button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent side="right" className="w-64 p-0">
+                    <C.Card className="border-0 shadow-none">
+                      <C.CardContent className="p-4">
+                        <div className="flex gap-3">
+                          <C.Avatar className="h-10 w-10">
+                            <C.AvatarFallback>JD</C.AvatarFallback>
+                          </C.Avatar>
+                          <div>
+                            <h4 className="font-black text-sm uppercase text-foreground">
+                              Jane Doe
+                            </h4>
+                            <p className="text-xs text-foreground/70 font-bold">
+                              @janedoe
+                            </p>
+                          </div>
+                        </div>
+                        <C.CardDescription>
+                          Product designer building neat interfaces. Love coffee
+                          and code.
+                        </C.CardDescription>
+                        <div className="flex gap-4 mt-3">
+                          <div className="flex flex-col">
+                            <span className="text-xs font-black text-foreground">
+                              1.2k
+                            </span>
+                            <span className="text-xs text-foreground/60 font-bold uppercase">
+                              Following
+                            </span>
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="text-xs font-black text-foreground">
+                              4.5k
+                            </span>
+                            <span className="text-xs text-foreground/60 font-bold uppercase">
+                              Followers
+                            </span>
+                          </div>
+                        </div>
+                      </C.CardContent>
+                    </C.Card>
+                  </C.TooltipContent>
+                </C.Tooltip>
+              </div>
+            </C.TooltipProvider>
+          ),
+
+          "Interactive Elements": (
+            <C.TooltipProvider delayDuration={100}>
+              <div className="flex justify-center">
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <C.Button variant="ghost" className="uppercase">
+                      Settings
+                    </C.Button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent side="bottom" className="p-0 min-w-[150px]">
+                    <C.Card className="border-0 shadow-none">
+                      <C.CardContent className="p-3 flex flex-col gap-1">
+                        <p className="text-[10px] font-black uppercase mb-1 border-b-2 border-black/10 dark:border-white/10 pb-1 px-2 text-foreground/50">
+                          Quick Actions
+                        </p>
+                        <C.Button
+                          variant="ghost"
+                          size="sm"
+                          className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase"
+                        >
+                          <Edit className="size-3" /> Edit Profile
+                        </C.Button>
+                        <C.Button
+                          variant="ghost"
+                          size="sm"
+                          className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase"
+                        >
+                          <User className="size-3" /> Preferences
+                        </C.Button>
+                        <C.Button
+                          variant="ghost"
+                          size="sm"
+                          className="justify-start gap-2 h-8 px-2 font-bold text-xs uppercase text-red-500 hover:text-red-600 hover:bg-red-500/10"
+                        >
+                          <LogOut className="size-3" /> Logout
+                        </C.Button>
+                      </C.CardContent>
+                    </C.Card>
+                  </C.TooltipContent>
+                </C.Tooltip>
+              </div>
+            </C.TooltipProvider>
+          ),
+
+          "Delay Duration": (
+            <div className="flex items-center justify-center gap-6">
+              <C.TooltipProvider delayDuration={0}>
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <C.Button variant="outline">
+                      <Clock className="size-4" /> Instant
+                    </C.Button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent>No delay (0ms)</C.TooltipContent>
+                </C.Tooltip>
+              </C.TooltipProvider>
+              <C.TooltipProvider delayDuration={500}>
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <C.Button variant="outline">
+                      <Clock className="size-4" /> Medium
+                    </C.Button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent>500ms delay</C.TooltipContent>
+                </C.Tooltip>
+              </C.TooltipProvider>
+              <C.TooltipProvider delayDuration={1000}>
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <C.Button variant="outline">
+                      <Clock className="size-4" /> Slow
+                    </C.Button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent>1000ms delay</C.TooltipContent>
+                </C.Tooltip>
+              </C.TooltipProvider>
+            </div>
+          ),
+
+          "Disabled State": (
+            <C.TooltipProvider delayDuration={100}>
+              <div className="flex items-center justify-center gap-6">
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <span tabIndex={0}>
+                      <C.Button variant="outline" disabled>
+                        Disabled Button
+                      </C.Button>
+                    </span>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent>
+                    This action is currently unavailable
+                  </C.TooltipContent>
+                </C.Tooltip>
+              </div>
+            </C.TooltipProvider>
+          ),
+
+          "Color Variants": (
+            <C.TooltipProvider delayDuration={100}>
+              <div className="flex items-center justify-center gap-4">
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <C.Button size="icon">Y</C.Button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent className="bg-yellow-400 text-black border-black">
+                    Yellow variant
+                  </C.TooltipContent>
+                </C.Tooltip>
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <C.Button variant="secondary" size="icon">
+                      V
+                    </C.Button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent className="bg-violet-500 text-white border-violet-700">
+                    Violet variant
+                  </C.TooltipContent>
+                </C.Tooltip>
+                <C.Tooltip>
+                  <C.TooltipTrigger asChild>
+                    <C.Button variant="destructive" size="icon">
+                      R
+                    </C.Button>
+                  </C.TooltipTrigger>
+                  <C.TooltipContent className="bg-red-500 text-white border-red-700">
+                    Destructive variant
+                  </C.TooltipContent>
+                </C.Tooltip>
+              </div>
+            </C.TooltipProvider>
+          ),
+        }
+      : {};
+
   // Example previews for input component
   const inputPreviews: Record<string, React.ReactNode> = {
     Default: (
@@ -803,6 +1093,7 @@ export function createStatelessPreviews(C: ThemeComponents) {
     input: inputPreviews,
     table: tablePreviews,
     textarea: textareaPreviews,
+    tooltip: tooltipPreviews,
   };
 
   // Get example preview for a specific component and example title
@@ -825,6 +1116,7 @@ export function createStatelessPreviews(C: ThemeComponents) {
     inputPreviews,
     tablePreviews,
     textareaPreviews,
+    tooltipPreviews,
     examplePreviews,
     getExamplePreview,
   };
