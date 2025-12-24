@@ -116,6 +116,14 @@ export interface ThemeComponents {
     className?: string;
     children?: React.ReactNode;
   }>;
+  Checkbox?: React.ComponentType<{
+    id?: string;
+    checked?: boolean | "indeterminate";
+    defaultChecked?: boolean;
+    disabled?: boolean;
+    className?: string;
+    onCheckedChange?: (checked: boolean | "indeterminate") => void;
+  }>;
 }
 
 /**
@@ -509,6 +517,195 @@ export function createStatelessPreviews(C: ThemeComponents) {
     ),
   };
 
+  // Example previews for checkbox component (only if Checkbox is provided)
+  const checkboxPreviews: Record<string, React.ReactNode> = C.Checkbox
+    ? {
+        Default: (
+          <div className="flex items-center space-x-3">
+            <C.Checkbox id="terms" defaultChecked />
+            <C.Label htmlFor="terms" className="font-bold">
+              Accept terms and conditions
+            </C.Label>
+          </div>
+        ),
+
+        Sizes: (
+          <div className="flex flex-col gap-6 items-start">
+            <div className="flex items-center gap-3">
+              <C.Checkbox id="size-sm" className="h-4 w-4" />
+              <C.Label htmlFor="size-sm" className="text-sm">
+                Small
+              </C.Label>
+            </div>
+            <div className="flex items-center gap-3">
+              <C.Checkbox id="size-md" defaultChecked />
+              <C.Label htmlFor="size-md">Medium (Default)</C.Label>
+            </div>
+            <div className="flex items-center gap-3">
+              <C.Checkbox id="size-lg" className="h-8 w-8 border-[3px]" />
+              <C.Label htmlFor="size-lg" className="text-2xl font-black">
+                Large
+              </C.Label>
+            </div>
+          </div>
+        ),
+
+        States: (
+          <div className="flex flex-wrap gap-8 items-center justify-center">
+            <div className="flex flex-col items-center gap-2">
+              <C.Checkbox id="state-checked" defaultChecked />
+              <C.Label htmlFor="state-checked" className="text-xs font-mono">
+                Checked
+              </C.Label>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <C.Checkbox id="state-unchecked" />
+              <C.Label htmlFor="state-unchecked" className="text-xs font-mono">
+                Unchecked
+              </C.Label>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <C.Checkbox id="state-indeterminate" checked="indeterminate" />
+              <C.Label
+                htmlFor="state-indeterminate"
+                className="text-xs font-mono"
+              >
+                Indeterminate
+              </C.Label>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <C.Checkbox id="state-disabled-checked" defaultChecked disabled />
+              <C.Label
+                htmlFor="state-disabled-checked"
+                className="text-xs font-mono text-muted-foreground"
+              >
+                Disabled
+              </C.Label>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <C.Checkbox id="state-disabled" disabled />
+              <C.Label
+                htmlFor="state-disabled"
+                className="text-xs font-mono text-muted-foreground"
+              >
+                Disabled
+              </C.Label>
+            </div>
+          </div>
+        ),
+
+        "With Description": (
+          <div className="flex items-start space-x-3">
+            <C.Checkbox id="terms-desc" className="mt-1" defaultChecked />
+            <div className="grid gap-1.5 leading-none">
+              <C.Label htmlFor="terms-desc" className="font-bold">
+                Agree to Privacy Policy
+              </C.Label>
+              <p className="text-sm text-muted-foreground">
+                You agree to our Terms of Service and Privacy Policy. This is a
+                multi-line description.
+              </p>
+            </div>
+          </div>
+        ),
+
+        "Error State": (
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center space-x-3">
+              <C.Checkbox
+                id="error-check"
+                className="border-red-500 dark:border-red-500"
+              />
+              <C.Label
+                htmlFor="error-check"
+                className="text-sm font-bold text-red-500"
+              >
+                Accept Licensing
+              </C.Label>
+            </div>
+            <p className="text-xs font-bold text-red-500">
+              This field is required
+            </p>
+          </div>
+        ),
+
+        "Card Selection": (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md">
+            <label className="relative flex flex-col gap-4 border-2 border-black dark:border-white p-4 cursor-pointer hover:bg-yellow-400/20 transition-colors has-[:checked]:bg-yellow-400/30 has-[:checked]:shadow-[4px_4px_0_black] dark:has-[:checked]:shadow-[4px_4px_0_white] shadow-[2px_2px_0_black] dark:shadow-[2px_2px_0_white] rounded-lg">
+              <div className="flex justify-between items-start">
+                <Settings className="size-6" />
+                <C.Checkbox id="card-wifi" />
+              </div>
+              <div className="space-y-1">
+                <p className="font-bold text-sm">Wifi Access</p>
+                <p className="text-xs text-muted-foreground">
+                  High speed internet.
+                </p>
+              </div>
+            </label>
+            <label className="relative flex flex-col gap-4 border-2 border-black dark:border-white p-4 cursor-pointer hover:bg-yellow-400/20 transition-colors has-[:checked]:bg-yellow-400/30 has-[:checked]:shadow-[4px_4px_0_black] dark:has-[:checked]:shadow-[4px_4px_0_white] shadow-[2px_2px_0_black] dark:shadow-[2px_2px_0_white] rounded-lg">
+              <div className="flex justify-between items-start">
+                <Mail className="size-6" />
+                <C.Checkbox id="card-coffee" defaultChecked />
+              </div>
+              <div className="space-y-1">
+                <p className="font-bold text-sm">Notifications</p>
+                <p className="text-xs text-muted-foreground">Email updates.</p>
+              </div>
+            </label>
+          </div>
+        ),
+
+        "Checkbox Group": (
+          <div className="w-full max-w-sm">
+            <div className="border-2 border-black dark:border-white p-6 shadow-[4px_4px_0_black] dark:shadow-[4px_4px_0_white] rounded-lg">
+              <h4 className="font-bold mb-4 text-lg border-b-2 border-black dark:border-white pb-2">
+                Select Toppings
+              </h4>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3">
+                  <C.Checkbox id="top-1" />
+                  <C.Label
+                    htmlFor="top-1"
+                    className="text-sm font-medium cursor-pointer"
+                  >
+                    Extra Cheese
+                  </C.Label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <C.Checkbox id="top-2" defaultChecked />
+                  <C.Label
+                    htmlFor="top-2"
+                    className="text-sm font-medium cursor-pointer"
+                  >
+                    Mushrooms
+                  </C.Label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <C.Checkbox id="top-3" />
+                  <C.Label
+                    htmlFor="top-3"
+                    className="text-sm font-medium cursor-pointer"
+                  >
+                    Pepperoni
+                  </C.Label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <C.Checkbox id="top-4" disabled />
+                  <C.Label
+                    htmlFor="top-4"
+                    className="text-sm font-medium text-muted-foreground"
+                  >
+                    Pineapple (Out of stock)
+                  </C.Label>
+                </div>
+              </div>
+            </div>
+          </div>
+        ),
+      }
+    : {};
+
   // Example previews for input component
   const inputPreviews: Record<string, React.ReactNode> = {
     Default: (
@@ -602,6 +799,7 @@ export function createStatelessPreviews(C: ThemeComponents) {
     accordion: accordionPreviews,
     button: buttonPreviews,
     card: cardPreviews,
+    checkbox: checkboxPreviews,
     input: inputPreviews,
     table: tablePreviews,
     textarea: textareaPreviews,
@@ -623,6 +821,7 @@ export function createStatelessPreviews(C: ThemeComponents) {
     accordionPreviews,
     buttonPreviews,
     cardPreviews,
+    checkboxPreviews,
     inputPreviews,
     tablePreviews,
     textareaPreviews,

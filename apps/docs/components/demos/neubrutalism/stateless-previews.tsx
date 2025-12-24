@@ -33,6 +33,7 @@ import {
 import { Badge } from "@vibe-ui/registry/ui/neubrutalism/badge";
 import { Textarea } from "@vibe-ui/registry/ui/neubrutalism/textarea";
 import { Label } from "@vibe-ui/registry/ui/neubrutalism/label";
+import { Checkbox } from "@vibe-ui/registry/ui/neubrutalism/checkbox";
 import { createStatelessPreviews } from "../create-stateless-previews";
 
 // Create stateless previews with neubrutalism theme components
@@ -40,6 +41,7 @@ const {
   accordionPreviews,
   buttonPreviews,
   cardPreviews,
+  checkboxPreviews,
   inputPreviews,
   tablePreviews,
   textareaPreviews,
@@ -70,12 +72,14 @@ const {
   Badge,
   Textarea,
   Label,
+  Checkbox,
 });
 
 export {
   accordionPreviews,
   buttonPreviews,
   cardPreviews,
+  checkboxPreviews,
   inputPreviews,
   tablePreviews,
   textareaPreviews,

@@ -409,6 +409,75 @@ const maxLength = 280;
     description: "A checkbox component for toggle options.",
     dependencies: ["@radix-ui/react-checkbox"],
     radixDocs: "https://www.radix-ui.com/primitives/docs/components/checkbox",
+    props: [
+      {
+        name: "checked",
+        type: 'boolean | "indeterminate"',
+        default: "undefined",
+        description: "The controlled checked state of the checkbox",
+      },
+      {
+        name: "defaultChecked",
+        type: "boolean",
+        default: "false",
+        description: "The initial checked state when uncontrolled",
+      },
+      {
+        name: "disabled",
+        type: "boolean",
+        default: "false",
+        description: "Prevents interaction with the checkbox",
+      },
+      {
+        name: "required",
+        type: "boolean",
+        default: "false",
+        description: "Indicates user must check before form submission",
+      },
+      {
+        name: "onCheckedChange",
+        type: '(checked: boolean | "indeterminate") => void',
+        default: "undefined",
+        description: "Event handler called when checked state changes",
+      },
+    ],
+    examples: [
+      {
+        title: "Default",
+        color: "primary",
+        code: `<Checkbox id="terms" defaultChecked />\n<Label htmlFor="terms">Accept terms</Label>`,
+      },
+      {
+        title: "Sizes",
+        color: "accent",
+        code: `<Checkbox className="h-4 w-4" /> // Small\n<Checkbox /> // Default\n<Checkbox className="h-8 w-8 border-[3px]" /> // Large`,
+      },
+      {
+        title: "States",
+        color: "info",
+        code: `<Checkbox defaultChecked /> // Checked\n<Checkbox /> // Unchecked\n<Checkbox checked="indeterminate" /> // Indeterminate\n<Checkbox disabled /> // Disabled`,
+      },
+      {
+        title: "With Description",
+        color: "success",
+        code: `<div className="flex items-start space-x-3">\n  <Checkbox id="terms" />\n  <div>\n    <Label htmlFor="terms">Title</Label>\n    <p>Description text</p>\n  </div>\n</div>`,
+      },
+      {
+        title: "Error State",
+        color: "destructive",
+        code: `<Checkbox className="border-red-500" />\n<Label className="text-red-500">Required</Label>`,
+      },
+      {
+        title: "Card Selection",
+        color: "warning",
+        code: `<label className="has-[:checked]:bg-primary/20">\n  <Checkbox />\n  <span>Option</span>\n</label>`,
+      },
+      {
+        title: "Checkbox Group",
+        color: "muted",
+        code: `<div className="space-y-3">\n  <div><Checkbox id="a" /><Label htmlFor="a">Option A</Label></div>\n  <div><Checkbox id="b" /><Label htmlFor="b">Option B</Label></div>\n</div>`,
+      },
+    ],
   },
   switch: {
     name: "Switch",
