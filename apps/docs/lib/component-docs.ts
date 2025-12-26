@@ -1383,6 +1383,134 @@ const maxLength = 280;
     slug: "breadcrumb",
     description: "A navigation component showing the current page location.",
     dependencies: ["@radix-ui/react-slot", "lucide-react"],
+    props: [
+      {
+        name: "Breadcrumb",
+        type: "React.HTMLAttributes<HTMLElement>",
+        description: "The main navigation container with aria-label.",
+      },
+      {
+        name: "BreadcrumbList",
+        type: "React.OListHTMLAttributes<HTMLOListElement>",
+        description: "Ordered list container for breadcrumb items.",
+      },
+      {
+        name: "BreadcrumbItem",
+        type: "React.LiHTMLAttributes<HTMLLIElement>",
+        description: "Individual breadcrumb item container.",
+      },
+      {
+        name: "BreadcrumbLink",
+        type: "{ asChild?: boolean } & React.AnchorHTMLAttributes<HTMLAnchorElement>",
+        description:
+          "Clickable link within breadcrumb. Use asChild for custom components.",
+      },
+      {
+        name: "BreadcrumbPage",
+        type: "React.HTMLAttributes<HTMLSpanElement>",
+        description: "Current page indicator (non-clickable).",
+      },
+      {
+        name: "BreadcrumbSeparator",
+        type: "React.LiHTMLAttributes<HTMLLIElement>",
+        description: "Separator between items. Defaults to chevron icon.",
+      },
+      {
+        name: "BreadcrumbEllipsis",
+        type: "React.HTMLAttributes<HTMLSpanElement>",
+        description: "Ellipsis indicator for collapsed items.",
+      },
+    ],
+    examples: [
+      {
+        title: "Basic",
+        color: "primary",
+        code: `<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Components</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`,
+      },
+      {
+        title: "With Ellipsis",
+        color: "accent",
+        code: `<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbEllipsis />
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Components</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`,
+      },
+      {
+        title: "Custom Separator",
+        color: "info",
+        code: `<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator>/</BreadcrumbSeparator>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Products</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator>/</BreadcrumbSeparator>
+    <BreadcrumbItem>
+      <BreadcrumbPage>Category</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`,
+      },
+      {
+        title: "Long Path",
+        color: "warning",
+        code: `<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Dashboard</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Settings</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Account</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Security</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Password</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`,
+      },
+    ],
   },
   calendar: {
     name: "Calendar",
@@ -1585,6 +1713,220 @@ const maxLength = 280;
     description: "A desktop-style application menu.",
     dependencies: ["@radix-ui/react-menubar"],
     radixDocs: "https://www.radix-ui.com/primitives/docs/components/menubar",
+    props: [
+      {
+        name: "Menubar",
+        type: "React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Root>",
+        description: "The root container for the menu bar.",
+      },
+      {
+        name: "MenubarMenu",
+        type: "React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Menu>",
+        description: "A top-level menu container.",
+      },
+      {
+        name: "MenubarTrigger",
+        type: "React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Trigger>",
+        description: "The button that toggles the menu.",
+      },
+      {
+        name: "MenubarContent",
+        type: "React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Content>",
+        description: "The dropdown content container.",
+      },
+      {
+        name: "MenubarItem",
+        type: "{ inset?: boolean } & React.ComponentPropsWithoutRef<...>",
+        description: "A clickable menu item.",
+      },
+      {
+        name: "MenubarSeparator",
+        type: "React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Separator>",
+        description: "A visual separator between items.",
+      },
+      {
+        name: "MenubarLabel",
+        type: "{ inset?: boolean } & React.ComponentPropsWithoutRef<...>",
+        description: "A non-interactive label for grouping.",
+      },
+      {
+        name: "MenubarShortcut",
+        type: "React.HTMLAttributes<HTMLSpanElement>",
+        description: "Displays keyboard shortcuts.",
+      },
+      {
+        name: "MenubarCheckboxItem",
+        type: "React.ComponentPropsWithoutRef<typeof MenubarPrimitive.CheckboxItem>",
+        description: "A menu item with checkbox state.",
+      },
+      {
+        name: "MenubarRadioGroup",
+        type: "React.ComponentPropsWithoutRef<typeof MenubarPrimitive.RadioGroup>",
+        description: "Groups radio items together.",
+      },
+      {
+        name: "MenubarRadioItem",
+        type: "React.ComponentPropsWithoutRef<typeof MenubarPrimitive.RadioItem>",
+        description: "A menu item with radio state.",
+      },
+      {
+        name: "MenubarSub",
+        type: "React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Sub>",
+        description: "A submenu container.",
+      },
+      {
+        name: "MenubarSubTrigger",
+        type: "{ inset?: boolean } & React.ComponentPropsWithoutRef<...>",
+        description: "Triggers a submenu.",
+      },
+      {
+        name: "MenubarSubContent",
+        type: "React.ComponentPropsWithoutRef<typeof MenubarPrimitive.SubContent>",
+        description: "The submenu content container.",
+      },
+    ],
+    examples: [
+      {
+        title: "Basic",
+        color: "primary",
+        code: `<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>New Tab</MenubarItem>
+      <MenubarItem>New Window</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>Print</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+  <MenubarMenu>
+    <MenubarTrigger>Edit</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>Undo</MenubarItem>
+      <MenubarItem>Redo</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>`,
+      },
+      {
+        title: "With Shortcuts",
+        color: "accent",
+        code: `<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>
+        New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>
+        Save <MenubarShortcut>⌘S</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>
+        Print <MenubarShortcut>⌘P</MenubarShortcut>
+      </MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>`,
+      },
+      {
+        title: "With Labels",
+        color: "info",
+        code: `<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>Account</MenubarTrigger>
+    <MenubarContent>
+      <MenubarLabel>My Account</MenubarLabel>
+      <MenubarSeparator />
+      <MenubarItem>Profile</MenubarItem>
+      <MenubarItem>Settings</MenubarItem>
+      <MenubarItem>Billing</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>Logout</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>`,
+      },
+      {
+        title: "With Checkbox Items",
+        color: "warning",
+        code: `<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>View</MenubarTrigger>
+    <MenubarContent>
+      <MenubarLabel>Appearance</MenubarLabel>
+      <MenubarSeparator />
+      <MenubarCheckboxItem checked>
+        Show Toolbar
+      </MenubarCheckboxItem>
+      <MenubarCheckboxItem>
+        Show Sidebar
+      </MenubarCheckboxItem>
+      <MenubarCheckboxItem checked>
+        Show Status Bar
+      </MenubarCheckboxItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>`,
+      },
+      {
+        title: "With Radio Items",
+        color: "success",
+        code: `<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>Options</MenubarTrigger>
+    <MenubarContent>
+      <MenubarLabel>Theme</MenubarLabel>
+      <MenubarSeparator />
+      <MenubarRadioGroup value="system">
+        <MenubarRadioItem value="light">Light</MenubarRadioItem>
+        <MenubarRadioItem value="dark">Dark</MenubarRadioItem>
+        <MenubarRadioItem value="system">System</MenubarRadioItem>
+      </MenubarRadioGroup>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>`,
+      },
+      {
+        title: "With Submenus",
+        color: "destructive",
+        code: `<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>New File</MenubarItem>
+      <MenubarSub>
+        <MenubarSubTrigger>Share</MenubarSubTrigger>
+        <MenubarSubContent>
+          <MenubarItem>Email Link</MenubarItem>
+          <MenubarItem>Copy Link</MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>Twitter</MenubarItem>
+        </MenubarSubContent>
+      </MenubarSub>
+      <MenubarSeparator />
+      <MenubarItem>Download</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>`,
+      },
+      {
+        title: "Disabled Items",
+        color: "muted",
+        code: `<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>Edit</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>Undo</MenubarItem>
+      <MenubarItem disabled>Redo</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>Cut</MenubarItem>
+      <MenubarItem disabled>Copy</MenubarItem>
+      <MenubarItem>Paste</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>`,
+      },
+    ],
   },
   carousel: {
     name: "Carousel",

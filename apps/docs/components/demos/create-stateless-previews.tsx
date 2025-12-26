@@ -164,6 +164,99 @@ export interface ThemeComponents {
     className?: string;
     children?: React.ReactNode;
   }>;
+  // Breadcrumb components
+  Breadcrumb?: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  BreadcrumbList?: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  BreadcrumbItem?: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  BreadcrumbLink?: React.ComponentType<{
+    href?: string;
+    asChild?: boolean;
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  BreadcrumbPage?: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  BreadcrumbSeparator?: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  BreadcrumbEllipsis?: React.ComponentType<{
+    className?: string;
+  }>;
+  // Menubar components
+  Menubar?: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  MenubarMenu?: React.ComponentType<{
+    children?: React.ReactNode;
+  }>;
+  MenubarTrigger?: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  MenubarContent?: React.ComponentType<{
+    className?: string;
+    align?: "start" | "center" | "end";
+    alignOffset?: number;
+    sideOffset?: number;
+    children?: React.ReactNode;
+  }>;
+  MenubarItem?: React.ComponentType<{
+    className?: string;
+    inset?: boolean;
+    disabled?: boolean;
+    children?: React.ReactNode;
+  }>;
+  MenubarSeparator?: React.ComponentType<{
+    className?: string;
+  }>;
+  MenubarLabel?: React.ComponentType<{
+    className?: string;
+    inset?: boolean;
+    children?: React.ReactNode;
+  }>;
+  MenubarShortcut?: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
+  MenubarCheckboxItem?: React.ComponentType<{
+    className?: string;
+    checked?: boolean;
+    children?: React.ReactNode;
+  }>;
+  MenubarRadioGroup?: React.ComponentType<{
+    value?: string;
+    children?: React.ReactNode;
+  }>;
+  MenubarRadioItem?: React.ComponentType<{
+    className?: string;
+    value: string;
+    children?: React.ReactNode;
+  }>;
+  MenubarSub?: React.ComponentType<{
+    children?: React.ReactNode;
+  }>;
+  MenubarSubTrigger?: React.ComponentType<{
+    className?: string;
+    inset?: boolean;
+    children?: React.ReactNode;
+  }>;
+  MenubarSubContent?: React.ComponentType<{
+    className?: string;
+    children?: React.ReactNode;
+  }>;
 }
 
 /**
@@ -1070,6 +1163,318 @@ export function createStatelessPreviews(C: ThemeComponents) {
         }
       : {};
 
+  // Example previews for breadcrumb component
+  const breadcrumbPreviews: Record<string, React.ReactNode> =
+    C.Breadcrumb &&
+    C.BreadcrumbList &&
+    C.BreadcrumbItem &&
+    C.BreadcrumbLink &&
+    C.BreadcrumbPage &&
+    C.BreadcrumbSeparator
+      ? {
+          Basic: (
+            <C.Breadcrumb>
+              <C.BreadcrumbList>
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbLink href="#">Home</C.BreadcrumbLink>
+                </C.BreadcrumbItem>
+                <C.BreadcrumbSeparator />
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbLink href="#">Components</C.BreadcrumbLink>
+                </C.BreadcrumbItem>
+                <C.BreadcrumbSeparator />
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbPage>Breadcrumb</C.BreadcrumbPage>
+                </C.BreadcrumbItem>
+              </C.BreadcrumbList>
+            </C.Breadcrumb>
+          ),
+
+          "With Ellipsis": C.BreadcrumbEllipsis ? (
+            <C.Breadcrumb>
+              <C.BreadcrumbList>
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbLink href="#">Home</C.BreadcrumbLink>
+                </C.BreadcrumbItem>
+                <C.BreadcrumbSeparator />
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbEllipsis />
+                </C.BreadcrumbItem>
+                <C.BreadcrumbSeparator />
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbLink href="#">Components</C.BreadcrumbLink>
+                </C.BreadcrumbItem>
+                <C.BreadcrumbSeparator />
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbPage>Breadcrumb</C.BreadcrumbPage>
+                </C.BreadcrumbItem>
+              </C.BreadcrumbList>
+            </C.Breadcrumb>
+          ) : null,
+
+          "Custom Separator": (
+            <C.Breadcrumb>
+              <C.BreadcrumbList>
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbLink href="#">Home</C.BreadcrumbLink>
+                </C.BreadcrumbItem>
+                <C.BreadcrumbSeparator>/</C.BreadcrumbSeparator>
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbLink href="#">Products</C.BreadcrumbLink>
+                </C.BreadcrumbItem>
+                <C.BreadcrumbSeparator>/</C.BreadcrumbSeparator>
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbPage>Category</C.BreadcrumbPage>
+                </C.BreadcrumbItem>
+              </C.BreadcrumbList>
+            </C.Breadcrumb>
+          ),
+
+          "Long Path": (
+            <C.Breadcrumb>
+              <C.BreadcrumbList>
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbLink href="#">Dashboard</C.BreadcrumbLink>
+                </C.BreadcrumbItem>
+                <C.BreadcrumbSeparator />
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbLink href="#">Settings</C.BreadcrumbLink>
+                </C.BreadcrumbItem>
+                <C.BreadcrumbSeparator />
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbLink href="#">Account</C.BreadcrumbLink>
+                </C.BreadcrumbItem>
+                <C.BreadcrumbSeparator />
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbLink href="#">Security</C.BreadcrumbLink>
+                </C.BreadcrumbItem>
+                <C.BreadcrumbSeparator />
+                <C.BreadcrumbItem>
+                  <C.BreadcrumbPage>Password</C.BreadcrumbPage>
+                </C.BreadcrumbItem>
+              </C.BreadcrumbList>
+            </C.Breadcrumb>
+          ),
+        }
+      : {};
+
+  // Example previews for menubar component
+  const menubarPreviews: Record<string, React.ReactNode> =
+    C.Menubar &&
+    C.MenubarMenu &&
+    C.MenubarTrigger &&
+    C.MenubarContent &&
+    C.MenubarItem
+      ? {
+          Basic: (
+            <div className="flex justify-center">
+              <C.Menubar>
+                <C.MenubarMenu>
+                  <C.MenubarTrigger>File</C.MenubarTrigger>
+                  <C.MenubarContent>
+                    <C.MenubarItem>New Tab</C.MenubarItem>
+                    <C.MenubarItem>New Window</C.MenubarItem>
+                    {C.MenubarSeparator && <C.MenubarSeparator />}
+                    <C.MenubarItem>Print</C.MenubarItem>
+                  </C.MenubarContent>
+                </C.MenubarMenu>
+                <C.MenubarMenu>
+                  <C.MenubarTrigger>Edit</C.MenubarTrigger>
+                  <C.MenubarContent>
+                    <C.MenubarItem>Undo</C.MenubarItem>
+                    <C.MenubarItem>Redo</C.MenubarItem>
+                    {C.MenubarSeparator && <C.MenubarSeparator />}
+                    <C.MenubarItem>Cut</C.MenubarItem>
+                    <C.MenubarItem>Copy</C.MenubarItem>
+                    <C.MenubarItem>Paste</C.MenubarItem>
+                  </C.MenubarContent>
+                </C.MenubarMenu>
+                <C.MenubarMenu>
+                  <C.MenubarTrigger>View</C.MenubarTrigger>
+                  <C.MenubarContent>
+                    <C.MenubarItem>Zoom In</C.MenubarItem>
+                    <C.MenubarItem>Zoom Out</C.MenubarItem>
+                    {C.MenubarSeparator && <C.MenubarSeparator />}
+                    <C.MenubarItem>Full Screen</C.MenubarItem>
+                  </C.MenubarContent>
+                </C.MenubarMenu>
+              </C.Menubar>
+            </div>
+          ),
+
+          "With Shortcuts": C.MenubarShortcut ? (
+            <div className="flex justify-center">
+              <C.Menubar>
+                <C.MenubarMenu>
+                  <C.MenubarTrigger>File</C.MenubarTrigger>
+                  <C.MenubarContent>
+                    <C.MenubarItem>
+                      New Tab <C.MenubarShortcut>⌘T</C.MenubarShortcut>
+                    </C.MenubarItem>
+                    <C.MenubarItem>
+                      New Window <C.MenubarShortcut>⌘N</C.MenubarShortcut>
+                    </C.MenubarItem>
+                    {C.MenubarSeparator && <C.MenubarSeparator />}
+                    <C.MenubarItem>
+                      Save <C.MenubarShortcut>⌘S</C.MenubarShortcut>
+                    </C.MenubarItem>
+                    <C.MenubarItem>
+                      Print <C.MenubarShortcut>⌘P</C.MenubarShortcut>
+                    </C.MenubarItem>
+                  </C.MenubarContent>
+                </C.MenubarMenu>
+                <C.MenubarMenu>
+                  <C.MenubarTrigger>Edit</C.MenubarTrigger>
+                  <C.MenubarContent>
+                    <C.MenubarItem>
+                      Undo <C.MenubarShortcut>⌘Z</C.MenubarShortcut>
+                    </C.MenubarItem>
+                    <C.MenubarItem>
+                      Redo <C.MenubarShortcut>⇧⌘Z</C.MenubarShortcut>
+                    </C.MenubarItem>
+                    {C.MenubarSeparator && <C.MenubarSeparator />}
+                    <C.MenubarItem>
+                      Cut <C.MenubarShortcut>⌘X</C.MenubarShortcut>
+                    </C.MenubarItem>
+                    <C.MenubarItem>
+                      Copy <C.MenubarShortcut>⌘C</C.MenubarShortcut>
+                    </C.MenubarItem>
+                    <C.MenubarItem>
+                      Paste <C.MenubarShortcut>⌘V</C.MenubarShortcut>
+                    </C.MenubarItem>
+                  </C.MenubarContent>
+                </C.MenubarMenu>
+              </C.Menubar>
+            </div>
+          ) : null,
+
+          "With Labels": C.MenubarLabel ? (
+            <div className="flex justify-center">
+              <C.Menubar>
+                <C.MenubarMenu>
+                  <C.MenubarTrigger>Account</C.MenubarTrigger>
+                  <C.MenubarContent>
+                    <C.MenubarLabel>My Account</C.MenubarLabel>
+                    {C.MenubarSeparator && <C.MenubarSeparator />}
+                    <C.MenubarItem>Profile</C.MenubarItem>
+                    <C.MenubarItem>Settings</C.MenubarItem>
+                    <C.MenubarItem>Billing</C.MenubarItem>
+                    {C.MenubarSeparator && <C.MenubarSeparator />}
+                    <C.MenubarItem>Logout</C.MenubarItem>
+                  </C.MenubarContent>
+                </C.MenubarMenu>
+                <C.MenubarMenu>
+                  <C.MenubarTrigger>Help</C.MenubarTrigger>
+                  <C.MenubarContent>
+                    <C.MenubarLabel>Resources</C.MenubarLabel>
+                    {C.MenubarSeparator && <C.MenubarSeparator />}
+                    <C.MenubarItem>Documentation</C.MenubarItem>
+                    <C.MenubarItem>Support</C.MenubarItem>
+                    <C.MenubarItem>FAQ</C.MenubarItem>
+                  </C.MenubarContent>
+                </C.MenubarMenu>
+              </C.Menubar>
+            </div>
+          ) : null,
+
+          "With Checkbox Items": C.MenubarCheckboxItem ? (
+            <div className="flex justify-center">
+              <C.Menubar>
+                <C.MenubarMenu>
+                  <C.MenubarTrigger>View</C.MenubarTrigger>
+                  <C.MenubarContent>
+                    {C.MenubarLabel && (
+                      <C.MenubarLabel>Appearance</C.MenubarLabel>
+                    )}
+                    {C.MenubarSeparator && <C.MenubarSeparator />}
+                    <C.MenubarCheckboxItem checked>
+                      Show Toolbar
+                    </C.MenubarCheckboxItem>
+                    <C.MenubarCheckboxItem>Show Sidebar</C.MenubarCheckboxItem>
+                    <C.MenubarCheckboxItem checked>
+                      Show Status Bar
+                    </C.MenubarCheckboxItem>
+                    {C.MenubarSeparator && <C.MenubarSeparator />}
+                    <C.MenubarCheckboxItem>Full Screen</C.MenubarCheckboxItem>
+                  </C.MenubarContent>
+                </C.MenubarMenu>
+              </C.Menubar>
+            </div>
+          ) : null,
+
+          "With Radio Items":
+            C.MenubarRadioGroup && C.MenubarRadioItem ? (
+              <div className="flex justify-center">
+                <C.Menubar>
+                  <C.MenubarMenu>
+                    <C.MenubarTrigger>Options</C.MenubarTrigger>
+                    <C.MenubarContent>
+                      {C.MenubarLabel && <C.MenubarLabel>Theme</C.MenubarLabel>}
+                      {C.MenubarSeparator && <C.MenubarSeparator />}
+                      <C.MenubarRadioGroup value="system">
+                        <C.MenubarRadioItem value="light">
+                          Light
+                        </C.MenubarRadioItem>
+                        <C.MenubarRadioItem value="dark">
+                          Dark
+                        </C.MenubarRadioItem>
+                        <C.MenubarRadioItem value="system">
+                          System
+                        </C.MenubarRadioItem>
+                      </C.MenubarRadioGroup>
+                    </C.MenubarContent>
+                  </C.MenubarMenu>
+                </C.Menubar>
+              </div>
+            ) : null,
+
+          "With Submenus":
+            C.MenubarSub && C.MenubarSubTrigger && C.MenubarSubContent ? (
+              <div className="flex justify-center">
+                <C.Menubar>
+                  <C.MenubarMenu>
+                    <C.MenubarTrigger>File</C.MenubarTrigger>
+                    <C.MenubarContent>
+                      <C.MenubarItem>New File</C.MenubarItem>
+                      <C.MenubarSub>
+                        <C.MenubarSubTrigger>Share</C.MenubarSubTrigger>
+                        <C.MenubarSubContent>
+                          <C.MenubarItem>Email Link</C.MenubarItem>
+                          <C.MenubarItem>Copy Link</C.MenubarItem>
+                          {C.MenubarSeparator && <C.MenubarSeparator />}
+                          <C.MenubarItem>Twitter</C.MenubarItem>
+                          <C.MenubarItem>Facebook</C.MenubarItem>
+                        </C.MenubarSubContent>
+                      </C.MenubarSub>
+                      {C.MenubarSeparator && <C.MenubarSeparator />}
+                      <C.MenubarItem>Download</C.MenubarItem>
+                      <C.MenubarItem>Print</C.MenubarItem>
+                    </C.MenubarContent>
+                  </C.MenubarMenu>
+                </C.Menubar>
+              </div>
+            ) : null,
+
+          "Disabled Items": (
+            <div className="flex justify-center">
+              <C.Menubar>
+                <C.MenubarMenu>
+                  <C.MenubarTrigger>Edit</C.MenubarTrigger>
+                  <C.MenubarContent>
+                    <C.MenubarItem>Undo</C.MenubarItem>
+                    <C.MenubarItem disabled>Redo</C.MenubarItem>
+                    {C.MenubarSeparator && <C.MenubarSeparator />}
+                    <C.MenubarItem>Cut</C.MenubarItem>
+                    <C.MenubarItem disabled>Copy</C.MenubarItem>
+                    <C.MenubarItem>Paste</C.MenubarItem>
+                  </C.MenubarContent>
+                </C.MenubarMenu>
+              </C.Menubar>
+            </div>
+          ),
+        }
+      : {};
+
   // Example previews for input component
   const inputPreviews: Record<string, React.ReactNode> = {
     Default: (
@@ -1161,11 +1566,13 @@ export function createStatelessPreviews(C: ThemeComponents) {
   // Combined example previews registry
   const examplePreviews: Record<string, Record<string, React.ReactNode>> = {
     accordion: accordionPreviews,
+    breadcrumb: breadcrumbPreviews,
     button: buttonPreviews,
     card: cardPreviews,
     checkbox: checkboxPreviews,
     input: inputPreviews,
     label: labelPreviews,
+    menubar: menubarPreviews,
     table: tablePreviews,
     textarea: textareaPreviews,
     tooltip: tooltipPreviews,
@@ -1185,11 +1592,13 @@ export function createStatelessPreviews(C: ThemeComponents) {
 
   return {
     accordionPreviews,
+    breadcrumbPreviews,
     buttonPreviews,
     cardPreviews,
     checkboxPreviews,
     inputPreviews,
     labelPreviews,
+    menubarPreviews,
     tablePreviews,
     textareaPreviews,
     tooltipPreviews,
