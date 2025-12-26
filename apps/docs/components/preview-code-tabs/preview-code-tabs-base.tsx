@@ -41,7 +41,7 @@ export function PreviewCodeTabsBase({
                   opacity: classNames.dotPatternOpacity,
                 }}
               />
-              <div className="relative z-10 w-full max-w-[500px] mx-auto">
+              <div className="relative z-10 w-full max-w-[500px] mx-auto flex items-center justify-center">
                 {preview}
               </div>
             </div>
