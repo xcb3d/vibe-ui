@@ -2,7 +2,7 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Switch Component Showcase - Neubrutalism UI Lib</title>
+<title>Toggle Component Showcase - Neubrutalism UI Lib</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -53,6 +53,15 @@
                 --input: 240 3.7% 15.9%;
                 --ring: 240 4.9% 83.9%;
             }
+        }.toggle-checkbox:checked {
+            right: 0;
+            border-color: #000;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: hsl(var(--primary));
+        }
+        .toggle-switch {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
 <script id="tailwind-config">
@@ -143,8 +152,6 @@
         .no-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
-        }.switch-input:checked + .switch-label .switch-thumb {
-            transform: translateX(100%);
         }
     </style>
 </head>
@@ -206,13 +213,13 @@
 <span class="material-symbols-outlined text-muted-foreground group-hover:text-black dark:group-hover:text-white">smart_button</span>
 <p class="text-muted-foreground group-hover:text-black dark:group-hover:text-white text-sm font-bold">Buttons</p>
 </a>
-<a class="group flex items-center gap-3 px-3 py-2 bg-primary border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-md" href="#">
-<span class="material-symbols-outlined text-black">toggle_on</span>
-<p class="text-black text-sm font-black uppercase">Switch</p>
-</a>
 <a class="group flex items-center gap-3 px-3 py-2 border-2 border-transparent hover:border-black dark:hover:border-white hover:bg-primary/20 hover:shadow-neubrutal-sm dark:hover:shadow-neubrutal-sm-dark rounded-md transition-all" href="#">
 <span class="material-symbols-outlined text-muted-foreground group-hover:text-black dark:group-hover:text-white">view_list</span>
 <p class="text-muted-foreground group-hover:text-black dark:group-hover:text-white text-sm font-bold">Accordion</p>
+</a>
+<a class="group flex items-center gap-3 px-3 py-2 bg-primary border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-md" href="#">
+<span class="material-symbols-outlined text-black">toggle_on</span>
+<p class="text-black text-sm font-black uppercase">Toggle</p>
 </a>
 <a class="group flex items-center gap-3 px-3 py-2 border-2 border-transparent hover:border-black dark:hover:border-white hover:bg-primary/20 hover:shadow-neubrutal-sm dark:hover:shadow-neubrutal-sm-dark rounded-md transition-all" href="#">
 <span class="material-symbols-outlined text-muted-foreground group-hover:text-black dark:group-hover:text-white">edit</span>
@@ -227,6 +234,10 @@
 <span class="material-symbols-outlined text-muted-foreground group-hover:text-black dark:group-hover:text-white">filter_none</span>
 <p class="text-muted-foreground group-hover:text-black dark:group-hover:text-white text-sm font-bold">Modals</p>
 </a>
+<a class="group flex items-center gap-3 px-3 py-2 border-2 border-transparent hover:border-black dark:hover:border-white hover:bg-primary/20 hover:shadow-neubrutal-sm dark:hover:shadow-neubrutal-sm-dark rounded-md transition-all" href="#">
+<span class="material-symbols-outlined text-muted-foreground group-hover:text-black dark:group-hover:text-white">info</span>
+<p class="text-muted-foreground group-hover:text-black dark:group-hover:text-white text-sm font-bold">Tooltips</p>
+</a>
 </div>
 </div>
 </aside>
@@ -237,12 +248,12 @@
 <span class="material-symbols-outlined text-[10px]">chevron_right</span>
 <span class="hover:text-primary cursor-pointer hover:underline">Components</span>
 <span class="material-symbols-outlined text-[10px]">chevron_right</span>
-<span class="text-foreground font-black underline decoration-primary decoration-4 underline-offset-4">Switch</span>
+<span class="text-foreground font-black underline decoration-primary decoration-4 underline-offset-4">Toggle</span>
 </div>
 <div class="flex flex-col gap-4">
-<h1 class="text-foreground text-5xl lg:text-7xl font-black uppercase tracking-tighter drop-shadow-[4px_4px_0px_hsl(var(--primary))]">Switch</h1>
+<h1 class="text-foreground text-5xl lg:text-7xl font-black uppercase tracking-tighter drop-shadow-[4px_4px_0px_hsl(var(--primary))]">Toggle</h1>
 <p class="text-muted-foreground text-xl font-medium leading-relaxed max-w-2xl border-l-4 border-primary pl-4">
-                        A control that allows the user to toggle between checked and not checked. Built for high contrast and brutal functionality.
+                        A two-state button that can be either on or off. Designed to pop with high-contrast states and bold interactions.
                     </p>
 <div class="flex gap-4 mt-4">
 <a class="px-4 py-2 bg-white dark:bg-black text-black dark:text-white font-bold border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark hover:shadow-neubrutal dark:hover:shadow-neubrutal-dark hover:-translate-y-0.5 transition-all text-sm uppercase rounded-md" href="#">API Reference</a>
@@ -258,24 +269,14 @@
 </div>
 <div class="bg-secondary/50 dark:bg-zinc-900 border-4 border-black dark:border-white min-h-[450px] flex items-center justify-center p-8 lg:p-12 shadow-neubrutal dark:shadow-neubrutal-dark relative overflow-hidden rounded-xl transition-all">
 <div class="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none" style="background-image: radial-gradient(currentColor 2px, transparent 2px); background-size: 24px 24px;"></div>
-<div class="flex flex-col items-center gap-8 relative z-10">
-<div class="flex items-center gap-4">
-<label class="text-xl font-black uppercase text-foreground">Notifications</label>
+<div class="flex flex-col items-center justify-center gap-12 relative z-10 w-full max-w-md">
+<div class="bg-white dark:bg-black p-8 border-2 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_#fff] rounded-lg w-full flex flex-col items-center gap-6">
+<h3 class="font-black uppercase text-xl text-center">Interactive Demo</h3>
 <label class="relative inline-flex items-center cursor-pointer group">
-<input class="sr-only peer switch-input" type="checkbox"/>
-<div class="w-20 h-10 bg-white dark:bg-black peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-accent dark:peer-focus:ring-accent rounded-full border-4 border-black dark:border-white peer peer-checked:bg-primary dark:peer-checked:bg-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#ffffff] transition-colors duration-200 ease-in-out switch-label">
-<div class="absolute top-[6px] left-[6px] bg-black dark:bg-white border border-black dark:border-black rounded-full h-6 w-6 transition-transform switch-thumb"></div>
-</div>
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-20 h-10 bg-white dark:bg-zinc-800 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-black/20 dark:peer-focus:ring-white/20 rounded-full peer peer-checked:after:translate-x-10 peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-black dark:after:bg-white after:border-gray-300 after:border after:rounded-full after:h-8 after:w-8 after:transition-all peer-checked:bg-primary border-4 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#fff] group-hover:-translate-y-1 group-hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:group-hover:shadow-[6px_6px_0px_0px_#fff] transition-all"></div>
 </label>
-</div>
-<div class="flex items-center gap-4">
-<label class="text-xl font-black uppercase text-foreground">Airplane Mode</label>
-<label class="relative inline-flex items-center cursor-pointer group">
-<input checked="" class="sr-only peer switch-input" type="checkbox"/>
-<div class="w-20 h-10 bg-white dark:bg-black peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-accent dark:peer-focus:ring-accent rounded-full border-4 border-black dark:border-white peer peer-checked:bg-accent dark:peer-checked:bg-accent shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_#ffffff] transition-colors duration-200 ease-in-out switch-label">
-<div class="absolute top-[6px] left-[6px] bg-black dark:bg-white border border-black dark:border-black rounded-full h-6 w-6 transition-transform switch-thumb"></div>
-</div>
-</label>
+<p class="text-center font-bold font-mono text-sm text-muted-foreground">Click to toggle state</p>
 </div>
 </div>
 </div>
@@ -290,7 +291,7 @@
 <div class="bg-accent text-black px-4 py-4 flex items-center border-r-2 border-black dark:border-white">
 <span class="material-symbols-outlined text-lg font-bold">terminal</span>
 </div>
-<code class="font-mono text-sm px-6 py-4 flex-1 text-primary">npm install @neubrutal/switch</code>
+<code class="font-mono text-sm px-6 py-4 flex-1 text-primary">npm install @neubrutal/toggle</code>
 <button class="px-6 py-4 hover:bg-primary hover:text-black transition-colors border-l-2 border-white/20">
 <span class="material-symbols-outlined text-sm">content_copy</span>
 </button>
@@ -303,14 +304,12 @@
                         Usage
                     </h2>
 <div class="bg-[#1e1e1e] dark:bg-black border-2 border-black dark:border-white p-6 font-mono text-sm overflow-x-auto shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
-<pre class="text-gray-300"><code><span class="text-accent">import</span> { Switch } <span class="text-accent">from</span> <span class="text-primary">"@/components/ui/switch"</span>
-<span class="text-accent">import</span> { Label } <span class="text-accent">from</span> <span class="text-primary">"@/components/ui/label"</span>
-<span class="text-accent">export function</span> <span class="text-primary">SwitchDemo</span>() {
+<pre class="text-gray-300"><code><span class="text-accent">import</span> { Toggle } <span class="text-accent">from</span> <span class="text-primary">"@/components/ui/toggle"</span>
+<span class="text-accent">export function</span> <span class="text-primary">ToggleDemo</span>() {
   <span class="text-accent">return</span> (
-    &lt;<span class="text-primary">div</span> class=<span class="text-white">"flex items-center space-x-2"</span>&gt;
-      &lt;<span class="text-primary">Switch</span> id=<span class="text-white">"airplane-mode"</span> /&gt;
-      &lt;<span class="text-primary">Label</span> htmlFor=<span class="text-white">"airplane-mode"</span>&gt;Airplane Mode&lt;/<span class="text-primary">Label</span>&gt;
-    &lt;/<span class="text-primary">div</span>&gt;
+    &lt;<span class="text-primary">Toggle</span> aria-label=<span class="text-white">"Toggle bold mode"</span>&gt;
+      &lt;<span class="text-primary">Bold</span> class=<span class="text-white">"h-4 w-4"</span> /&gt;
+    &lt;/<span class="text-primary">Toggle</span>&gt;
   )
 }</code></pre>
 </div>
@@ -319,119 +318,153 @@
 <h2 class="text-foreground text-4xl font-black uppercase flex items-center gap-2 drop-shadow-[2px_2px_0px_rgba(255,255,255,0.2)] dark:drop-shadow-[2px_2px_0px_rgba(0,0,0,0.5)]">
                         Examples
                     </h2>
-<p class="text-muted-foreground font-medium text-lg">Different sizes, states, and colors for your needs.</p>
+<p class="text-muted-foreground font-medium text-lg">Diverse variants for every use case.</p>
 </div>
 <section class="flex flex-col gap-6">
 <h3 class="text-foreground text-xl font-bold uppercase flex items-center gap-3 bg-secondary p-2 border-2 border-black dark:border-white w-fit shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff]">
 <span class="w-4 h-4 bg-primary border-2 border-black dark:border-white block rounded-full"></span>
-                        Sizes
+                        Default
                     </h3>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-<div class="p-8 lg:p-12 flex items-center justify-center bg-card border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
-<div class="flex flex-col items-center gap-8">
-<div class="flex items-center gap-4">
-<span class="text-xs font-bold uppercase">Small</span>
-<label class="relative inline-flex items-center cursor-pointer group">
-<input class="sr-only peer switch-input" type="checkbox"/>
-<div class="w-10 h-6 bg-white dark:bg-black rounded-full border-2 border-black dark:border-white peer peer-checked:bg-primary dark:peer-checked:bg-primary shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark transition-colors duration-200 switch-label">
-<div class="absolute top-[3px] left-[3px] bg-black dark:bg-white border border-black rounded-full h-4 w-4 transition-transform switch-thumb"></div>
-</div>
-</label>
-</div>
-<div class="flex items-center gap-4">
-<span class="text-sm font-bold uppercase">Medium</span>
-<label class="relative inline-flex items-center cursor-pointer group">
-<input checked="" class="sr-only peer switch-input" type="checkbox"/>
-<div class="w-14 h-8 bg-white dark:bg-black rounded-full border-4 border-black dark:border-white peer peer-checked:bg-primary dark:peer-checked:bg-primary shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark transition-colors duration-200 switch-label">
-<div class="absolute top-[4px] left-[4px] bg-black dark:bg-white border border-black rounded-full h-5 w-5 transition-transform switch-thumb"></div>
-</div>
-</label>
-</div>
-<div class="flex items-center gap-4">
-<span class="text-lg font-bold uppercase">Large</span>
-<label class="relative inline-flex items-center cursor-pointer group">
-<input class="sr-only peer switch-input" type="checkbox"/>
-<div class="w-20 h-10 bg-white dark:bg-black rounded-full border-4 border-black dark:border-white peer peer-checked:bg-primary dark:peer-checked:bg-primary shadow-neubrutal dark:shadow-neubrutal-dark transition-colors duration-200 switch-label">
-<div class="absolute top-[6px] left-[6px] bg-black dark:bg-white border border-black rounded-full h-6 w-6 transition-transform switch-thumb"></div>
-</div>
-</label>
-</div>
+<div class="p-8 lg:p-12 flex items-center justify-center bg-card border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg relative overflow-hidden">
+<div class="absolute inset-0 bg-blue-100 dark:bg-blue-900/20" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px); opacity: 0.1"></div>
+<div class="w-full max-w-sm flex items-center justify-center gap-4 relative z-10">
+<button class="bg-white dark:bg-black group border-2 border-black dark:border-white hover:bg-accent dark:hover:bg-accent hover:text-black data-[state=on]:bg-primary data-[state=on]:text-black p-3 rounded-md shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff] active:translate-y-1 active:shadow-none transition-all flex items-center gap-2" data-state="off" onclick="this.dataset.state = this.dataset.state === 'on' ? 'off' : 'on'">
+<span class="material-symbols-outlined font-bold">format_bold</span>
+<span class="font-bold uppercase text-sm tracking-wider">Bold</span>
+</button>
 </div>
 </div>
 <div class="bg-[#1e1e1e] dark:bg-black border-2 border-black dark:border-white p-6 overflow-x-auto flex items-center shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
-<pre class="text-xs font-mono text-gray-300"><code>&lt;<span class="text-primary">Switch</span> size=<span class="text-white">"sm"</span> /&gt;
-&lt;<span class="text-primary">Switch</span> size=<span class="text-white">"md"</span> defaultChecked /&gt;
-&lt;<span class="text-primary">Switch</span> size=<span class="text-white">"lg"</span> /&gt;</code></pre>
+<pre class="text-xs font-mono text-gray-300"><code>&lt;<span class="text-primary">Toggle</span> variant=<span class="text-white">"default"</span>&gt;
+  &lt;<span class="text-primary">BoldIcon</span> class=<span class="text-white">"h-4 w-4 mr-2"</span> /&gt;
+  Bold
+&lt;/<span class="text-primary">Toggle</span>&gt;</code></pre>
 </div>
 </div>
 </section>
 <section class="flex flex-col gap-6">
 <h3 class="text-foreground text-xl font-bold uppercase flex items-center gap-3 bg-secondary p-2 border-2 border-black dark:border-white w-fit shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff]">
 <span class="w-4 h-4 bg-accent border-2 border-black dark:border-white block rounded-full"></span>
-                        Colors
+                        Sizes
                     </h3>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-<div class="p-8 lg:p-12 flex items-center justify-center bg-card border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
-<div class="flex flex-col gap-6">
-<label class="relative inline-flex items-center cursor-pointer group">
-<input checked="" class="sr-only peer switch-input" type="checkbox"/>
-<div class="w-16 h-9 bg-white dark:bg-black rounded-full border-4 border-black dark:border-white peer peer-checked:bg-[#fb923c] shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark transition-colors duration-200 switch-label">
-<div class="absolute top-[5px] left-[5px] bg-black dark:bg-white border border-black rounded-full h-5 w-5 transition-transform switch-thumb"></div>
+<div class="p-8 lg:p-12 flex flex-col items-center justify-center gap-8 bg-card border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg relative">
+<div class="flex items-center gap-4 flex-wrap justify-center">
+<button class="bg-white dark:bg-black border-2 border-black dark:border-white hover:bg-accent/50 p-1.5 rounded shadow-[3px_3px_0px_0px_#000] dark:shadow-[3px_3px_0px_0px_#fff] transition-all active:shadow-none active:translate-y-[3px]">
+<span class="material-symbols-outlined text-sm font-bold block">format_italic</span>
+</button>
+<button class="bg-white dark:bg-black border-2 border-black dark:border-white hover:bg-accent/50 p-3 rounded-md shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff] transition-all active:shadow-none active:translate-y-[4px]">
+<span class="material-symbols-outlined text-base font-bold block">format_italic</span>
+</button>
+<button class="bg-white dark:bg-black border-2 border-black dark:border-white hover:bg-accent/50 p-4 rounded-lg shadow-[5px_5px_0px_0px_#000] dark:shadow-[5px_5px_0px_0px_#fff] transition-all active:shadow-none active:translate-y-[5px]">
+<span class="material-symbols-outlined text-xl font-bold block">format_italic</span>
+</button>
 </div>
-<span class="ml-4 font-bold uppercase">Orange</span>
-</label>
-<label class="relative inline-flex items-center cursor-pointer group">
-<input checked="" class="sr-only peer switch-input" type="checkbox"/>
-<div class="w-16 h-9 bg-white dark:bg-black rounded-full border-4 border-black dark:border-white peer peer-checked:bg-[#a78bfa] shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark transition-colors duration-200 switch-label">
-<div class="absolute top-[5px] left-[5px] bg-black dark:bg-white border border-black rounded-full h-5 w-5 transition-transform switch-thumb"></div>
-</div>
-<span class="ml-4 font-bold uppercase">Purple</span>
-</label>
-<label class="relative inline-flex items-center cursor-pointer group">
-<input checked="" class="sr-only peer switch-input" type="checkbox"/>
-<div class="w-16 h-9 bg-white dark:bg-black rounded-full border-4 border-black dark:border-white peer peer-checked:bg-[#4ade80] shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark transition-colors duration-200 switch-label">
-<div class="absolute top-[5px] left-[5px] bg-black dark:bg-white border border-black rounded-full h-5 w-5 transition-transform switch-thumb"></div>
-</div>
-<span class="ml-4 font-bold uppercase">Green</span>
-</label>
+<div class="w-full h-px bg-black/10 dark:bg-white/10"></div>
+<div class="flex gap-4 text-xs font-mono font-bold text-muted-foreground uppercase">
+<span>Small</span>
+<span>Default</span>
+<span>Large</span>
 </div>
 </div>
 <div class="bg-[#1e1e1e] dark:bg-black border-2 border-black dark:border-white p-6 overflow-x-auto flex items-center shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
-<pre class="text-xs font-mono text-gray-300"><code>&lt;<span class="text-primary">Switch</span> className=<span class="text-white">"data-[state=checked]:bg-orange-400"</span> /&gt;
-&lt;<span class="text-primary">Switch</span> className=<span class="text-white">"data-[state=checked]:bg-purple-400"</span> /&gt;
-&lt;<span class="text-primary">Switch</span> className=<span class="text-white">"data-[state=checked]:bg-green-400"</span> /&gt;</code></pre>
+<pre class="text-xs font-mono text-gray-300"><code>&lt;<span class="text-primary">Toggle</span> size=<span class="text-white">"sm"</span>&gt;&lt;<span class="text-primary">Italic</span> /&gt;&lt;/<span class="text-primary">Toggle</span>&gt;
+&lt;<span class="text-primary">Toggle</span> size=<span class="text-white">"default"</span>&gt;&lt;<span class="text-primary">Italic</span> /&gt;&lt;/<span class="text-primary">Toggle</span>&gt;
+&lt;<span class="text-primary">Toggle</span> size=<span class="text-white">"lg"</span>&gt;&lt;<span class="text-primary">Italic</span> /&gt;&lt;/<span class="text-primary">Toggle</span>&gt;</code></pre>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6">
+<h3 class="text-foreground text-xl font-bold uppercase flex items-center gap-3 bg-secondary p-2 border-2 border-black dark:border-white w-fit shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff]">
+<span class="w-4 h-4 bg-[#ff6b6b] border-2 border-black dark:border-white block rounded-full"></span>
+        Switch Style
+    </h3>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<div class="p-8 lg:p-12 flex flex-col items-center justify-center gap-6 bg-card border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
+<div class="flex flex-col gap-4 w-full max-w-xs">
+<div class="flex items-center justify-between bg-secondary p-4 border-2 border-black dark:border-white rounded-md shadow-[2px_2px_0px_0px_#000] dark:shadow-[2px_2px_0px_0px_#fff]">
+<span class="font-bold uppercase text-sm">Airplane Mode</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-white dark:bg-black peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-black dark:after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-success border-2 border-black dark:border-white"></div>
+</label>
+</div>
+<div class="flex items-center justify-between bg-secondary p-4 border-2 border-black dark:border-white rounded-md shadow-[2px_2px_0px_0px_#000] dark:shadow-[2px_2px_0px_0px_#fff]">
+<span class="font-bold uppercase text-sm">Wi-Fi</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-white dark:bg-black peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-black dark:after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary border-2 border-black dark:border-white"></div>
+</label>
+</div>
+</div>
+</div>
+<div class="bg-[#1e1e1e] dark:bg-black border-2 border-black dark:border-white p-6 overflow-x-auto flex items-center shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
+<pre class="text-xs font-mono text-gray-300"><code>&lt;<span class="text-primary">Switch</span> id=<span class="text-white">"airplane-mode"</span> /&gt;
+&lt;<span class="text-primary">Label</span> htmlFor=<span class="text-white">"airplane-mode"</span>&gt;Airplane Mode&lt;/<span class="text-primary">Label</span>&gt;</code></pre>
 </div>
 </div>
 </section>
 <section class="flex flex-col gap-6">
 <h3 class="text-foreground text-xl font-bold uppercase flex items-center gap-3 bg-secondary p-2 border-2 border-black dark:border-white w-fit shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff]">
 <span class="w-4 h-4 bg-muted-foreground border-2 border-black dark:border-white block rounded-full"></span>
-                        States
-                    </h3>
+        Disabled
+    </h3>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
 <div class="p-8 lg:p-12 flex items-center justify-center bg-card border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
-<div class="flex flex-col gap-8 w-full max-w-sm">
-<div class="flex items-center justify-between opacity-50 cursor-not-allowed">
-<label class="text-sm font-bold uppercase">Disabled Off</label>
-<div class="relative inline-flex items-center pointer-events-none">
-<div class="w-14 h-8 bg-muted rounded-full border-4 border-black dark:border-white shadow-none">
-<div class="absolute top-[4px] left-[4px] bg-muted-foreground border border-black rounded-full h-5 w-5"></div>
+<div class="flex gap-4">
+<button class="opacity-50 cursor-not-allowed bg-muted border-2 border-black dark:border-white text-muted-foreground p-3 rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.1)]" disabled="">
+<span class="material-symbols-outlined font-bold">format_bold</span>
+</button>
+<label class="relative inline-flex items-center cursor-not-allowed opacity-50 grayscale">
+<input class="sr-only peer" disabled="" type="checkbox"/>
+<div class="w-14 h-8 bg-gray-200 rounded-full border-2 border-gray-400 after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-gray-400 after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all"></div>
+</label>
 </div>
 </div>
-</div>
-<div class="flex items-center justify-between opacity-50 cursor-not-allowed">
-<label class="text-sm font-bold uppercase">Disabled On</label>
-<div class="relative inline-flex items-center pointer-events-none">
-<div class="w-14 h-8 bg-primary rounded-full border-4 border-black dark:border-white shadow-none">
-<div class="absolute top-[4px] left-[4px] bg-black dark:bg-white border border-black rounded-full h-5 w-5 translate-x-[24px]"></div>
+<div class="bg-[#1e1e1e] dark:bg-black border-2 border-black dark:border-white p-6 overflow-x-auto flex items-center shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
+<pre class="text-xs font-mono text-gray-300"><code>&lt;<span class="text-primary">Toggle</span> disabled&gt;
+  &lt;<span class="text-primary">Bold</span> class=<span class="text-white">"h-4 w-4"</span> /&gt;
+&lt;/<span class="text-primary">Toggle</span>&gt;</code></pre>
 </div>
 </div>
+</section>
+<section class="flex flex-col gap-6">
+<h3 class="text-foreground text-xl font-bold uppercase flex items-center gap-3 bg-secondary p-2 border-2 border-black dark:border-white w-fit shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff]">
+<span class="w-4 h-4 bg-[#4ade80] border-2 border-black dark:border-white block rounded-full"></span>
+        Brutalist Square
+    </h3>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<div class="p-8 lg:p-12 flex items-center justify-center bg-card border-2 border-black dark:border-white shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg relative overflow-hidden">
+<div class="absolute inset-0 bg-[#4ade80]/10 dark:bg-[#4ade80]/5" style="background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent); background-size: 50px 50px;"></div>
+<div class="w-full max-w-sm flex flex-col items-center gap-6 relative z-10">
+<div class="flex items-center gap-4">
+<label class="relative inline-flex items-center cursor-pointer group">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-16 h-8 bg-white dark:bg-black border-2 border-black dark:border-white peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-black dark:peer-focus:ring-white shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff] group-hover:shadow-[6px_6px_0px_0px_#000] dark:group-hover:shadow-[6px_6px_0px_0px_#fff] transition-all peer-checked:bg-accent">
+<div class="absolute top-1 left-1 w-6 h-6 bg-black dark:bg-white border-2 border-transparent transition-transform peer-checked:translate-x-8"></div>
+</div>
+</label>
+<span class="font-black uppercase text-xs bg-black text-white px-2 py-1">Sharp</span>
+</div>
+<div class="flex items-center gap-4">
+<label class="relative inline-flex items-center cursor-pointer group">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-16 h-8 bg-white dark:bg-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff] group-hover:shadow-[6px_6px_0px_0px_#000] dark:group-hover:shadow-[6px_6px_0px_0px_#fff] transition-all peer-checked:bg-[#4ade80]">
+<div class="absolute top-0 left-0 bottom-0 w-8 bg-black dark:bg-white flex items-center justify-center transition-transform peer-checked:translate-x-8 border-r-2 peer-checked:border-l-2 peer-checked:border-r-0 border-black dark:border-zinc-800">
+<span class="material-symbols-outlined text-white dark:text-black text-[16px] font-bold">check</span>
+</div>
+</div>
+</label>
+<span class="font-black uppercase text-xs bg-black text-white px-2 py-1">Icon</span>
 </div>
 </div>
 </div>
 <div class="bg-[#1e1e1e] dark:bg-black border-2 border-black dark:border-white p-6 overflow-x-auto flex items-center shadow-neubrutal-sm dark:shadow-neubrutal-sm-dark rounded-lg">
-<pre class="text-xs font-mono text-gray-300"><code>&lt;<span class="text-primary">Switch</span> disabled /&gt;
-&lt;<span class="text-primary">Switch</span> disabled checked /&gt;</code></pre>
+<pre class="text-xs font-mono text-gray-300"><code>&lt;<span class="text-primary">Toggle</span> variant=<span class="text-white">"square"</span> /&gt;
+&lt;<span class="text-primary">Toggle</span> variant=<span class="text-white">"square"</span>&gt;
+  &lt;<span class="text-primary">CheckIcon</span> /&gt;
+&lt;/<span class="text-primary">Toggle</span>&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -439,7 +472,7 @@
 <h2 class="text-foreground text-3xl font-black uppercase flex items-center gap-2">
                         API Reference
                     </h2>
-<p class="text-muted-foreground text-lg max-w-3xl font-medium">The switch is built using standard HTML input checkbox for full accessibility and form behavior.</p>
+<p class="text-muted-foreground text-lg max-w-3xl font-medium">Built on top of Radix UI Toggle primitive. Fully accessible and keyboard navigable.</p>
 <div class="overflow-x-auto border-2 border-black dark:border-white shadow-neubrutal dark:shadow-neubrutal-dark bg-card mt-4 rounded-lg">
 <table class="w-full text-left border-collapse">
 <thead>
@@ -452,34 +485,34 @@
 </thead>
 <tbody class="divide-y-2 divide-black dark:divide-white text-sm font-medium">
 <tr class="hover:bg-primary/20 group transition-colors">
-<td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">checked</td>
+<td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">defaultPressed</td>
 <td class="p-4 border-r-2 border-black dark:border-white text-muted-foreground font-mono">boolean</td>
 <td class="p-4 border-r-2 border-black dark:border-white text-foreground font-mono">false</td>
-<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">The controlled state of the switch.</td>
+<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">The pressed state of the toggle when it is initially rendered.</td>
 </tr>
 <tr class="hover:bg-primary/20 group transition-colors">
-<td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">defaultChecked</td>
+<td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">pressed</td>
 <td class="p-4 border-r-2 border-black dark:border-white text-muted-foreground font-mono">boolean</td>
-<td class="p-4 border-r-2 border-black dark:border-white text-foreground font-mono">false</td>
-<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">The default state when uncontrolled.</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-foreground font-mono">-</td>
+<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">The controlled pressed state of the toggle.</td>
 </tr>
 <tr class="hover:bg-primary/20 group transition-colors">
-<td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">onCheckedChange</td>
+<td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">onPressedChange</td>
 <td class="p-4 border-r-2 border-black dark:border-white text-muted-foreground font-mono">function</td>
 <td class="p-4 border-r-2 border-black dark:border-white text-foreground font-mono">-</td>
-<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">Event handler called when the state changes.</td>
+<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">Event handler called when the pressed state of the toggle changes.</td>
 </tr>
 <tr class="hover:bg-primary/20 group transition-colors">
-<td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">disabled</td>
-<td class="p-4 border-r-2 border-black dark:border-white text-muted-foreground font-mono">boolean</td>
-<td class="p-4 border-r-2 border-black dark:border-white text-foreground font-mono">false</td>
-<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">Prevents interaction with the switch.</td>
+<td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">variant</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-muted-foreground font-mono">"default" | "outline" | "square"</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-foreground font-mono">"default"</td>
+<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">The visual style of the toggle.</td>
 </tr>
 <tr class="hover:bg-primary/20 group transition-colors">
 <td class="p-4 border-r-2 border-black dark:border-white font-mono text-accent font-bold">size</td>
-<td class="p-4 border-r-2 border-black dark:border-white text-muted-foreground font-mono">"sm" | "md" | "lg"</td>
-<td class="p-4 border-r-2 border-black dark:border-white text-foreground font-mono">"md"</td>
-<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">The size of the switch component.</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-muted-foreground font-mono">"default" | "sm" | "lg"</td>
+<td class="p-4 border-r-2 border-black dark:border-white text-foreground font-mono">"default"</td>
+<td class="p-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white">The size of the toggle.</td>
 </tr>
 </tbody>
 </table>
@@ -511,9 +544,11 @@
                     Examples
                 </a>
 <div class="pl-4 flex flex-col gap-2 border-l-2 border-black/20 dark:border-white/20 ml-1">
+<a class="hover:text-foreground transition-colors py-1" href="#">Default</a>
 <a class="hover:text-foreground transition-colors py-1" href="#">Sizes</a>
-<a class="hover:text-foreground transition-colors py-1" href="#">Colors</a>
-<a class="hover:text-foreground transition-colors py-1" href="#">States</a>
+<a class="hover:text-foreground transition-colors py-1" href="#">Switch Style</a>
+<a class="hover:text-foreground transition-colors py-1" href="#">Disabled</a>
+<a class="hover:text-foreground transition-colors py-1" href="#">Brutalist Square</a>
 </div>
 <a class="hover:text-primary transition-colors hover:translate-x-1 flex items-center gap-2 group" href="#">
 <span class="w-2 h-2 bg-black dark:bg-white opacity-0 group-hover:opacity-100 transition-opacity"></span>
